@@ -47,8 +47,12 @@ class MCMCSampler:
     def MH_proposal(self, parameter):
         """@type parameter : parameter.Parameter"""
         #use normal distribution as proposal function
-        val = parameter.get()
-        proposed = np.random.normal(val, self.sigma)
+        #val = parameter.get()
+        #proposed = np.random.normal(val, self.sigma)
+        #parameter.set(proposed)
+
+        #jk use parameter's sample fn
+        proposed = parameter.sample()
         parameter.set(proposed)
 
     def burnin(self, iterations):
@@ -64,11 +68,62 @@ class MCMCSampler:
                 self.MH_sample(id, p)
                 p.save()
 
+    def _plot(self, folder, title, id, samples, a, b):
+        low = np.min(samples)
+        high = np.max(samples)
+
+        #if samples all same value... don't try to do anything here
+        if abs(low - high) < 0.001:
+            print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Skipping parameter: " + id
+            return
+
+        frac = (high - low) / (b - a + 0.001)
+        band = 0.1 * (high - low + 0.001)
+        numbins = int(25 * frac * math.log(len(samples))) + 2
+
+        #fit kernel density estimator, plot histogram and estimated density curve together
+        kde = KD(kernel='gaussian', bandwidth=band).fit(samples)
+        n, bins, patches = plt.hist(samples, numbins, normed=1)
+        log_dens = kde.score_samples(np.array([bins]).T)
+        plt.plot(bins, np.exp(log_dens), 'r-')
+
+        #find the maximum point, set the parameter to that and plot on histogram too
+        MAP = self._get_MAP(kde, a, b)
+        #p.set(MAP)
+        plt.plot([MAP], np.exp(kde.score_samples([MAP])), 'go')
+
+        #Clean up and label figure
+        plt.title(title + " MAP estimate: " + str(MAP))
+        plt.ylabel("Posterior(" + id + ")")
+        plt.xlabel(id)
+        x1,x2,y1,y2 = plt.axis()
+        plt.axis((a,b,y1,y2))
+
+        plt.savefig(folder + id.replace('_','/',1) + "_" + title)
+        plt.clf()
+
+        return MAP
+
     def plot_samples(self, folder = '', title = ''):
         params = self.model.get_parameters()
 
         for id, p in params.iteritems():
             """@type p : parameter.Parameter"""
+            val = p.get()
+            if not hasattr(val, '__len__'):
+                self._plot(folder, title, id, np.array([p.get_samples()]).T, p.min, p.max)
+            else:
+                for c in range(len(val)):
+                    if not hasattr(val[c], '__len__'):
+                        sam = np.array([[x[c] for x in p.get_samples()]]).T
+                        self._plot(folder, title, id + '_' + str(c), sam, p.min, p.max)
+                    else:
+                        for i in range(len(val[c])):
+                            #assume no more depth
+                            sam = np.array([[x[c, i] for x in p.get_samples()]]).T
+                            self._plot(folder, title, id + '_' + str(c) + '_' + str(i), sam, p.min, p.max)
+
+            """
             samples = np.array([p.get_samples()]).T
             a = p.min
             b = p.max
@@ -103,6 +158,7 @@ class MCMCSampler:
 
             plt.savefig(folder + id.replace('_','/',1) + "_" + title)
             plt.clf()
+            """
 
         print("Plots saved!")
 

@@ -7,7 +7,12 @@ from scipy.special import expit
 from scipy.stats import invgamma
 import math
 
+import time
+
 import parameter
+
+DIRICHLET_SCALE = 300
+DIR_LOW_BOUND = 0.01
 
 class MLFKTModel:
 
@@ -35,32 +40,41 @@ class MLFKTModel:
         self.total_states = total_states
         self.params = {}
 
-        #super clunky way to do parameter vectors or matrices...
         #setup initial probability vector...
-        #!!!!!!!!!!!!!!!!!!!!!! here L_0 is p(unlearned)
-        for c in range(intermediate_states + 1):
-            val = 1.0 / (total_states + 4)
-            if c == 0:
-                val = 5.0 / (total_states + 4)
-            self.params['L_'+str(c)] = parameter.Parameter(val, 0, 1, (lambda x: self.uniform(x, 0, 1)))
+        #!!!!!!!!!!!!!!!!!!!!!! here L[0] is p(unlearned)
+        val = np.ones(total_states)/(total_states + 0.0)
+        self.params['L'] = parameter.Parameter(val, 0, 1, (lambda x: 1), (lambda x: self.sample_dir(DIRICHLET_SCALE * x)))
+        print "pi starting as:"
+        print val
 
+        t_mat = np.ones([total_states, total_states])
         #setup transition triangle...
-        for row in range(intermediate_states + 1):
-            for col in range(row+1, total_states):
-                self.params['T_'+str(row) + '_' + str(col)] = \
-                    parameter.Parameter(1.0 / (total_states - row), 0, 1, (lambda x: self.uniform(x, 0, 1)))
+        for row in range(total_states):
+            t_mat[row,0:row] = np.zeros(row)
+            t_mat[row,:] = np.random.dirichlet(DIRICHLET_SCALE * t_mat[row,:])
 
-        #setup guess vector
+        print "T starting as:"
+        print t_mat
+        self.params['T'] = parameter.Parameter(t_mat, 0, 1, (lambda x: 1), (lambda x: self.sample_dir_mat(DIRICHLET_SCALE * x)))
+
+        #setup guess vector in really clunky way
         for c in range(intermediate_states + 1):
-            self.params['G_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x: self.uniform(x, -3, 3)))
+            self.params['G_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x: self.uniform(x, -3, 3)),
+                                                             (lambda x: self.sample_guess_prob(x)))
+        self.params['S'] = parameter.Parameter(0, -3, 3, (lambda x: self.uniform(x, -3, 3)),
+                                               (lambda x: self.sample_guess_prob(x)))
 
-        self.params['S'] = parameter.Parameter(0, -3, 3, (lambda x: self.uniform(x, -3, 3)))
-
-        #problem difficulty vector
+        #problem difficulty vector, also in clunky way
+        self.emission_mask = []
+        self.emission_mats = []
         for c in range(numprobs):
-            self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: norm.pdf(x, 0, d_sig) ))
+            self.emission_mask.append(False)
+            self.emission_mats.append(np.ones((total_states, 2)))
+            self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: norm.pdf(x, 0, d_sig)),
+                                                             (lambda x: np.random.normal(x, 0.15)))
 
-        self.params['Dsigma'] = parameter.Parameter(Dsigma, 0, 3, (lambda x: invgamma.pdf(x, 1, 0, 2)))
+        self.params['Dsigma'] = parameter.Parameter(Dsigma, 0, 3, (lambda x: invgamma.pdf(x, 1, 0, 2)),
+                                                    (lambda x: np.random.normal(x, 0.15)))
 
         #leave room later for test split
         self.test = {}
@@ -83,33 +97,51 @@ class MLFKTModel:
             return abs(1.0 / (b-a))
         return 0
 
-    def make_transitions(self):
-        table = []
-        for row in range(self.total_states):
-            table.append([0] * self.total_states)
-            for col in range(row + 1, self.total_states):
-                table[-1][col] = self.params['T_' + str(row) + '_' + str(col)].get()
-            table[-1][row] = 1 - np.sum(table[-1])
-        """
-        print
-        print np.array(table)
-        print self.params['T_0_1'].get()
-        print self.params['T_0_2'].get()
-        print self.params['T_1_2'].get()
-        print
-        """
-        return np.array(table)
+    def sample_dir_mat(self, x):
+        #sample a matrix where each row is sampled from a dirichlet
+        xnew = np.copy(x)
+        side_len = np.shape(x)[0]
+        for c in range(side_len):
+            #if np.min(xnew[c,c:side_len]) < .001 * DIRICHLET_SCALE:
+            #    print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ dirichlet matrix hiccup"
+            #    print x
+            #    xnew[c,c:side_len] += 100000 * DIRICHLET_SCALE
+            xnew[c,c:side_len] = self.sample_dir(xnew[c,c:side_len])
+        return xnew
 
-    def make_emissions(self, diff):
-        table = []
-        #guesses...
-        for row in range(self.total_states - 1):
-            table.append([0, 0])
-            table[-1][1] = expit(self.params['G_' + str(row)].get() - diff)
-            table[-1][0] = 1 - table[-1][1]
-        #and slip
-        table.append([expit(self.params['S'].get() + diff), 0])
-        table[-1][1] = 1 - table[-1][0]
+    def sample_dir(self, x):
+        #ensure elements stay away from zero
+        x = np.random.dirichlet(x)
+        if np.min(x) < DIR_LOW_BOUND:
+            #print "~~~~~~~~~~~~~~~~~~~~~~~~\tdirichlet bounce"
+            #print x
+            x[np.argmin(x)] = DIR_LOW_BOUND * 1.1
+            x = x / np.sum(x)
+            #print x
+        return x
+
+    def sample_guess_prob(self, x):
+        self.emission_mask = [False] * self.data['num_problems']
+        return np.random.normal(x, 0.15)
+
+    def make_transitions(self):
+        return self.params['T'].get()
+
+    def make_emissions(self, diff, prob_num):
+        if self.emission_mask[prob_num]:
+            #print str(time.time()) + "\tusing saved emissions"
+            return self.emission_mats[prob_num]
+        else:
+            #print str(time.time()) + "\tcalculating new emissions"
+            self.emission_mask[prob_num] = True
+            table = self.emission_mats[prob_num]
+            #guesses...
+            for row in range(self.total_states - 1):
+                table[row, 1] = expit(self.params['G_' + str(row)].get() - diff)
+                table[row, 0] = 1 - table[row, 1]
+            #and slip
+            table[row + 1, 0] = expit(self.params['S'].get() + diff)
+            table[row + 1, 1] = 1 - table[row + 1, 0]
         """
         print
         print np.array(table)
@@ -118,22 +150,10 @@ class MLFKTModel:
         print self.params['S'].get()
         print
         """
-
-        return np.array(table)
+        return table
 
     def make_initial(self):
-        array = [0] * self.total_states
-        for c in range(self.total_states - 1):
-            array[c] = self.params['L_' + str(c)].get()
-        array[-1] = 1 - np.sum(array)
-        """
-        print
-        print np.array(array)
-        print self.params['L_0'].get()
-        print self.params['L_1'].get()
-        print
-        """
-        return np.array(array)
+        return self.params['L'].get()
 
     """expose parameters"""
     def get_parameters(self):
@@ -154,6 +174,9 @@ class MLFKTModel:
                 dprob += self.log( self.params['D_' + str(d)].prior(Dsigma.get()))
             return self.log(Dsigma.prior()) + dprob
 
+        if 'D_' in paramID:
+            self.emission_mask[int(paramID[2:])] = False
+
         trans = self.make_transitions()
         pi = self.make_initial()
         states = self.total_states
@@ -162,7 +185,7 @@ class MLFKTModel:
 
         for n in range(N):
             alpha = np.zeros( (T,states) )
-            emit = self.make_emissions(self.params['D_' + str(int(Probs[n,0]))].get())
+            emit = self.make_emissions(self.params['D_' + str(int(Probs[n,0]))].get(), int(Probs[n,0]))
             alpha[0] = np.multiply(pi, emit[:,X[n,0]])
 
             last_t = 0
@@ -170,7 +193,7 @@ class MLFKTModel:
                 last_t = t
                 if X[n,t] == -1:
                     break
-                emit = self.make_emissions(self.params['D_' + str(int(Probs[n,t]))].get())
+                emit = self.make_emissions(self.params['D_' + str(int(Probs[n,t]))].get(), int(Probs[n,t]))
                 #print B
                 alpha[t,:] = np.dot( np.multiply( emit[:,X[n,t]], alpha[t-1,:]), trans)
             #print sum(alpha[T-1,:])
@@ -203,6 +226,11 @@ class MLFKTModel:
         N = X.shape[0]
         T = X.shape[1]
 
+        #set params to mean
+        for id, p in self.params.iteritems():
+            avg = np.mean(p.get_samples(), 0)
+            p.set(avg)
+
         pi = self.make_initial()
         trans = self.make_transitions()
         Preds = self.test['Predictions']
@@ -214,7 +242,7 @@ class MLFKTModel:
             ##Similar to forward algo
             #print "\t\t\tPrediction for test sequence: " + str(n)
             alpha = np.zeros( (T,states) )
-            emit = self.make_emissions(self.params['D_' + str(int(Probs[n,0]))].get())
+            emit = self.make_emissions(self.params['D_' + str(int(Probs[n,0]))].get(), int(Probs[n,0]))
 
             Mast[n,0] = pi[-1]
             #print P
@@ -226,7 +254,7 @@ class MLFKTModel:
             for t in range(1,T):
                 if X[n,t] == -1:
                     break
-                emit = self.make_emissions(self.params['D_' + str(int(Probs[n,t]))].get())
+                emit = self.make_emissions(self.params['D_' + str(int(Probs[n,t]))].get(), int(Probs[n,t]))
 
                 state_probs = np.copy(alpha[t-1,:])
                 state_probs = np.dot(state_probs, trans)
@@ -248,6 +276,8 @@ class MLFKTModel:
         print trans
         print
         print "Emit:"
+        self.emission_mask[0] = False
+        emit = self.make_emissions(0,0)
         print emit
         print
 

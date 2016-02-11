@@ -34,14 +34,20 @@ class LFKTModel:
 
         self.params = {}
 
-        self.params['L'] = parameter.Parameter(0.5, 0, 1, (lambda x: self.uniform(x, 0, 1)))
-        self.params['T'] = parameter.Parameter(0.5, 0, 1, (lambda x: self.uniform(x, 0, 1)))
-        self.params['G'] = parameter.Parameter(0, -3, 3, (lambda x: self.uniform(x, -3, 3)))
-        self.params['S'] = parameter.Parameter(0, -3, 3, (lambda x: self.uniform(x, -3, 3)))
+        self.params['L'] = parameter.Parameter(0.5, 0, 1, (lambda x: self.uniform(x, 0, 1)),
+                                               (lambda x: np.random.normal(x, 0.15)))
+        self.params['T'] = parameter.Parameter(0.5, 0, 1, (lambda x: self.uniform(x, 0, 1)),
+                                               (lambda x: np.random.normal(x, 0.15)))
+        self.params['G'] = parameter.Parameter(0, -3, 3, (lambda x: self.uniform(x, -3, 3)),
+                                               (lambda x: np.random.normal(x, 0.15)))
+        self.params['S'] = parameter.Parameter(0, -3, 3, (lambda x: self.uniform(x, -3, 3)),
+                                               (lambda x: np.random.normal(x, 0.15)))
         for c in range(numprobs):
-            self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: norm.pdf(x, 0, d_sig) ))
+            self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: norm.pdf(x, 0, d_sig) ),
+                                                             (lambda x: np.random.normal(x, 0.15)))
 
-        self.params['Dsigma'] = parameter.Parameter(Dsigma, 0, 3, (lambda x: invgamma.pdf(x, 1, 0, 2)))
+        self.params['Dsigma'] = parameter.Parameter(Dsigma, 0, 3, (lambda x: invgamma.pdf(x, 1, 0, 2)),
+                                                    (lambda x: np.random.normal(x, 0.15)))
 
         #leave room later for test split
         self.test = {}

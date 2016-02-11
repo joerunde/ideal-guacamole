@@ -7,7 +7,7 @@ from Metropolis.mlfkt_model import MLFKTModel
 import sys, json, time, random, os, math
 import numpy as np
 
-print "usage: python fit_LFKT_model.py burnin iterations k(for 1/k test split) bkt(y/n) skills num_intermediate_states"
+print "usage: python fit_MLFKT_model.py burnin iterations k(for 1/k test split) bkt(y/n) skills num_intermediate_states"
 
 skill = sys.argv[5]
 intermediate_states = int(sys.argv[6])
@@ -129,7 +129,7 @@ for c in range(num):
     f.write(str(mastl[c]) + ',' + str(predl[c]) + ', ' + str(xtestl[c]) + '\n')
 f.close()
 
-mcmc.save_model(folder + "/" + str(num_iterations) + '_iterations.model')
+#mcmc.save_model(folder + "/" + str(num_iterations) + '_iterations.model')
 
 
 if 'y' in sys.argv[4]:
