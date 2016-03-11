@@ -493,7 +493,7 @@ class MLFKTModel:
             self.student_state = 1
 
 
-    def give_problem(self, prob_id):
+    def give_problem(self, prob_id, transition=True):
 
         diff = self.params['D_'+str(prob_id)].get()
         emit = self.make_emissions(diff, prob_id)
@@ -509,7 +509,7 @@ class MLFKTModel:
         else:
             ans = 0
 
-        if self.student_state == 0:
+        if self.student_state == 0 and transition:
             trans = self.params['T'].get()[0,1]
             seed = np.random.random()
             if seed < trans:

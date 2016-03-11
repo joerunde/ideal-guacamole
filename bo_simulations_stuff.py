@@ -11,6 +11,35 @@ from sklearn.linear_model import LogisticRegression
 from moe.easy_interface.experiment import Experiment
 from moe.easy_interface.simple_endpoint import gp_next_points
 from moe.optimal_learning.python.data_containers import SamplePoint
+from moe.optimal_learning.python import bo_edu
+from moe.optimal_learning.python.cpp_wrappers.gaussian_process import GaussianProcess
+from moe.optimal_learning.python.cpp_wrappers.covariance import SquareExponential
+
+# Returns the best-looking point in the given Gaussian Process.
+def moe_compute_best_pt_info(moe_exp, covariance_info, confidence=None,
+                             mean_fxn_info=None, sample_pts=None, debug=False):
+    if moe_exp.historical_data.num_sampled <= 0: return None, None
+    covar = SquareExponential(covariance_info['hyperparameters'])
+    cpp_gp = GaussianProcess(covar, moe_exp.historical_data,
+                             mean_fxn_info=mean_fxn_info)
+    if (sample_pts == None):
+        sample_pts = np.array(moe_exp.historical_data.points_sampled)
+    #moe_pts_r = np.array(moe_exp.historical_data.points_sampled)
+    #moe_pts_d = moe_exp.domain.generate_uniform_random_points_in_domain(50)
+    #sample_pts = np.concatenate((moe_pts_r, moe_pts_d), axis=0)
+    cpp_mu = cpp_gp.compute_mean_of_points(sample_pts, debug)
+    cpp_var = np.diag(cpp_gp.compute_variance_of_points(sample_pts))
+    #print "sample_pts ", sample_pts, "\ncpp_mu ", cpp_mu, "\ncpp_var ", cpp_var
+    if confidence is None:
+        minidx = np.argmin(cpp_mu)
+    else:
+        upper_conf = scipy.stats.norm.interval(confidence, loc=cpp_mu,
+                                               scale=np.sqrt(cpp_var))[1]
+        minidx = np.argmin(upper_conf)
+        #print " cpp_var ", cpp_var[minidx], " upper_conf ", upper_conf[minidx]
+    #print "cpp_mu ", cpp_mu[minidx], " best_moe_pt ", sample_pts[minidx]
+    return [sample_pts[minidx], cpp_mu[minidx], cpp_var[minidx]]
+
 
 
 def run_learned_model(skill, diff_params = None):
@@ -46,7 +75,7 @@ def run_learned_model(skill, diff_params = None):
     #errl = []
 
     for c in range(1):
-        param_dict = json.load(open("dump/PARAMS_"+skill+"_2states_500iter.json","r"))
+        param_dict = json.load(open("feb20_exps/PARAMS_"+skill+"_2states_500iter.json","r"))
         param_dict = param_dict[c]
         params = model.get_parameters()
         for k, v in param_dict.iteritems():
@@ -186,7 +215,7 @@ class Simulator:
 
 
 def objective(score, num_probs):
-    return score * math.pow(num_probs+1.0, -1.0/16.0)
+    return 1 - ( score * math.pow(num_probs+1.0, -1.0/16.0) )
 
 
 class UnifiedTrial:
@@ -209,21 +238,39 @@ class UnifiedTrial:
 
 
     def run(self):
+        learned = False
+
+        ##########
+        #if self.student.model.student_state > 0:
+        #    print "Started learnt"
+        #    learned = True
 
         self.traj = self.student.give_test()
+
+        #########
+        #if self.student.model.student_state > 0 and not learned:
+        #    learned = True
+        #    print "Learnt after pretest"
 
         problems_given = 0
 
         while self.get_pm() < self.threshold:
             obs = self.student.give_problem()
-            problems_given += 1
             if obs[0] < 0:
                 break # no more problems
+            problems_given += 1
             self.traj.append(obs)
+
+            ##############
+            #if self.student.model.student_state > 0 and not learned:
+            #    learned = True
+            #    print "Learnt after problem: " + str(problems_given)
 
         post_obs = self.student.give_test()
         score = sum( [x[0] for x in post_obs] ) / 13.0
 
+        #print problems_given
+        #print student.model.student_state
         return objective(score, problems_given)
 
 
@@ -279,20 +326,54 @@ class SeparateSkillTrial:
 
 
 
+#grab a quick baseline reading:
+gg = []
+for c in range(50):
+    params = {'pg':-1, 'ps':-1, 'pi':0.00001, 'pt':0.00001, 'threshold':0.999999999999999999}
+    student = Simulator(True)
+    trial = UnifiedTrial(student, params)
+    y = trial.run()
+    #print y
+    gg.append(y)
+print "BASELINE MASTERED: " + str(np.mean(gg))
+
+gg = []
+for c in range(50):
+    params = {'pg':-1, 'ps':-1, 'pi':0.99, 'pt':0.99, 'threshold':0.01}
+    student = Simulator(True)
+    trial = UnifiedTrial(student, params)
+    y = trial.run()
+    #print y
+    gg.append(y)
+print "BASELINE NOT MASTERED: " + str(np.mean(gg))
+
 
 ## now for the BO shiz
-NOISE_VAL = 0.1
+NOISE_VAL = 0.15
+MOE_PRIOR_VARIANCE = NOISE_VAL
+hyper_params = [MOE_PRIOR_VARIANCE]
+MOE_LENGTH_SCALE = 2
+#hyper_params.extend([MOE_LENGTH_SCALE]*5)
+hyper_params.extend([MOE_LENGTH_SCALE]*3)
+MOE_LENGTH_SCALE_THRESH = 0.2
+hyper_params.append(MOE_LENGTH_SCALE_THRESH)
+moe_covariance_info = {'covariance_type': 'square_exponential',
+                              'hyperparameters': hyper_params}
 
 def UnifiedBOExp(iter):
-    bounds = [ [-3,3], [-3,3], [0,1], [0,1], [0,1] ]
+    #bounds = [ [-3,.5], [-3,.5], [0,1], [0,1], [0,1] ]
+
+    #reduce dof for BO. Let's set hard threshold 0.95 and hard p(i) as 0.05
+    bounds = [ [-3,.5], [-3,.5], [0,1]]
+
     exp = Experiment(bounds)
     objs = []
 
     for c in range(iter):
         #get list of next params
-        x = gp_next_points(exp)[0]
+        x = gp_next_points(exp)[0]#, num_to_sample=1, covariance_info=moe_covariance_info)[0]
         #put into dict
-        params = {'pg':x[0], 'ps':x[1], 'pi':x[2], 'pt':x[3], 'threshold':x[4]}
+        params = {'pg':x[0], 'ps':x[1], 'pi':0.05, 'pt':x[2], 'threshold':0.95}
 
         #setup trial
         student = Simulator(True)
@@ -302,9 +383,19 @@ def UnifiedBOExp(iter):
         exp.historical_data.append_sample_points([SamplePoint(x, y, NOISE_VAL)])
         objs.append(y)
 
+        print "x is: "
+        print x
+        print "objective: "
+        print y
+        print "predicted best point: "
+        #print moe_compute_best_pt_info(exp, moe_covariance_info)[0]
+        print ["%0.2f" % i for i in moe_compute_best_pt_info(exp, moe_covariance_info)[0]]
+        print
+
     return objs
 
-print UnifiedBOExp(50)
+UnifiedBOExp(50)
+#print UnifiedBOExp(50)
 
 
 
@@ -313,22 +404,19 @@ print UnifiedBOExp(50)
 
 
 
+"""
+def f(x):
+    return (x-3.2765)**2 - 1.2443
+exp = Experiment([[-20,20]])
 
+for c in range(25):
+    x = gp_next_points(exp,num_to_sample=1, covariance_info=moe_covariance_info)[0][0]
+    print "x; " + str(x)
+    y = f(x)
+    exp.historical_data.append_sample_points([SamplePoint(x, y, NOISE_VAL)])
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    print "bo_edu output: " + str(moe_compute_best_pt_info(exp, moe_covariance_info)[0])
+"""
 
 """
 
