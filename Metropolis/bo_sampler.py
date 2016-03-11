@@ -1,7 +1,7 @@
 """ This class runs metropolis-hastings MCMC over a model
     The model must expose its parameters and provide log-posterior evaluations over training data
 """
-import lfkt_model
+import mlfkt_model
 import parameter
 import numpy as np
 import math, random, cPickle
@@ -9,73 +9,45 @@ from matplotlib import pyplot as plt
 from sklearn.neighbors import KernelDensity as KD
 from cloud.serialization.cloudpickle import dump
 
-class MCMCSampler:
+from moe.easy_interface.experiment import Experiment
+from moe.easy_interface.simple_endpoint import gp_next_points
+from moe.optimal_learning.python.data_containers import SamplePoint
+from moe.easy_interface.simple_endpoint import gp_hyper_opt
+from moe.easy_interface import simple_endpoint
 
-    def __init__(self, model, sigma):
-        """@type model: lfkt_model.LFKTModel"""
+class BOSampler:
+
+    def __init__(self, model):
+        """@type model: mlfkt_model.MLFKTModel"""
         self.model = model
-        self.sigma = sigma #for the lfkt case before I had this at 0.15
-        self.no_D = False
+        #self.samples = []
 
-        if "Dsigma" in model.get_parameters():
-            print "found dsigma"
-            print model.get_parameters()["Dsigma"].get()
-            if model.get_parameters()["Dsigma"].get() == 0:
-                print "no_d true"
-                self.no_D = True
+        bounds = model.get_params_for_BO()
 
-    def MH_sample(self, paramID, parameter):
-        #paramID is just the name (given by the model) of the parameter
-        """@type parameter : parameter.Parameter"""
+        self.exp = Experiment(bounds)
 
-        #quick hacky check... lock LFKT to BKT if that's the model we're using
-        #cause this is research land
-        if 'D' in paramID and self.no_D is True:
-            return
+    def BO_sample(self):
+        x = gp_next_points(self.exp)[0]
+        y = self.model.evaluate_params_from_BO(x)
+        np.set_printoptions(3)
+        print np.array(x)
+        print y
+        self.exp.historical_data.append_sample_points([SamplePoint(x,y,0.001)])
+        #print gp_hyper_opt(self.exp.historical_data.points_sampled)
+        """pts = self.exp.historical_data.points_sampled
+        vals = self.exp.historical_data.points_sampled_value
+        noise = self.exp.historical_data.points_sampled_noise_variance
+        gg = []
+        for c in range(len(pts)):
+            gg.append((pts[c], vals[c], noise[c]))
+        print gp_hyper_opt(gg)"""
 
-        P_old = self.model.log_posterior(paramID)
-        self.MH_proposal(parameter)
-        P_new = self.model.log_posterior(paramID)
-        a = self.exp(P_new - P_old)
+        #simple_endpoint.
 
-        #if paramID == 'G':
-        #    print "---------------"
-        #    print P_new
-        #    print P_old
-        #    print a
+    def get_samples(self):
+        return self.exp.historical_data
 
-        #Leave the parameter at the new value with probability a
-        #(a can be > 1)
-        if random.random() < a:
-            #leave it
-            pass
-        else:
-            parameter.revert()
-
-    def MH_proposal(self, parameter):
-        """@type parameter : parameter.Parameter"""
-        #use normal distribution as proposal function
-        #val = parameter.get()
-        #proposed = np.random.normal(val, self.sigma)
-        #parameter.set(proposed)
-
-        #jk use parameter's sample fn
-        proposed = parameter.sample()
-        parameter.set(proposed)
-
-    def burnin(self, iterations):
-        params = self.model.get_parameters()
-        for i in range(iterations):
-            for id, p in params.iteritems():
-                self.MH_sample(id, p)
-
-    def MH(self, iterations):
-        params = self.model.get_parameters()
-        for i in range(iterations):
-            for id, p in params.iteritems():
-                self.MH_sample(id, p)
-                p.save()
-
+    """
     def _plot(self, folder, title, id, samples, a, b):
         low = np.min(samples)
         high = np.max(samples)
@@ -111,12 +83,12 @@ class MCMCSampler:
         plt.clf()
 
         return MAP
-
+    """
+    """
     def plot_samples(self, folder = '', title = ''):
         params = self.model.get_parameters()
 
         for id, p in params.iteritems():
-            """@type p : parameter.Parameter"""
             val = p.get()
             if not hasattr(val, '__len__'):
                 self._plot(folder, title, id, np.array([p.get_samples()]).T, p.min, p.max)
@@ -130,51 +102,13 @@ class MCMCSampler:
                             #assume no more depth
                             sam = np.array([[x[c, i] for x in p.get_samples()]]).T
                             self._plot(folder, title, id + '_' + str(c) + '_' + str(i), sam, p.min, p.max)
-
-            """
-            samples = np.array([p.get_samples()]).T
-            a = p.min
-            b = p.max
-            low = np.min(samples)
-            high = np.max(samples)
-
-            #if samples all same value... don't try to do anything here
-            if low == high:
-                continue
-
-            frac = (high - low) / (b - a + 0.001)
-            band = 0.1 * (high - low + 0.001)
-            numbins = int(25 * frac * math.log(len(p.get_samples())))
-
-            #fit kernel density estimator, plot histogram and estimated density curve together
-            kde = KD(kernel='gaussian', bandwidth=band).fit(samples)
-            n, bins, patches = plt.hist(p.get_samples(), numbins, normed=1)
-            log_dens = kde.score_samples(np.array([bins]).T)
-            plt.plot(bins, np.exp(log_dens), 'r-')
-
-            #find the maximum point, set the parameter to that and plot on histogram too
-            MAP = self._get_MAP(kde, a, b)
-            p.set(MAP)
-            plt.plot([MAP], np.exp(kde.score_samples([MAP])), 'go')
-
-            #Clean up and label figure
-            plt.title(title + " MAP estimate: " + str(MAP))
-            plt.ylabel("Posterior(" + id + ")")
-            plt.xlabel(id)
-            x1,x2,y1,y2 = plt.axis()
-            plt.axis((a,b,y1,y2))
-
-            plt.savefig(folder + id.replace('_','/',1) + "_" + title)
-            plt.clf()
-            """
-
         print("Plots saved!")
-
+    """
+    """
     def set_MAP(self):
         params = self.model.get_parameters()
 
         for id, p in params:
-            """@type p : parameter.Parameter"""
             samples = np.array([p.get_samples()]).T
             a = p.min
             b = p.max
@@ -199,7 +133,7 @@ class MCMCSampler:
 
         log_dens = kde.score_samples(np.array([x]).T)
         return x[np.argmax(log_dens)]
-
+    """
     def log(self, X):
         if X <= 1e-322:
             return -float('inf')

@@ -7,140 +7,162 @@ from Metropolis.mlfkt_model import MLFKTModel
 import sys, json, time, random, os, math
 import numpy as np
 
-print "usage: python fit_MLFKT_model.py burnin iterations k(for 1/k test split) bkt(y/n) skills num_intermediate_states"
+print "usage: python fit_MLFKT_model.py burnin iterations k(for 1/k test split) bkt(y/n) skills num_intermediate_states iterations"
 
-skill = sys.argv[5]
-intermediate_states = int(sys.argv[6])
-fname = skill.replace(" ","_")
-fname = fname.replace("\"","")
-"""
-try:
-    os.system("python bkt_data_split.py " + fname + ".csv \"" + skill + "\"")
-except Exception as e:
-    print str(e)
-    pass
-"""
+iterz = int(sys.argv[7])
 
-#time.sleep(1)
+for it in range(iterz):
+    skill = sys.argv[5]
+    intermediate_states = int(sys.argv[6])
+    total_states = intermediate_states + 2
+    fname = skill.replace(" ","_")
+    fname = fname.replace("\"","")
+    """
+    try:
+        os.system("python bkt_data_split.py " + fname + ".csv \"" + skill + "\"")
+    except Exception as e:
+        print str(e)
+        pass
+    """
 
-#load observations
-X = np.loadtxt(open("observations_" + fname + ".csv","rb"),delimiter=",")
-#load problem IDs for these observations
-P = np.loadtxt(open("problems_" + fname + ".csv","rb"),delimiter=",")
+    #time.sleep(1)
 
-start = time.time()
+    #load observations
+    X = np.loadtxt(open("dump/observations_" + fname + ".csv","rb"),delimiter=",")
+    #load problem IDs for these observations
+    P = np.loadtxt(open("dump/problems_" + fname + ".csv","rb"),delimiter=",")
 
-k = int(sys.argv[3])
-#split 1/kth into test set
-N = X.shape[0]
-Xtest = []
-Ptest = []
-Xnew = []
-Pnew = []
-for c in range(N):
-    if random.random() < 1 / (k+0.0):
-        Xtest.append(X[c,:])
-        Ptest.append(P[c,:])
+    start = time.time()
+
+    k = int(sys.argv[3])
+    #split 1/kth into test set
+    N = X.shape[0]
+    Xtest = []
+    Ptest = []
+    Xnew = []
+    Pnew = []
+    for c in range(N):
+        if c % k == 0:#random.random() < 1 / (k+0.0):
+            Xtest.append(X[c,:])
+            Ptest.append(P[c,:])
+        else:
+            Xnew.append(X[c,:])
+            Pnew.append(P[c,:])
+    X = Xnew
+    P = Pnew
+
+    Xtest = np.array(Xtest)
+    Ptest = np.array(Ptest)
+    X = np.array(X)
+    P = np.array(P)
+
+    print str(Xtest.shape[0]) + " test sequences"
+    print str(X.shape[0]) + " training sequences"
+
+    if 'y' in sys.argv[4]:
+        model = MLFKTModel(X, P, intermediate_states, 0)
     else:
-        Xnew.append(X[c,:])
-        Pnew.append(P[c,:])
-X = Xnew
-P = Pnew
+        model = MLFKTModel(X, P, intermediate_states, 0.1)
 
-Xtest = np.array(Xtest)
-Ptest = np.array(Ptest)
-X = np.array(X)
-P = np.array(P)
+    mcmc = MCMCSampler(model, 0.15)
 
-print str(Xtest.shape[0]) + " test sequences"
-print str(X.shape[0]) + " training sequences"
+    burn = int(sys.argv[1])
+    for c in range(20):
+        mcmc.burnin(int(math.ceil((burn+0.0) / 20)))
+        print("finished burn-in #: " + str((c+1)*burn/20))
 
-if 'y' in sys.argv[4]:
-    model = MLFKTModel(X, P, intermediate_states, 0)
-else:
-    model = MLFKTModel(X, P, intermediate_states, 0.1)
+    num_iterations = int(sys.argv[2])
+    loop = 20
+    per_loop = int(math.ceil((num_iterations+0.0) / loop))
+    for c in range(loop):
+        a = time.time()
+        mcmc.MH(per_loop)
+        b = time.time()
+        print("finished iteration: " + str((c+1)*per_loop) + " in " + str(int(b-a)) + " seconds")
 
-mcmc = MCMCSampler(model, 0.15)
+    end = time.time()
 
-burn = int(sys.argv[1])
-for c in range(20):
-    mcmc.burnin(int(math.ceil((burn+0.0) / 20)))
-    print("finished burn-in #: " + str((c+1)*burn/20))
+    print("Finished burnin and " + str(num_iterations) + " iterations in " + str(int(end-start)) + " seconds.")
 
-num_iterations = int(sys.argv[2])
-loop = 20
-per_loop = int(math.ceil((num_iterations+0.0) / loop))
-for c in range(loop):
-    a = time.time()
-    mcmc.MH(per_loop)
-    b = time.time()
-    print("finished iteration: " + str((c+1)*per_loop) + " in " + str(int(b-a)) + " seconds")
+    folder = "plots_" + fname
+    #plotting samples will also load the MAP estimates
+    mcmc.plot_samples(folder + "/", str(num_iterations) + '_iterations')
 
-end = time.time()
+    #load up test data and run predictions
+    model.load_test_split(Xtest, Ptest)
+    pred = model.get_predictions()
+    num = model.get_num_predictions()
+    mast = model.get_mastery()
 
-print("Finished burnin and " + str(num_iterations) + " iterations in " + str(int(end-start)) + " seconds.")
+    err = pred - Xtest
+    rmse = np.sqrt(np.sum(err**2)/num)
 
-folder = "plots_" + fname
-#plotting samples will also load the MAP estimates
-mcmc.plot_samples(folder + "/", str(num_iterations) + '_iterations')
+    errl = np.zeros(num)
+    predl = np.zeros(num)
+    mastl = np.zeros(num)
+    xtestl = np.zeros(num)
+    i = 0
+    for n in range(pred.shape[0]):
+        for t in range(pred.shape[1]):
+            if pred[n][t] == -1:
+                break
+            errl[i] = err[n][t]
+            predl[i] = pred[n][t]
+            mastl[i] = mast[n][t]
+            xtestl[i] = Xtest[n][t]
+            i += 1
 
-#load up test data and run predictions
-model.load_test_split(Xtest, Ptest)
-pred = model.get_predictions()
-num = model.get_num_predictions()
-mast = model.get_mastery()
+    from matplotlib import pyplot as plt
+    plt.hist(np.array([predl]).T, 30)
+    plt.savefig(folder + "/Predictions_" + str(num_iterations) + '_iterations')
+    plt.clf()
+    plt.hist(np.array([errl]).T, 30)
+    plt.savefig(folder + "/Errors_" + str(num_iterations) + '_iterations')
+    plt.clf()
 
-err = pred - Xtest
-rmse = np.sqrt(np.sum(err**2)/num)
+    print "RMSE:\t" + str(rmse)
 
-errl = np.zeros(num)
-predl = np.zeros(num)
-mastl = np.zeros(num)
-xtestl = np.zeros(num)
-i = 0
-for n in range(pred.shape[0]):
-    for t in range(pred.shape[1]):
-        if pred[n][t] == -1:
-            break
-        errl[i] = err[n][t]
-        predl[i] = pred[n][t]
-        mastl[i] = mast[n][t]
-        xtestl[i] = Xtest[n][t]
-        i += 1
+    f = open(folder + "/RMSE" + str(num_iterations) + '_iterations', "w+")
+    f.write("RMSE: " + str(rmse) + "\n\n\nErrors: (prediction - observation)\n\n")
+    for c in range(err.shape[0]):
+        f.write(str(err[c,:]) + '\n')
+    f.close()
 
-from matplotlib import pyplot as plt
-plt.hist(np.array([predl]).T, 30)
-plt.savefig(folder + "/Predictions_" + str(num_iterations) + '_iterations')
-plt.clf()
-plt.hist(np.array([errl]).T, 30)
-plt.savefig(folder + "/Errors_" + str(num_iterations) + '_iterations')
-plt.clf()
+    f = open(folder + "/mastery" + str(num_iterations) + '_iterations', "w+")
+    for c in range(num):
+        f.write(str(mastl[c]) + ',' + str(predl[c]) + ', ' + str(xtestl[c]) + '\n')
+    f.close()
 
-print "RMSE:\t" + str(rmse)
+    #mcmc.save_model(folder + "/" + str(num_iterations) + '_iterations.model')
 
-f = open(folder + "/RMSE" + str(num_iterations) + '_iterations', "w+")
-f.write("RMSE: " + str(rmse) + "\n\n\nErrors: (prediction - observation)\n\n")
-for c in range(err.shape[0]):
-    f.write(str(err[c,:]) + '\n')
-f.close()
+    if 'y' in sys.argv[4]:
+        fname += '_bkt'
 
-f = open(folder + "/mastery" + str(num_iterations) + '_iterations', "w+")
-for c in range(num):
-    f.write(str(mastl[c]) + ',' + str(predl[c]) + ', ' + str(xtestl[c]) + '\n')
-f.close()
+    rmsefname = 'dump/RMSE_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
+    if os.path.exists(rmsefname):
+        rmsel = json.load(open(rmsefname,"r"))
+    else:
+        rmsel = []
 
-#mcmc.save_model(folder + "/" + str(num_iterations) + '_iterations.model')
+    rmsel.append(rmse)
+    json.dump(rmsel, open(rmsefname,"w"))
 
+    paramfname = 'dump/PARAMS_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
+    if os.path.exists(paramfname):
+        paraml = json.load(open(paramfname,"r"))
+    else:
+        paraml = []
+    p = model.get_parameters()
+    pdict = {}
+    for id, param in p.iteritems():
+        if "D_" in id:
+            pdict[id] = param.get()
+    pdict['Trans'] = list( [list(x) for x in model.make_transitions()] )
+    pdict['Pi'] = list(model.make_initial())
+    model.emission_mask[0] = False
+    pdict['Emit'] = list( [list(x) for x in model.make_emissions(0,0)] )
 
-if 'y' in sys.argv[4]:
-    fname += '_bkt'
-rmsefname = 'RMSE_' + fname + str(num_iterations) + '.json'
-if os.path.exists(rmsefname):
-    rmsel = json.load(open(rmsefname,"r"))
-else:
-    rmsel = []
-
-rmsel.append(rmse)
-json.dump(rmsel, open(rmsefname,"w"))
+    paraml.append(pdict)
+    json.dump(paraml, open(paramfname,"w"))
 
 

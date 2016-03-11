@@ -23,7 +23,10 @@ for c in range(len(cols)):
     cols[c].append(heads[c])
     if len(cols[c]) < 100 and len(cols[c]) > 2:
         print cols[c]
+        print len(cols[c])
+        print "col: " + str(c)
+    print
     print
 
-print data
+#print data
 #print cols

@@ -2,162 +2,349 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac734dc6-c902-411a-b359-e2bb9801e5fe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/geom_data_split.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_y_axis" afterPath="$PROJECT_DIR$/assessment_y_axis" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_y_axis" afterPath="$PROJECT_DIR$/observations_y_axis" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_3state/1000_iterations.model" afterPath="$PROJECT_DIR$/plots_3state/1000_iterations.model" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_3state/500_iterations.model" afterPath="$PROJECT_DIR$/plots_3state/500_iterations.model" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_3state/Errors_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_3state/Errors_1000_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_3state/Errors_500_iterations.png" afterPath="$PROJECT_DIR$/plots_3state/Errors_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_3state/Predictions_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_3state/Predictions_1000_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_3state/Predictions_500_iterations.png" afterPath="$PROJECT_DIR$/plots_3state/Predictions_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_3state/S_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_3state/S_1000_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_3state/S_500_iterations.png" afterPath="$PROJECT_DIR$/plots_3state/S_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/0_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/0_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/10_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/10_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/11_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/11_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/12_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/12_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/13_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/13_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/14_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/14_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/15_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/15_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/16_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/16_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/17_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/17_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/18_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/18_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/19_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/19_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/1_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/1_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/20_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/20_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/21_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/21_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/22_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/22_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/23_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/23_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/24_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/24_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/25_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/25_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/26_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/26_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/2_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/2_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/3_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/3_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/4_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/4_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/5_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/5_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/6_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/6_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/7_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/7_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/8_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/8_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/D/9_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/D/9_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/Dsigma_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/Dsigma_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/Errors_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/Errors_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/Predictions_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/Predictions_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/S_20_iterations.png" afterPath="$PROJECT_DIR$/plots_new_5_skills/S_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_y_axis" afterPath="$PROJECT_DIR$/problems_y_axis" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Metropolis/lfkt_model.py" afterPath="$PROJECT_DIR$/Metropolis/lfkt_model.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Metropolis/bo_sampler.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Metropolis/mlfkt_constrained_model.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Metropolis/mlfkt_usefulness_model.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bo_sample_test.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bo_simulations_stuff.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/experiment.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/experiment2.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/experiment3.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/experiment_list.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/experiment_list2.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/experiment_list3.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/experiment_list4.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/experiment_list5.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/experiment_list6.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/feb20_exps/print_tables.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/fit_MLFKT_usefulness_model.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/fit_constrained_MLFKT_model.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/mar_8_matching_traj.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/moe_test/moetest.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plot_all_diff.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plot_all_params.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plot_all_rmse.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/plot_difficulties.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rmse_t_test_2.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rmse_whole_tutor_per_skill.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/viterbi_MLFKT_model.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_3state_bkt10.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_3state_bkt100.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_3state_bkt1000.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_3state_bkt101.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_3state_bkt20.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_3state_bkt2000.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_3state_bkt3060.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_3state_bkt500.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_3state_bkt501.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_css20.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_css500.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_descrip20.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_descrip500.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_new_5_skills20.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_new_5_skills200.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_new_all_skills20.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_x_axis20.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_x_axis21.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_x_axis500.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_x_axis501.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_xy20.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_xy200.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_xy201.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_xy500.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_y_axis1000.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_y_axis20.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_y_axis200.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_y_axis2000.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/RMSE_y_axis500.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_3state.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_center" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_center.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_css.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_d to h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_d_to_h.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_descrip.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_h to d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_h_to_d.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_histogram" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_histogram.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_new_5_skills.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_new_all_skills.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_shape" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_shape.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_spread" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_spread.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_x axis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_x_axis.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_xy.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_y axis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_y_axis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assessment_y_axis.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/geom/.~lock.ds76_tx_All_Data_74_2015_0928_045712.txt#" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_3state.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_5_skills.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_center" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_center.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_css.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_d to h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_d_to_h.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_descrip.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_h to d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_h_to_d.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_histogram" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_histogram.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_new_5_skills.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_new_all_skills.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_no_histogram.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_shape" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_shape.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_spread" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_spread.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_x axis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_x_axis.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_xy.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_y axis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_y_axis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/observations_y_axis.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_3state.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_5_skills.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_by_skill.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_center" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_center.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_css.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_d to h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_d_to_h.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_descrip.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_h to d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_h_to_d.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_histogram" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_histogram.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_3state.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_center" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_css.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_d to h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_descrip.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_h to d" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_histogram" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_new_5_skills.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_new_all_skills.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_shape" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_spread" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_x axis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_xy.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_y axis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_y_axis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_idx_y_axis.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_joesdata2.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_new_5_skills.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_new_all_skills.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_no_histogram.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_shape" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_shape.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_spread" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_spread.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_x axis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_x_axis.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_xy.csv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_y axis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_y_axis" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/problems_y_axis.csv" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/10_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/10_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/11_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/11_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/12_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/12_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/13_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/13_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/14_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/14_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/15_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/15_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/16_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/16_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/17_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/17_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/18_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/18_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/19_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/19_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/20_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/20_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/21_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/21_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/22_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/22_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/23_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/23_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/24_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/24_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/25_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/25_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/3_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/3_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/4_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/4_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/5_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/5_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/6_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/6_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/7_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/7_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/8_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/8_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/D/9_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/D/9_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/Dsigma_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/Dsigma_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/Errors_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/Errors_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/G/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/G/0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/G/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/G/1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/L/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/L/0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/L/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/L/1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/L/2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/L/2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/Predictions_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/Predictions_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/S_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/S_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/T/0_0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/T/0_0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/T/0_1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/T/0_1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/T/0_2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/T/0_2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/T/1_1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/T/1_1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/T/1_2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_css/T/1_2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/D/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/D/0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/D/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/D/1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/D/2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/D/2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/D/3_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/D/3_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/D/4_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/D/4_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/D/5_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/D/5_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/D/6_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/D/6_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/D/7_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/D/7_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/D/8_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/D/8_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/D/9_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/D/9_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/Dsigma_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/Dsigma_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/Errors_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/Errors_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/G/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/G/0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/G/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/G/1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/L/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/L/0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/L/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/L/1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/L/2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/L/2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/Predictions_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/Predictions_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/S_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/S_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/T/0_0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/T/0_0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/T/0_1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/T/0_1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/T/0_2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/T/0_2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/T/1_1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/T/1_1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/T/1_2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_descrip/T/1_2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/D/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/D/0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/D/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/D/1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/D/2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/D/2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/D/3_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/D/3_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/D/4_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/D/4_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/D/5_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/D/5_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/Dsigma_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/Dsigma_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/Errors_20_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/Errors_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/Errors_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/Errors_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/G/0_20_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/G/0_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/G/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/G/0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/G/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/G/1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/L/0_20_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/L/0_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/L/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/L/0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/L/1_20_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/L/1_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/L/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/L/1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/L/2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/L/2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/Predictions_20_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/Predictions_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/Predictions_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/Predictions_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/S_20_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/S_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/S_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/S_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/T/0_0_20_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/T/0_0_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/T/0_0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/T/0_0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/T/0_1_20_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/T/0_1_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/T/0_1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/T/0_1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/T/0_2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/T/0_2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/T/1_1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/T/1_1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/T/1_2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/T/1_2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/D/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/D/0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/D/10_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/D/10_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/D/11_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/D/11_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/D/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/D/1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/D/2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/D/2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/D/3_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/D/3_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/D/4_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/D/4_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/D/5_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/D/5_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/D/6_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/D/6_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/D/7_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/D/7_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/D/8_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/D/8_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/D/9_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/D/9_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/Dsigma_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/Dsigma_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/Errors_20_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/Errors_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/Errors_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/Errors_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/G/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/G/0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/G/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/G/1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/L/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/L/0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/L/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/L/1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/L/2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/L/2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/Predictions_20_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/Predictions_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/Predictions_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/Predictions_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/S_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/S_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/T/0_0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/T/0_0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/T/0_1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/T/0_1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/T/0_2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/T/0_2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/T/1_1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/T/1_1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/T/1_2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/T/1_2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/0_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/0_1000_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/0_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/0_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/1_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/1_1000_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/1_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/1_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/2_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/2_1000_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/2_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/2_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/3_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/3_1000_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/3_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/3_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/3_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/3_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/4_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/4_1000_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/4_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/4_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/4_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/4_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/5_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/5_1000_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/5_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/5_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/5_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/5_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Dsigma_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Dsigma_1000_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Dsigma_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Dsigma_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Dsigma_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Dsigma_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Errors_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Errors_1000_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Errors_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Errors_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Errors_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Errors_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/G/0_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/G/0_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/G/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/G/0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/G/1_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/G/1_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/G/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/G/1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/L/0_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/L/0_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/L/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/L/0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/L/1_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/L/1_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/L/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/L/1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/L/2_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/L/2_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/L/2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/L/2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Predictions_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Predictions_1000_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Predictions_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Predictions_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Predictions_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Predictions_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/S_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/S_1000_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/S_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/S_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/S_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/S_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/T/0_0_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/T/0_0_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/T/0_0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/T/0_0_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/T/0_1_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/T/0_1_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/T/0_1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/T/0_1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/T/0_2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/T/0_2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/T/1_1_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/T/1_1_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/T/1_1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/T/1_1_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/T/1_2_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/T/1_2_20_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/T/1_2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/T/1_2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/T/2_2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/T/2_2_500_iterations.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Metropolis/mcmc_sampler.py" afterPath="$PROJECT_DIR$/Metropolis/mcmc_sampler.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Metropolis/mlfkt_model.py" afterPath="$PROJECT_DIR$/Metropolis/mlfkt_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Metropolis/parameter.py" afterPath="$PROJECT_DIR$/Metropolis/parameter.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RMSE_3state_bkt10.json" afterPath="$PROJECT_DIR$/RMSE_3state_bkt10.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RMSE_3state_bkt100.json" afterPath="$PROJECT_DIR$/RMSE_3state_bkt100.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RMSE_3state_bkt1000.json" afterPath="$PROJECT_DIR$/RMSE_3state_bkt1000.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RMSE_3state_bkt101.json" afterPath="$PROJECT_DIR$/RMSE_3state_bkt101.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RMSE_3state_bkt2000.json" afterPath="$PROJECT_DIR$/RMSE_3state_bkt2000.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RMSE_3state_bkt3060.json" afterPath="$PROJECT_DIR$/RMSE_3state_bkt3060.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RMSE_3state_bkt500.json" afterPath="$PROJECT_DIR$/RMSE_3state_bkt500.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RMSE_3state_bkt501.json" afterPath="$PROJECT_DIR$/RMSE_3state_bkt501.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RMSE_new_5_skills20.json" afterPath="$PROJECT_DIR$/RMSE_new_5_skills20.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RMSE_y_axis1000.json" afterPath="$PROJECT_DIR$/RMSE_y_axis1000.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RMSE_y_axis2000.json" afterPath="$PROJECT_DIR$/RMSE_y_axis2000.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/adjusts_joesdata2.csv" afterPath="$PROJECT_DIR$/adjusts_joesdata2.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_3state.csv" afterPath="$PROJECT_DIR$/assessment_3state.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_center" afterPath="$PROJECT_DIR$/assessment_center" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_center.csv" afterPath="$PROJECT_DIR$/assessment_center.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_d to h" afterPath="$PROJECT_DIR$/assessment_d to h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_d_to_h.csv" afterPath="$PROJECT_DIR$/assessment_d_to_h.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_h to d" afterPath="$PROJECT_DIR$/assessment_h to d" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_h_to_d.csv" afterPath="$PROJECT_DIR$/assessment_h_to_d.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_histogram" afterPath="$PROJECT_DIR$/assessment_histogram" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_histogram.csv" afterPath="$PROJECT_DIR$/assessment_histogram.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_new_5_skills.csv" afterPath="$PROJECT_DIR$/assessment_new_5_skills.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_shape" afterPath="$PROJECT_DIR$/assessment_shape" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_shape.csv" afterPath="$PROJECT_DIR$/assessment_shape.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_spread" afterPath="$PROJECT_DIR$/assessment_spread" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_spread.csv" afterPath="$PROJECT_DIR$/assessment_spread.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_x axis" afterPath="$PROJECT_DIR$/assessment_x axis" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_x_axis.csv" afterPath="$PROJECT_DIR$/assessment_x_axis.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_y axis" afterPath="$PROJECT_DIR$/assessment_y axis" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assessment_y_axis.csv" afterPath="$PROJECT_DIR$/assessment_y_axis.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bkt_data_split.py" afterPath="$PROJECT_DIR$/bkt_data_split.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bktdata.txt" afterPath="$PROJECT_DIR$/bktdata.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bktmcmc.py" afterPath="$PROJECT_DIR$/bktmcmc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fit_LFKT_model.py" afterPath="$PROJECT_DIR$/fit_LFKT_model.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fit_MLFKT_model.py" afterPath="$PROJECT_DIR$/fit_MLFKT_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/forward_backward_crap.py" afterPath="$PROJECT_DIR$/forward_backward_crap.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/get_rmse_samples.py" afterPath="$PROJECT_DIR$/get_rmse_samples.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joesdata.csv" afterPath="$PROJECT_DIR$/joesdata.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/joesdata2.csv" afterPath="$PROJECT_DIR$/joesdata2.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations.csv" afterPath="$PROJECT_DIR$/observations.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_3state.csv" afterPath="$PROJECT_DIR$/observations_3state.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_5_skills.csv" afterPath="$PROJECT_DIR$/observations_5_skills.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_center" afterPath="$PROJECT_DIR$/observations_center" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_center.csv" afterPath="$PROJECT_DIR$/observations_center.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_d to h" afterPath="$PROJECT_DIR$/observations_d to h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_d_to_h.csv" afterPath="$PROJECT_DIR$/observations_d_to_h.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_h to d" afterPath="$PROJECT_DIR$/observations_h to d" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_h_to_d.csv" afterPath="$PROJECT_DIR$/observations_h_to_d.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_histogram" afterPath="$PROJECT_DIR$/observations_histogram" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_histogram.csv" afterPath="$PROJECT_DIR$/observations_histogram.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_new_5_skills.csv" afterPath="$PROJECT_DIR$/observations_new_5_skills.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_no_histogram.csv" afterPath="$PROJECT_DIR$/observations_no_histogram.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_shape" afterPath="$PROJECT_DIR$/observations_shape" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_shape.csv" afterPath="$PROJECT_DIR$/observations_shape.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_spread" afterPath="$PROJECT_DIR$/observations_spread" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_spread.csv" afterPath="$PROJECT_DIR$/observations_spread.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_x axis" afterPath="$PROJECT_DIR$/observations_x axis" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_x_axis.csv" afterPath="$PROJECT_DIR$/observations_x_axis.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_y axis" afterPath="$PROJECT_DIR$/observations_y axis" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/observations_y_axis.csv" afterPath="$PROJECT_DIR$/observations_y_axis.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/octave_hmm/gen_3_state.m" afterPath="$PROJECT_DIR$/octave_hmm/gen_3_state.m" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/octave_hmm/observations_3state.csv" afterPath="$PROJECT_DIR$/octave_hmm/observations_3state.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/octave_hmm/problems_3state.csv" afterPath="$PROJECT_DIR$/octave_hmm/problems_3state.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_3state/RMSE1000_iterations" afterPath="$PROJECT_DIR$/plots_3state/RMSE1000_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_3state/RMSE500_iterations" afterPath="$PROJECT_DIR$/plots_3state/RMSE500_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_3state/mastery1000_iterations" afterPath="$PROJECT_DIR$/plots_3state/mastery1000_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_3state/mastery500_iterations" afterPath="$PROJECT_DIR$/plots_3state/mastery500_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/RMSE20_iterations" afterPath="$PROJECT_DIR$/plots_new_5_skills/RMSE20_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_new_5_skills/mastery20_iterations" afterPath="$PROJECT_DIR$/plots_new_5_skills/mastery20_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems.csv" afterPath="$PROJECT_DIR$/problems.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_3state.csv" afterPath="$PROJECT_DIR$/problems_3state.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_5_skills.csv" afterPath="$PROJECT_DIR$/problems_5_skills.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_by_skill.json" afterPath="$PROJECT_DIR$/problems_by_skill.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_center" afterPath="$PROJECT_DIR$/problems_center" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_center.csv" afterPath="$PROJECT_DIR$/problems_center.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_d to h" afterPath="$PROJECT_DIR$/problems_d to h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_d_to_h.csv" afterPath="$PROJECT_DIR$/problems_d_to_h.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_h to d" afterPath="$PROJECT_DIR$/problems_h to d" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_h_to_d.csv" afterPath="$PROJECT_DIR$/problems_h_to_d.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_histogram" afterPath="$PROJECT_DIR$/problems_histogram" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_histogram.csv" afterPath="$PROJECT_DIR$/problems_histogram.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_idx_3state.csv" afterPath="$PROJECT_DIR$/problems_idx_3state.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_idx_center" afterPath="$PROJECT_DIR$/problems_idx_center" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_idx_d to h" afterPath="$PROJECT_DIR$/problems_idx_d to h" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_idx_h to d" afterPath="$PROJECT_DIR$/problems_idx_h to d" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_idx_histogram" afterPath="$PROJECT_DIR$/problems_idx_histogram" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_idx_new_5_skills.csv" afterPath="$PROJECT_DIR$/problems_idx_new_5_skills.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_idx_shape" afterPath="$PROJECT_DIR$/problems_idx_shape" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_idx_spread" afterPath="$PROJECT_DIR$/problems_idx_spread" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_idx_x axis" afterPath="$PROJECT_DIR$/problems_idx_x axis" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_idx_y axis" afterPath="$PROJECT_DIR$/problems_idx_y axis" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_idx_y_axis" afterPath="$PROJECT_DIR$/problems_idx_y_axis" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_idx_y_axis.csv" afterPath="$PROJECT_DIR$/problems_idx_y_axis.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_joesdata2.csv" afterPath="$PROJECT_DIR$/problems_joesdata2.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_new_5_skills.csv" afterPath="$PROJECT_DIR$/problems_new_5_skills.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_no_histogram.csv" afterPath="$PROJECT_DIR$/problems_no_histogram.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_shape" afterPath="$PROJECT_DIR$/problems_shape" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_shape.csv" afterPath="$PROJECT_DIR$/problems_shape.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_spread" afterPath="$PROJECT_DIR$/problems_spread" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_spread.csv" afterPath="$PROJECT_DIR$/problems_spread.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_x axis" afterPath="$PROJECT_DIR$/problems_x axis" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_x_axis.csv" afterPath="$PROJECT_DIR$/problems_x_axis.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_y axis" afterPath="$PROJECT_DIR$/problems_y axis" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/problems_y_axis.csv" afterPath="$PROJECT_DIR$/problems_y_axis.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rmse_t_test.py" afterPath="$PROJECT_DIR$/rmse_t_test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/simulate_BKT.py" afterPath="$PROJECT_DIR$/simulate_BKT.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.LFKT" afterPath="$PROJECT_DIR$/test.LFKT" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testMH.py" afterPath="$PROJECT_DIR$/testMH.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geom/inspect_kcs.py" afterPath="$PROJECT_DIR$/geom/inspect_kcs.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geom_data_split.py" afterPath="$PROJECT_DIR$/geom_data_split.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/octave_hmm/hmmtest.py" afterPath="$PROJECT_DIR$/octave_hmm/hmmtest.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/RMSE500_iterations" afterPath="$PROJECT_DIR$/plots_css/RMSE500_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/mastery500_iterations" afterPath="$PROJECT_DIR$/plots_css/mastery500_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/RMSE500_iterations" afterPath="$PROJECT_DIR$/plots_descrip/RMSE500_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/mastery500_iterations" afterPath="$PROJECT_DIR$/plots_descrip/mastery500_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/RMSE20_iterations" afterPath="$PROJECT_DIR$/plots_x_axis/RMSE20_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/RMSE500_iterations" afterPath="$PROJECT_DIR$/plots_x_axis/RMSE500_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/mastery20_iterations" afterPath="$PROJECT_DIR$/plots_x_axis/mastery20_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/mastery500_iterations" afterPath="$PROJECT_DIR$/plots_x_axis/mastery500_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/RMSE20_iterations" afterPath="$PROJECT_DIR$/plots_xy/RMSE20_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/RMSE500_iterations" afterPath="$PROJECT_DIR$/plots_xy/RMSE500_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/mastery20_iterations" afterPath="$PROJECT_DIR$/plots_xy/mastery20_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/mastery500_iterations" afterPath="$PROJECT_DIR$/plots_xy/mastery500_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/RMSE1000_iterations" afterPath="$PROJECT_DIR$/plots_y_axis/RMSE1000_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/RMSE20_iterations" afterPath="$PROJECT_DIR$/plots_y_axis/RMSE20_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/RMSE500_iterations" afterPath="$PROJECT_DIR$/plots_y_axis/RMSE500_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/mastery1000_iterations" afterPath="$PROJECT_DIR$/plots_y_axis/mastery1000_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/mastery20_iterations" afterPath="$PROJECT_DIR$/plots_y_axis/mastery20_iterations" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/mastery500_iterations" afterPath="$PROJECT_DIR$/plots_y_axis/mastery500_iterations" />
     </list>
     <ignored path="ideal-guacamole.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -179,54 +366,80 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="fit_MLFKT_model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fit_MLFKT_model.py">
+      <file leaf-file-name="rmse_whole_tutor_per_skill.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rmse_whole_tutor_per_skill.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="geom_data_split.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/geom_data_split.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="parameter.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Metropolis/parameter.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mlfkt_model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Metropolis/mlfkt_model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+              <caret line="204" column="96" selection-start-line="204" selection-start-column="13" selection-end-line="204" selection-end-column="96" />
               <folding>
-                <element signature="e#90#108#0" expanded="true" />
+                <element signature="e#144#191#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="inspect_kcs.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/geom/inspect_kcs.py">
+      <file leaf-file-name="bo_simulations_stuff.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bo_simulations_stuff.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#47#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="experiment_list6.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiment_list6.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mlfkt_model.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Metropolis/mlfkt_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="5.7220545">
+              <caret line="527" column="9" selection-start-line="527" selection-start-column="9" selection-end-line="527" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fit_MLFKT_model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fit_MLFKT_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="59" column="49" selection-start-line="59" selection-start-column="49" selection-end-line="59" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bo_sample_test.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bo_sample_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bo_sampler.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Metropolis/bo_sampler.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="34" column="79" selection-start-line="29" selection-start-column="8" selection-end-line="34" selection-end-column="79" />
+              <folding>
+                <element signature="e#160#178#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -246,15 +459,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Metropolis/parameter.py" />
-        <option value="$PROJECT_DIR$/Metropolis/lfkt_model.py" />
-        <option value="$PROJECT_DIR$/fit_MLFKT_model.py" />
-        <option value="$PROJECT_DIR$/octave_hmm/gen_3_state.m" />
-        <option value="$PROJECT_DIR$/bkt_data_split.py" />
+        <option value="$PROJECT_DIR$/plot_difficulties.py" />
+        <option value="$PROJECT_DIR$/plot_all_diff.py" />
+        <option value="$PROJECT_DIR$/plot_all_params.py" />
+        <option value="$PROJECT_DIR$/experiment2.py" />
+        <option value="$PROJECT_DIR$/rmse_t_test_2.py" />
+        <option value="$PROJECT_DIR$/RMSE_whole_tutor_3states_300iter.json" />
+        <option value="$PROJECT_DIR$/RMSE_whole_tutor_4states_300iter.json" />
+        <option value="$PROJECT_DIR$/experiment3.py" />
         <option value="$PROJECT_DIR$/Metropolis/mcmc_sampler.py" />
+        <option value="$PROJECT_DIR$/octave_hmm/gen_3_state.m" />
+        <option value="$PROJECT_DIR$/octave_hmm/hmmtest.py" />
+        <option value="$PROJECT_DIR$/problems_5state.csv" />
+        <option value="$PROJECT_DIR$/moe_test/moetest.py" />
+        <option value="$PROJECT_DIR$/RMSE_constrained_whole_tutor_5states_1000iter.json" />
+        <option value="$PROJECT_DIR$/Metropolis/bo_sample_test.py" />
+        <option value="$PROJECT_DIR$/bo_sample_test.py" />
+        <option value="$PROJECT_DIR$/Metropolis/bo_sampler.py" />
+        <option value="$PROJECT_DIR$/fit_constrained_MLFKT_model.py" />
+        <option value="$PROJECT_DIR$/experiment_list.py" />
+        <option value="$PROJECT_DIR$/experiment_list2.py" />
+        <option value="$PROJECT_DIR$/experiment_list3.py" />
+        <option value="$PROJECT_DIR$/skills_xy.csv" />
+        <option value="$PROJECT_DIR$/RMSE_constrained_xy_3states_500iter.json" />
+        <option value="$PROJECT_DIR$/RMSE_constrained_x_axis_3states_500iter.json" />
+        <option value="$PROJECT_DIR$/fit_MLFKT_usefulness_model.py" />
+        <option value="$PROJECT_DIR$/Metropolis/mlfkt_constrained_model.py" />
+        <option value="$PROJECT_DIR$/geom_data_split.py" />
+        <option value="$PROJECT_DIR$/geom/skills.txt" />
+        <option value="$PROJECT_DIR$/experiment_list4.py" />
+        <option value="$PROJECT_DIR$/experiment_list5.py" />
+        <option value="$PROJECT_DIR$/../../TA/S16/crap_hw5/gradeclean.py" />
+        <option value="$PROJECT_DIR$/viterbi_MLFKT_model.py" />
+        <option value="$PROJECT_DIR$/feb20_exps/print_tables.py" />
+        <option value="$PROJECT_DIR$/feb20_exps/comparison.tsv" />
+        <option value="$PROJECT_DIR$/Metropolis/mlfkt_usefulness_model.py" />
+        <option value="$PROJECT_DIR$/jittest.py" />
+        <option value="$PROJECT_DIR$/rmse_whole_tutor_per_skill.py" />
+        <option value="$PROJECT_DIR$/matches.tsv" />
+        <option value="$PROJECT_DIR$/../data/analyze_time_performance_sccatter.py" />
+        <option value="$PROJECT_DIR$/mar_8_matching_traj.py" />
+        <option value="$PROJECT_DIR$/../course-content/background_process.py" />
+        <option value="$PROJECT_DIR$/../edx-adapt/edx_adapt/api/adapt_api.py" />
+        <option value="$PROJECT_DIR$/../edx-adapt/edx_adapt/api/resources/data_serve_resources.py" />
+        <option value="$PROJECT_DIR$/../edx-adapt/edx_adapt/data/course_repository.py" />
+        <option value="$PROJECT_DIR$/../turk/psiturk-edx/custom.py" />
+        <option value="$PROJECT_DIR$/bkt_data_split.py" />
+        <option value="$PROJECT_DIR$/fit_MLFKT_model.py" />
+        <option value="$PROJECT_DIR$/experiment_list6.py" />
+        <option value="$PROJECT_DIR$/dump/problems_whole_tutor.csv" />
         <option value="$PROJECT_DIR$/Metropolis/mlfkt_model.py" />
-        <option value="$PROJECT_DIR$/RMSE_xy200.json" />
-        <option value="$PROJECT_DIR$/geom/inspect_kcs.py" />
+        <option value="$PROJECT_DIR$/bo_simulations_stuff.py" />
       </list>
     </option>
   </component>
@@ -264,9 +519,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="1366" />
     <option name="y" value="-4" />
-    <option name="width" value="1366" />
-    <option name="height" value="772" />
+    <option name="width" value="2048" />
+    <option name="height" value="1156" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -293,6 +549,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -321,21 +579,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="octave_hmm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ideal-guacamole" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ideal-guacamole" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="geom" />
+              <option name="myItemId" value="dump" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -355,8 +599,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -364,11 +606,26 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/Metropolis" />
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -459,6 +716,11 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -592,28 +854,28 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-4" width="1366" height="772" extended-state="6" />
-    <editor active="false" />
+    <frame x="1366" y="-4" width="2048" height="1156" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22767204" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2006836" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -631,335 +893,275 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="3" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/octave_hmm/gen_3_state.m">
+    <entry file="file://$PROJECT_DIR$/experiment_list3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-          <folding />
+          <caret line="4" column="25" selection-start-line="4" selection-start-column="25" selection-end-line="4" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fit_MLFKT_model.py">
+    <entry file="file://$PROJECT_DIR$/experiment_list5.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="138" column="42" selection-start-line="138" selection-start-column="42" selection-end-line="138" selection-end-column="42" />
-          <folding />
+          <caret line="4" column="101" selection-start-line="4" selection-start-column="101" selection-end-line="4" selection-end-column="101" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/parameter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/mlfkt_model.py">
+    <entry file="file://$PROJECT_DIR$/feb20_exps/RMSE_whole_tutor_4states_500iter.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#90#108#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bkt_data_split.py">
+    <entry file="file://$PROJECT_DIR$/experiment_list4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="15" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
-          <folding />
+          <caret line="4" column="89" selection-start-line="4" selection-start-column="89" selection-end-line="4" selection-end-column="89" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/lfkt_model.py">
+    <entry file="file://$PROJECT_DIR$/feb20_exps/comparison.tsv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14648438">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fit_MLFKT_usefulness_model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="52" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="89" />
-          <folding />
+          <caret line="14" column="23" selection-start-line="0" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Metropolis/mlfkt_usefulness_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0146484375">
+          <caret line="94" column="10" selection-start-line="94" selection-start-column="10" selection-end-line="94" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Metropolis/mcmc_sampler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="e#160#177#0" expanded="true" />
-          </folding>
+          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fit_LFKT_model.py">
+    <entry file="file://$PROJECT_DIR$/jittest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/octave_hmm/gen_3_state.m">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fit_MLFKT_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
-          <folding />
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Metropolis/parameter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/mlfkt_model.py">
+    <entry file="file://$PROJECT_DIR$/feb20_exps/print_tables.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="202" column="20" selection-start-line="202" selection-start-column="19" selection-end-line="202" selection-end-column="20" />
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../data/plot_utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bktdata.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1490433">
+          <caret line="4123" column="42" selection-start-line="4123" selection-start-column="36" selection-end-line="4123" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../data/analyze_time_performance_sccatter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="193" column="30" selection-start-line="193" selection-start-column="30" selection-end-line="193" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/viterbi_MLFKT_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mar_8_matching_traj.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/matches.tsv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../course-content/servtest_filter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.903226">
+          <caret line="295" column="32" selection-start-line="295" selection-start-column="16" selection-end-line="295" selection-end-column="32" />
           <folding>
-            <element signature="e#90#108#0" expanded="true" />
+            <element signature="e#20#56#0" expanded="false" />
+            <marker date="1453149586155" expanded="true" signature="16360:16468" placeholder="select time ..." />
+            <marker date="1453149586155" expanded="true" signature="16554:16669" placeholder="select corre..Log..." />
+            <marker date="1453149586155" expanded="true" signature="17462:17590" placeholder="select probl..Log..." />
+            <marker date="1453149586155" expanded="true" signature="18462:18619" placeholder="select time ..." />
+            <marker date="1453149586155" expanded="true" signature="19129:19250" placeholder="select attem..Log..." />
+            <marker date="1453149586155" expanded="true" signature="19580:19785" placeholder="update Log s..." />
+            <marker date="1453149586155" expanded="true" signature="20036:20248" placeholder="insert into Log..." />
+            <marker date="1453149586155" expanded="true" signature="20291:20503" placeholder="insert into Log..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/lfkt_model.py">
+    <entry file="file://$PROJECT_DIR$/../data/analyze_time_performance.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="52" selection-start-line="49" selection-start-column="52" selection-end-line="49" selection-end-column="89" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../course-content/keep_assigning_hits.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../course-content/spearmint/BayesOpt_Edx.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../course-content/BayesOpt_Edx.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1640625">
+          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../turk/SQLInit.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.5">
+          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../turk/psiturk-edx/log.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/mcmc_sampler.py">
+    <entry file="file://$PROJECT_DIR$/../turk/psiturk-edx/feedback.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../turk/psiturk-edx/account.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#160#177#0" expanded="true" />
+            <element signature="e#1#16#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fit_LFKT_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fit_LFKT_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/octave_hmm/observations_3state.csv">
+    <entry file="file://$PROJECT_DIR$/../turk/psiturk-edx/static/js/utils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/octave_hmm/problems_3state.csv">
+    <entry file="file://$PROJECT_DIR$/../turk/psiturk-edx/static/js/task.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29268292">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/problems_3state.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48083624">
-          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/observations_new_all_skills.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.121484816">
-          <caret line="6" column="143" selection-start-line="6" selection-start-column="143" selection-end-line="6" selection-end-column="143" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/plots_xy/RMSE200_iterations">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46875">
-          <caret line="20" column="76" selection-start-line="20" selection-start-column="76" selection-end-line="20" selection-end-column="76" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="51" column="35" selection-start-line="51" selection-start-column="20" selection-end-line="51" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bkt_data_split.py">
+    <entry file="file://$PROJECT_DIR$/../edx-adapt/edx_adapt/api/adapt_api.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+          <caret line="52" column="75" selection-start-line="52" selection-start-column="75" selection-end-line="52" selection-end-column="75" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/mcmc_sampler.py">
+    <entry file="file://$PROJECT_DIR$/../edx-adapt/edx_adapt/api/resources/data_serve_resources.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="123" column="106" selection-start-line="123" selection-start-column="106" selection-end-line="123" selection-end-column="106" />
+          <caret line="91" column="43" selection-start-line="91" selection-start-column="23" selection-end-line="91" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../edx-adapt/edx_adapt/data/course_repository.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="190" column="88" selection-start-line="190" selection-start-column="88" selection-end-line="190" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../turk/psiturk-edx/custom.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="140" column="54" selection-start-line="140" selection-start-column="54" selection-end-line="140" selection-end-column="54" />
           <folding>
-            <element signature="e#160#177#0" expanded="true" />
+            <element signature="e#62#154#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/lfkt_model.py">
+    <entry file="file://$PROJECT_DIR$/../edx-adapt/edx_adapt/api/resources/course_resources.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="21" selection-start-line="60" selection-start-column="21" selection-end-line="60" selection-end-column="21" />
+          <caret line="72" column="39" selection-start-line="72" selection-start-column="39" selection-end-line="72" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/octave_hmm/gen_3_state.m">
+    <entry file="file://$PROJECT_DIR$/../course-content/background_process.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/parameter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RMSE_xy200.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/observations_d_to_h.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="3" selection-start-line="37" selection-start-column="3" selection-end-line="37" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/observations_h_to_d.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RMSE_y_axis500.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="89" selection-start-line="0" selection-start-column="89" selection-end-line="0" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RMSE_xy201.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="40" selection-start-line="0" selection-start-column="40" selection-end-line="0" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RMSE_x_axis500.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/observations_spread.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RMSE_xy200.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="17" selection-start-line="0" selection-start-column="17" selection-end-line="0" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RMSE_xy500.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="63" selection-start-line="0" selection-start-column="63" selection-end-line="0" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/observations_xy.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/observations_descrip.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.046875">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/mlfkt_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+          <caret line="107" column="57" selection-start-line="107" selection-start-column="57" selection-end-line="107" selection-end-column="57" />
           <folding>
-            <element signature="e#90#108#0" expanded="true" />
+            <element signature="e#23#43#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/geom/inspect_kcs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fit_MLFKT_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -967,6 +1169,118 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bkt_data_split.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="43" selection-start-line="49" selection-start-column="43" selection-end-line="49" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump/observations_spread.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump/problems_idx_circlerad.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="82" selection-start-line="0" selection-start-column="82" selection-end-line="0" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump/problems_spread.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.99609375">
+          <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump/problems_x_axis.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.99609375">
+          <caret line="68" column="10" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump/problems_whole_tutor.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9121094">
+          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fit_MLFKT_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="49" selection-start-line="59" selection-start-column="49" selection-end-line="59" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rmse_whole_tutor_per_skill.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="204" column="96" selection-start-line="204" selection-start-column="13" selection-end-line="204" selection-end-column="96" />
+          <folding>
+            <element signature="e#144#191#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment_list6.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="33" selection-start-line="3" selection-start-column="33" selection-end-line="3" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bo_sample_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bo_simulations_stuff.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Metropolis/bo_sampler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="79" selection-start-line="29" selection-start-column="8" selection-end-line="34" selection-end-column="79" />
+          <folding>
+            <element signature="e#160#178#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Metropolis/mlfkt_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="5.7220545">
+          <caret line="527" column="9" selection-start-line="527" selection-start-column="9" selection-end-line="527" selection-end-column="9" />
           <folding />
         </state>
       </provider>

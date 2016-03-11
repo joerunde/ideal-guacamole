@@ -3,7 +3,7 @@
 """
 
 from Metropolis.mcmc_sampler import MCMCSampler
-from Metropolis.mlfkt_model import MLFKTModel
+from Metropolis.mlfkt_usefulness_model import MLFKTSUModel
 import sys, json, time, random, os, math
 import numpy as np
 
@@ -31,6 +31,7 @@ for it in range(iterz):
     X = np.loadtxt(open("observations_" + fname + ".csv","rb"),delimiter=",")
     #load problem IDs for these observations
     P = np.loadtxt(open("problems_" + fname + ".csv","rb"),delimiter=",")
+    S = np.loadtxt(open("skills_" + fname + ".csv", "rb"), delimiter=",")
 
     start = time.time()
 
@@ -39,30 +40,37 @@ for it in range(iterz):
     N = X.shape[0]
     Xtest = []
     Ptest = []
+    Stest = []
     Xnew = []
     Pnew = []
+    Snew = []
     for c in range(N):
         if c % k == 0:#random.random() < 1 / (k+0.0):
             Xtest.append(X[c,:])
             Ptest.append(P[c,:])
+            Stest.append(S[c,:])
         else:
             Xnew.append(X[c,:])
             Pnew.append(P[c,:])
+            Snew.append(S[c,:])
     X = Xnew
     P = Pnew
+    S = Snew
 
     Xtest = np.array(Xtest)
     Ptest = np.array(Ptest)
+    Stest = np.array(Stest)
     X = np.array(X)
     P = np.array(P)
+    S = np.array(S)
 
     print str(Xtest.shape[0]) + " test sequences"
     print str(X.shape[0]) + " training sequences"
 
     if 'y' in sys.argv[4]:
-        model = MLFKTModel(X, P, intermediate_states, 0)
+        model = MLFKTSUModel(X, P, S, intermediate_states, 0)
     else:
-        model = MLFKTModel(X, P, intermediate_states, 0.1)
+        model = MLFKTSUModel(X, P, S, intermediate_states, 0.1)
 
     mcmc = MCMCSampler(model, 0.15)
 
@@ -86,10 +94,10 @@ for it in range(iterz):
 
     folder = "plots_" + fname
     #plotting samples will also load the MAP estimates
-    mcmc.plot_samples(folder + "/", str(num_iterations) + '_iterations')
+    #mcmc.plot_samples(folder + "/", str(num_iterations) + '_iterations')
 
     #load up test data and run predictions
-    model.load_test_split(Xtest, Ptest)
+    model.load_test_split(Xtest, Ptest, Stest)
     pred = model.get_predictions()
     num = model.get_num_predictions()
     mast = model.get_mastery()
@@ -138,7 +146,7 @@ for it in range(iterz):
     if 'y' in sys.argv[4]:
         fname += '_bkt'
 
-    rmsefname = 'RMSE_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
+    rmsefname = 'RMSE_useful_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
     if os.path.exists(rmsefname):
         rmsel = json.load(open(rmsefname,"r"))
     else:
@@ -147,9 +155,12 @@ for it in range(iterz):
     rmsel.append(rmse)
     json.dump(rmsel, open(rmsefname,"w"))
 
-    paramfname = 'PARAMS_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
+    paramfname = 'PARAMS_uesful_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
     if os.path.exists(paramfname):
-        paraml = json.load(open(paramfname,"r"))
+        try:
+            paraml = json.load(open(paramfname,"r"))
+        except:
+            paraml = []
     else:
         paraml = []
     p = model.get_parameters()
@@ -157,10 +168,12 @@ for it in range(iterz):
     for id, param in p.iteritems():
         if "D_" in id:
             pdict[id] = param.get()
-    pdict['Trans'] = list( [list(x) for x in model.make_transitions()] )
-    pdict['Pi'] = list(model.make_initial())
-    model.emission_mask[0] = False
-    pdict['Emit'] = list( [list(x) for x in model.make_emissions(0,0)] )
+        if "U" in id:
+            pdict[id] = param.get()
+    #pdict['Trans'] = list( [list(x) for x in model.make_transitions()] )
+    #pdict['Pi'] = list(model.make_initial())
+    #model.emission_mask[0] = False
+    #pdict['Emit'] = list( [list(x) for x in model.make_emissions(0,0)] )
 
     paraml.append(pdict)
     json.dump(paraml, open(paramfname,"w"))

@@ -1,0 +1,41 @@
+with **same** 1/5th test split of students
+
+so far we have-
+
+100/500 iters 
+
+x		2-4	both
+y		2-4	both
+xy		2-4	both
+css		2-4	both
+descrip		2-4	both
+histo		2-4	both
+whole tutor	2-4	unconstrained
+
+
+allgeom		2 (3)	unconstrained
+allgeom		2 (3)	constrained	(real longass runs on these)
+circle		2-4	both
+composition	2-4	both
+pentagon	2-4	both
+parallel	2-4	both
+triangle	2-4	both
+trapezoid	2-4	both
+(not individual skills though...)
+
+
+*wholetutor have 1000 iters 5 state constrained
+	
+get 2-4 states first of others, both constrained & not, then go ahead with 5
+whole_tutor
+(geom stuff?)
+
+*then get skill_usefuleness model, need *lots* of iterations here
+xy,
+descrip,
+css,
+whole
+
+
+
+

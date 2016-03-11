@@ -14,7 +14,7 @@ import parameter
 DIRICHLET_SCALE = 300
 DIR_LOW_BOUND = 0.01
 
-class MLFKTModel:
+class MLFKTConstrainedModel:
 
     sigma = 0.15
 
@@ -51,6 +51,8 @@ class MLFKTModel:
         #setup transition triangle...
         for row in range(total_states):
             t_mat[row,0:row] = np.zeros(row)
+            if row < total_states - 2:
+                t_mat[row,row+2:] = np.zeros(total_states - (row+2))
             t_mat[row,:] = np.random.dirichlet(DIRICHLET_SCALE * t_mat[row,:])
 
         print "T starting as:"
@@ -59,10 +61,10 @@ class MLFKTModel:
 
         #setup guess vector in really clunky way
         for c in range(intermediate_states + 1):
-            self.params['G_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x: self.uniform(x, -3, 3)),
-                                                             (lambda x: self.sample_guess_prob(x)))
-        self.params['S'] = parameter.Parameter(0, -3, 3, (lambda x: self.uniform(x, -3, 3)),
-                                               (lambda x: self.sample_guess_prob(x)))
+            self.params['G_' + str(c)] = parameter.Parameter(float(c) / total_states, -3, 3, (lambda x: self.uniform(x, -3, 3)),
+                                                             (lambda x, c=c: self.sample_guess_prob(x, c)))
+        self.params['S'] = parameter.Parameter(-2, -3, 3, (lambda x: self.uniform(x, -3, 3)),
+                                               (lambda x: self.sample_slip_prob(x)))
 
         #problem difficulty vector, also in clunky way
         self.emission_mask = []
@@ -106,7 +108,7 @@ class MLFKTModel:
             #    print "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ dirichlet matrix hiccup"
             #    print x
             #    xnew[c,c:side_len] += 100000 * DIRICHLET_SCALE
-            xnew[c,c:side_len] = self.sample_dir(xnew[c,c:side_len])
+            xnew[c,c:c+2] = self.sample_dir(xnew[c,c:c+2])
         return xnew
 
     def sample_dir(self, x):
@@ -120,9 +122,33 @@ class MLFKTModel:
             #print x
         return x
 
-    def sample_guess_prob(self, x):
+    def norm_bound(self, x, low, high):
+        new = np.random.normal(x, 0.15)
+        if low > high:
+            print "GG rekt, bad bounds on guess parameter"
+        while new < low or new > high:
+            new = np.random.normal(x, 0.15)
+        return new
+
+    def sample_slip_prob(self, x):
+        low = -3
+        high = -self.params['G_' + str(self.total_states-2)].get()
+        return self.norm_bound(x, low, high)
+
+    def sample_guess_prob(self, x, state):
         self.emission_mask = [False] * self.data['num_problems']
-        return np.random.normal(x, 0.15)
+        #constrain guess probabilities to strictly increase with knowledge state
+        if state == 0:
+            low = -3
+        else:
+            low = self.params['G_' + str(state-1)].get()
+
+        if state < self.total_states - 2:
+            high = self.params['G_' + str(state+1)].get()
+        else:
+            high = 3
+
+        return self.norm_bound(x, low, high)
 
     def make_transitions(self):
         return self.params['T'].get()
@@ -196,9 +222,9 @@ class MLFKTModel:
                 emit = self.make_emissions(self.params['D_' + str(int(Probs[n,t]))].get(), int(Probs[n,t]))
                 #print B
                 alpha[t,:] = np.dot( np.multiply( emit[:,X[n,t]], alpha[t-1,:]), trans)
-                if min(alpha[t,:]) < 1e-70:
-                    print "low alpha! " + str(min(alpha[t,:]))
-                if min(alpha[t,:]) < 1e-150:
+                #if min(alpha[t,:]) < 1e-70:
+                #   print "low alpha! " + str(min(alpha[t,:]))
+                if min(alpha[t,:]) < 1e-250:
                     print "Oh snappy tappies! " + str(min(alpha[t,:]))
 
                 #print min(alpha[t,:])

@@ -3,7 +3,7 @@
 """
 
 from Metropolis.mcmc_sampler import MCMCSampler
-from Metropolis.mlfkt_model import MLFKTModel
+from Metropolis.mlfkt_constrained_model import MLFKTConstrainedModel
 import sys, json, time, random, os, math
 import numpy as np
 
@@ -42,7 +42,7 @@ for it in range(iterz):
     Xnew = []
     Pnew = []
     for c in range(N):
-        if random.random() < 1 / (k+0.0):
+        if c % k == 0: #random.random() < 1 / (k+0.0):
             Xtest.append(X[c,:])
             Ptest.append(P[c,:])
         else:
@@ -60,9 +60,9 @@ for it in range(iterz):
     print str(X.shape[0]) + " training sequences"
 
     if 'y' in sys.argv[4]:
-        model = MLFKTModel(X, P, intermediate_states, 0)
+        model = MLFKTConstrainedModel(X, P, intermediate_states, 0)
     else:
-        model = MLFKTModel(X, P, intermediate_states, 0.1)
+        model = MLFKTConstrainedModel(X, P, intermediate_states, 0.1)
 
     mcmc = MCMCSampler(model, 0.15)
 
@@ -138,7 +138,7 @@ for it in range(iterz):
     if 'y' in sys.argv[4]:
         fname += '_bkt'
 
-    rmsefname = 'RMSE_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
+    rmsefname = 'RMSE_constrained_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
     if os.path.exists(rmsefname):
         rmsel = json.load(open(rmsefname,"r"))
     else:
@@ -147,7 +147,7 @@ for it in range(iterz):
     rmsel.append(rmse)
     json.dump(rmsel, open(rmsefname,"w"))
 
-    paramfname = 'PARAMS_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
+    paramfname = 'PARAMS_constrained_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
     if os.path.exists(paramfname):
         paraml = json.load(open(paramfname,"r"))
     else:

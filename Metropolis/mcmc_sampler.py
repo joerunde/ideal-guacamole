@@ -15,6 +15,14 @@ class MCMCSampler:
         """@type model: lfkt_model.LFKTModel"""
         self.model = model
         self.sigma = sigma #for the lfkt case before I had this at 0.15
+        self.no_D = False
+
+        if "Dsigma" in model.get_parameters():
+            print "found dsigma"
+            print model.get_parameters()["Dsigma"].get()
+            if model.get_parameters()["Dsigma"].get() == 0:
+                print "no_d true"
+                self.no_D = True
 
     def MH_sample(self, paramID, parameter):
         #paramID is just the name (given by the model) of the parameter
@@ -22,7 +30,7 @@ class MCMCSampler:
 
         #quick hacky check... lock LFKT to BKT if that's the model we're using
         #cause this is research land
-        if paramID == "Dsigma" and parameter.get() == 0:
+        if 'D' in paramID and self.no_D is True:
             return
 
         P_old = self.model.log_posterior(paramID)

@@ -2,18 +2,24 @@
 import sys, json, os
 print("Usage: filename.csv [skills]")
 
-f = open("bktdata.txt","r")
+f = open("geom/ds76_tx_All_Data_74_2015_0928_045712.txt","r")
 
 userdata = {}
 problems = []
-
+f.readline()
 for line in f.readlines():
     vals = line.strip().split('\t')
-    correct = 2 - int(vals[0])
-    user = vals[1]
-    problem = vals[2]
-    problem = problem.replace("Post","Pre")
-    skill = vals[3]
+    attempt = int(vals[17])
+    if attempt > 1:
+        continue
+
+    correct = 0
+    if vals[19] == "CORRECT":
+        correct = 1
+
+    user = vals[3]
+    problem = vals[13] + "_" + vals[16]
+    skill = vals[29][4:]
 
     if skill not in sys.argv:
         continue
@@ -49,6 +55,10 @@ h = open("assessment_" + sys.argv[1], "w")
 #!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #skills all in one traj now....
 
+lenlist = [len(x['all']) for y, x in userdata.iteritems()]
+gg = max(lenlist) + 2
+print gg
+
 for user, data in userdata.iteritems():
     #for skill, seq in data.iteritems():
     #print seq
@@ -56,22 +66,24 @@ for user, data in userdata.iteritems():
     fline = ''
     gline = ''
     hline = ''
-    for tup in seq:
-        #print str(tup[0]) + '\t' + str(problems.index(tup[1]))
-        fline += str(tup[0]) + ','
-        gline += str(problems.index(tup[1])) + ','
-        if 'assess' in tup[1]:
-            hline += ('1,')
-        else:
-            hline += ('0,')
-    for i in range(80 - len(seq)):
-        fline += "-1,"
-        gline += "-1,"
-        hline += "-1"
-    f.write(fline[0:-1] + '\n')
-    g.write(gline[0:-1] + '\n')
-    h.write(hline[0:-1] + '\n')
+    if len(seq) > 0:
+        for tup in seq:
+            #print str(tup[0]) + '\t' + str(problems.index(tup[1]))
+            fline += str(tup[0]) + ','
+            gline += str(problems.index(tup[1])) + ','
+            if 'assess' in tup[1]:
+                hline += ('1,')
+            else:
+                hline += ('0,')
+        for i in range(gg - len(seq)):
+            fline += "-1,"
+            gline += "-1,"
+            hline += "-1"
+        f.write(fline[0:-1] + '\n')
+        g.write(gline[0:-1] + '\n')
+        h.write(hline[0:-1] + '\n')
 
+print "done"
 dirname = "plots_" + sys.argv[1][:-4]
 os.makedirs(dirname)
 os.makedirs(dirname + '/D')
