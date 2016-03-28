@@ -60,14 +60,15 @@ for it in range(iterz):
     print str(X.shape[0]) + " training sequences"
 
     if '1' in sys.argv[8]:
+        print "L1?"
         L1 = True
     else:
         L1 = False
 
     if 'y' in sys.argv[4]:
-        model = MLFKTModel(X, P, intermediate_states, 0)
+        model = MLFKTModel(X, P, intermediate_states, 0, L1)
     else:
-        model = MLFKTModel(X, P, intermediate_states, 0.1)
+        model = MLFKTModel(X, P, intermediate_states, 0.1, L1)
 
     mcmc = MCMCSampler(model, 0.15)
 
