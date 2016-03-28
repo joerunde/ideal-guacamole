@@ -359,19 +359,19 @@ MOE_LENGTH_SCALE_THRESH = 0.2
 hyper_params.append(MOE_LENGTH_SCALE_THRESH)
 moe_covariance_info = {'covariance_type': 'square_exponential',
                               'hyperparameters': hyper_params}
+moe_sq_exp = {'covariance_type': 'square_exponential'}
 
 def UnifiedBOExp(iter):
     #bounds = [ [-3,.5], [-3,.5], [0,1], [0,1], [0,1] ]
 
     #reduce dof for BO. Let's set hard threshold 0.95 and hard p(i) as 0.05
-    bounds = [ [-3,.5], [-3,.5], [0,1]]
-
+    bounds = [ [-3,.5], [-3,.5], [0,1] ]
     exp = Experiment(bounds)
     objs = []
 
     for c in range(iter):
         #get list of next params
-        x = gp_next_points(exp)[0]#, num_to_sample=1, covariance_info=moe_covariance_info)[0]
+        x = gp_next_points(exp, num_to_sample=1, covariance_info=moe_sq_exp)[0]
         #put into dict
         params = {'pg':x[0], 'ps':x[1], 'pi':0.05, 'pt':x[2], 'threshold':0.95}
 

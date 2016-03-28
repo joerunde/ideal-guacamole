@@ -3,10 +3,10 @@
 
 import numpy as np
 from scipy.stats import norm
+from scipy.stats import laplace
 from scipy.special import expit
 from scipy.stats import invgamma
 import math
-from numba import jit
 
 import time
 
@@ -15,7 +15,6 @@ import parameter
 DIRICHLET_SCALE = 300
 DIR_LOW_BOUND = 0.01
 
-@jit
 class MLFKTSUModel:
 
     sigma = 0.15
@@ -76,15 +75,17 @@ class MLFKTSUModel:
                                                    (lambda x: self.sample_guess_prob(x)))
 
             #skill "usefulness" parameter. Same range/sampling as Guess/Slip
-            self.params['U-'+str(sk)+'-'] = parameter.Parameter(0, -3, 3, (lambda x: np.random.normal(x, .25)),
-                                                   (lambda x: self.sample_guess_prob(x)))
+            for sk2 in range(numskills):
+                if sk != sk2:
+                    self.params['U-'+str(sk)+'-'+str(sk2)] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, .25)),
+                                                       (lambda x: self.sample_guess_prob(x)))
 
 
         #problem difficulty vector, also in clunky way
-        for c in range(numprobs):
+        """for c in range(numprobs):
             self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: norm.pdf(x, 0, d_sig)),
                                                              (lambda x: np.random.normal(x, 0.15)))
-
+        """
         self.params['Dsigma'] = parameter.Parameter(Dsigma, 0, 3, (lambda x: invgamma.pdf(x, 1, 0, 2)),
                                                     (lambda x: np.random.normal(x, 0.15)))
 
@@ -92,13 +93,11 @@ class MLFKTSUModel:
         self.test = {}
 
     """Some helper functions"""
-    @float
     def log(self, X):
         if X <= 1e-322:
             return -float('inf')
         return math.log(X)
 
-    @float
     def exp(self, X):
         if X == float('nan'):
             print "WTFBBQHAX NAN"
@@ -106,7 +105,6 @@ class MLFKTSUModel:
             return 0
         return math.exp(X)
 
-    @float
     def uniform(self, X, a, b):
         if X >= a and X <= b:
             return abs(1.0 / (b-a))
@@ -150,8 +148,8 @@ class MLFKTSUModel:
             u = 0
             for sk in range(self.total_skills):
                 if sk != skill:
-                    u += self.params['U-'+str(sk)+'-'].get() * skills[sk,1] #usefulness * skill mastery
-            table[row, 1] = expit(self.params['G-'+str(skill)+'-_' + str(row)].get() - diff + u)
+                    u += self.params['U-'+str(skill)+'-'+str(sk)].get() * skills[sk,1] #usefulness * skill mastery
+            table[row, 1] = expit(self.params['G-'+str(skill)+'-_' + str(row)].get() + u)
             table[row, 0] = 1 - table[row, 1]
         #and slip
         u = 0
@@ -159,7 +157,7 @@ class MLFKTSUModel:
         #for sk in range(self.total_skills):
         #    if sk != skill:
         #        u += self.params['U-'+str(skill)+'-'].get() * skills[sk,1]
-        table[row + 1, 0] = expit(self.params['S-'+str(skill)+'-'].get() + diff - u)
+        table[row + 1, 0] = expit(self.params['S-'+str(skill)+'-'].get() - u)
         table[row + 1, 1] = 1 - table[row + 1, 0]
 
         return table
@@ -184,7 +182,7 @@ class MLFKTSUModel:
             ##get p(Dsigma | D) propto p(D | Dsigma) p(Dsigma)
             dprob = 0
             for d in range(self.numprobs):
-                dprob += self.log( self.params['D_' + str(d)].prior(Dsigma.get()))
+                dprob += 1#self.log( self.params['D_' + str(d)].prior(Dsigma.get()))
             return self.log(Dsigma.prior()) + dprob
 
         states = self.total_states
@@ -208,7 +206,7 @@ class MLFKTSUModel:
                 #print skill
                 #print X[n,t]
                 #print
-                emit = self.make_emissions(self.params['D_' + str(int(Probs[n,t]))].get(), int(Probs[n,t]), skill, alpha)
+                emit = self.make_emissions(0,0, skill, alpha)
                 trans = self.make_transitions(skill)
                 alpha[skill,:] = np.dot( np.multiply( emit[:,X[n,t]], alpha[skill,:]), trans)
                 if min(alpha[skill,:]) < 1e-150:
@@ -222,10 +220,7 @@ class MLFKTSUModel:
                 loglike += self.log(sum(alpha[sk,:]))
 
         #print "final loglike: " + str(loglike)
-        if 'D_' in paramID:
-            log_prior = self.log(self.params[paramID].prior(Dsigma.get()))
-        else:
-            log_prior = self.log(self.params[paramID].prior())
+        log_prior = self.log(self.params[paramID].prior())
         #print "log_prior:     " + str(log_prior)
         log_post = loglike + log_prior
         return log_post
@@ -281,7 +276,7 @@ class MLFKTSUModel:
                 if X[n,t] == -1:
                     break
                 skill = int(Skill[n,t])
-                emit = self.make_emissions(self.params['D_' + str(int(Probs[n,t]))].get(), int(Probs[n,t]), skill, alpha)
+                emit = self.make_emissions(0,0, skill, alpha)
                 trans = self.make_transitions(skill)
 
                 #make prediction (normalized current alpha for state probs)
@@ -297,7 +292,9 @@ class MLFKTSUModel:
         self.test['num'] = num
         print "Skill u-offsets:"
         for sk in range(self.total_skills):
-            print self.params['U-'+str(sk)+'-'].get()
+            for sk2 in range(self.total_skills):
+                if sk != sk2:
+                    print self.params['U-'+str(sk)+'-'+str(sk2)].get()
         print
 
     #get a single prediction for test sequence n, time t

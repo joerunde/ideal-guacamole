@@ -4,6 +4,7 @@
 
 import numpy as np
 from scipy.stats import norm
+from scipy.stats import laplace
 import math
 
 import parameter
@@ -20,9 +21,9 @@ class GaussianModel:
 
         self.params = {}
 
-        #uninformative priors
-        self.params['mu'] = parameter.Parameter(0, -10, 10, (lambda x: self.uniform(x, -10, 10)))
-        self.params['sigma'] = parameter.Parameter(1, 0, 5, (lambda x: self.uniform(x, 0, 5)))
+        #prior testing...
+        self.params['mu'] = parameter.Parameter(0, -10, 10, (lambda x: laplace.pdf(x, 0, .05)), (lambda x: np.random.normal(x, 0.15)))
+        self.params['sigma'] = parameter.Parameter(1, 0, 5, (lambda x: laplace.pdf(x, 1, .05)), (lambda x: np.random.normal(x, 0.15)))
 
         #leave room later for test split
         self.test = {}

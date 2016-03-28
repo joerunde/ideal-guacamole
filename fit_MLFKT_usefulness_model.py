@@ -28,10 +28,10 @@ for it in range(iterz):
     #time.sleep(1)
 
     #load observations
-    X = np.loadtxt(open("observations_" + fname + ".csv","rb"),delimiter=",")
+    X = np.loadtxt(open("dump/observations_" + fname + ".csv","rb"),delimiter=",")
     #load problem IDs for these observations
-    P = np.loadtxt(open("problems_" + fname + ".csv","rb"),delimiter=",")
-    S = np.loadtxt(open("skills_" + fname + ".csv", "rb"), delimiter=",")
+    P = np.loadtxt(open("dump/problems_" + fname + ".csv","rb"),delimiter=",")
+    S = np.loadtxt(open("dump/skills_" + fname + ".csv", "rb"), delimiter=",")
 
     start = time.time()
 
@@ -146,7 +146,7 @@ for it in range(iterz):
     if 'y' in sys.argv[4]:
         fname += '_bkt'
 
-    rmsefname = 'RMSE_useful_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
+    rmsefname = 'dump/RMSE_useful_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
     if os.path.exists(rmsefname):
         rmsel = json.load(open(rmsefname,"r"))
     else:
@@ -155,7 +155,7 @@ for it in range(iterz):
     rmsel.append(rmse)
     json.dump(rmsel, open(rmsefname,"w"))
 
-    paramfname = 'PARAMS_uesful_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
+    paramfname = 'dump/PARAMS_uesful_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
     if os.path.exists(paramfname):
         try:
             paraml = json.load(open(paramfname,"r"))
@@ -166,10 +166,11 @@ for it in range(iterz):
     p = model.get_parameters()
     pdict = {}
     for id, param in p.iteritems():
-        if "D_" in id:
-            pdict[id] = param.get()
-        if "U" in id:
-            pdict[id] = param.get()
+        pdict[id] = param.get()
+        #if "D_" in id:
+        #    pdict[id] = param.get()
+        #if "U" in id:
+        #    pdict[id] = param.get()
     #pdict['Trans'] = list( [list(x) for x in model.make_transitions()] )
     #pdict['Pi'] = list(model.make_initial())
     #model.emission_mask[0] = False

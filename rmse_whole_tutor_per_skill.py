@@ -15,32 +15,42 @@ from sklearn.linear_model import LogisticRegression
 def plot_scatter(x, y, title, xaxis, yaxis, fname, noise=False, fit=False, fitLR=False):
     fig = plt.figure()
 
+    allx = []
+    for xl in x:
+        allx.extend(xl)
+    ally = []
+    for yl in y:
+        ally.extend(yl)
+
     if fit:
         print "boop"
         #linear...
-        m,b = np.polyfit(x, y, 1)
+
+        m,b = np.polyfit(allx, ally, 1)
         #print m, b
-        xp = np.arange(int(np.min(x)), int(np.max(x)) + 2)
+        xp = np.arange(int(np.min(allx)), int(np.max(allx)) + 2)
         plt.plot(xp, m*xp + b, 'g-')
 
     if fitLR:
         #logreg...
-        for c in range(len(y)):
-            if y[c] > 1:
-                y[c] = 1
+        for c in range(len(ally)):
+            if ally[c] > 1:
+                ally[c] = 1
         model = LogisticRegression()
-        model.fit(np.array([x]).T, np.array([y]).T)
+        model.fit(np.array([allx]).T, np.array([ally]).T)
         w0 = model.intercept_
         w = model.coef_
-        xp = np.arange(int(np.max(x)) + 1)
+        xp = np.arange(int(np.max(allx)) + 1)
         plt.plot(xp, expit(xp * w + w0)[0], 'r-')
 
     if noise:
-        x = x + (np.random.random(len(x)) - 0.5)/10.0
-        y = y + (np.random.random(len(y)) - 0.5)/10.0
+        x = x + (np.random.random(len(allx)) - 0.5)/10.0
+        y = y + (np.random.random(len(ally)) - 0.5)/10.0
 
     plt.title(title)
-    plt.plot(x, y, 'bo')
+    colors = ['red', 'orange', 'yellow', 'green', 'blue', 'gray', 'purple', 'black']
+    for c in range(len(x)):
+        plt.plot(x[c], y[c], 'o', color=colors[c])
     x1,x2,y1,y2 = plt.axis()
     plt.axis((x1,x2,y1-.5,y2+.5))
     plt.xlabel(xaxis)
@@ -48,13 +58,21 @@ def plot_scatter(x, y, title, xaxis, yaxis, fname, noise=False, fit=False, fitLR
     fig.savefig(fname, bbox_inches='tight')
     plt.close(fig)
 
+def get_skill_for_whole_tutor_prob(prob):
+    probs = np.loadtxt(open("dump/problems_whole_tutor.csv","rb"),delimiter=",")
+    skills = np.loadtxt(open("dump/skills_whole_tutor.csv","rb"),delimiter=",")
+    for c in range(probs.shape[0]):
+        for i in range(len(probs[c,:])):
+            if int(probs[c,i]) == prob:
+                return int(skills[c,i])
+
 def run_learned_model(skill, diff_params = None):
     intermediate_states = 0
     fname = skill.replace(" ","_")
     fname = fname.replace("\"","")
 
-    X = np.loadtxt(open("observations_" + fname + ".csv", "rb"), delimiter=",")
-    P = np.loadtxt(open("problems_" + fname + ".csv","rb"),delimiter=",")
+    X = np.loadtxt(open("dump/observations_" + fname + ".csv", "rb"), delimiter=",")
+    P = np.loadtxt(open("dump/problems_" + fname + ".csv","rb"),delimiter=",")
 
     k = 5
     #split 1/kth into test set
@@ -123,7 +141,7 @@ def run_learned_model(skill, diff_params = None):
 
 Xtest, Ptest, preds, err = run_learned_model("whole_tutor")
 #grab skills real quick
-S = np.loadtxt(open("skills_whole_tutor.csv", "rb"), delimiter=",")
+S = np.loadtxt(open("dump/skills_whole_tutor.csv", "rb"), delimiter=",")
 Stest = []
 Snew = []
 for c in range(S.shape[0]):
@@ -245,8 +263,8 @@ for k,v in param_dict.iteritems():
         prob = int(k[2:])
         model_difficulties[prob] = v
 
-X = np.loadtxt(open("observations_whole_tutor.csv", "rb"), delimiter=",")
-P = np.loadtxt(open("problems_whole_tutor.csv","rb"),delimiter=",")
+X = np.loadtxt(open("dump/observations_whole_tutor.csv", "rb"), delimiter=",")
+P = np.loadtxt(open("dump/problems_whole_tutor.csv","rb"),delimiter=",")
 
 prob_accuracy = {}
 for k in model_difficulties.keys():
@@ -259,18 +277,20 @@ for c in range(len(X)):
         prob = int(P[c,i])
         prob_accuracy[prob].append(X[c,i])
 
-x1 = []
-x2 = []
-y1 = []
-y2 = []
+x1 = [ [], [], [], [], [], [], [], [] ]
+x2 = [ [], [], [], [], [], [], [], [] ]
+y1 = [ [], [], [], [], [], [], [], [] ]
+y2 = [ [], [], [], [], [], [], [], [] ]
 for k, v in prob_accuracy.iteritems():
     prob_accuracy[k] = np.mean(v)
 
-    x1.append(model_difficulties[k])
-    y1.append(max(-3,min(3,scipy.special.logit(1 - prob_accuracy[k]))))
+    skill = get_skill_for_whole_tutor_prob(k)
 
-    x2.append(1 - scipy.special.expit(model_difficulties[k]))
-    y2.append(prob_accuracy[k])
+    x1[skill].append(model_difficulties[k])
+    y1[skill].append(max(-3,min(3,scipy.special.logit(1 - prob_accuracy[k]))))
+
+    x2[skill].append(1 - scipy.special.expit(model_difficulties[k]))
+    y2[skill].append(prob_accuracy[k])
 
     """
     print "Problem " + str(k)
@@ -285,6 +305,10 @@ plot_scatter(x2, y2, "accuracy estimate from model compared to accuracy", "1-sig
 
 # What happens if we load accuracy estimates into model?
 diff_ests = {}
+y = []
+for yl in y1:
+    y.extend(yl)
+y1 = y
 for c, y in enumerate(y1):
     diff_ests["D_" + str(c)] = y
 

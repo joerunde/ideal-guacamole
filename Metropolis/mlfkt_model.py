@@ -3,6 +3,7 @@
 
 import numpy as np
 from scipy.stats import norm
+from scipy.stats import laplace
 from scipy.special import expit
 from scipy.stats import invgamma
 import math
@@ -59,9 +60,10 @@ class MLFKTModel:
 
         #setup guess vector in really clunky way
         for c in range(intermediate_states + 1):
-            self.params['G_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x: self.uniform(x, -3, 3)),
+            self.params['G_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, .5)),
                                                              (lambda x: self.sample_guess_prob(x)))
-        self.params['S'] = parameter.Parameter(0, -3, 3, (lambda x: self.uniform(x, -3, 3)),
+
+        self.params['S'] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, .5)),
                                                (lambda x: self.sample_guess_prob(x)))
 
         #problem difficulty vector, also in clunky way
@@ -70,7 +72,7 @@ class MLFKTModel:
         for c in range(numprobs):
             self.emission_mask.append(False)
             self.emission_mats.append(np.ones((total_states, 2)))
-            self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: norm.pdf(x, 0, d_sig)),
+            self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: laplace.pdf(x, 0, 0.5) + 0*d_sig),
                                                              (lambda x: np.random.normal(x, 0.15)))
 
         self.params['Dsigma'] = parameter.Parameter(Dsigma, 0, 3, (lambda x: invgamma.pdf(x, 1, 0, 2)),
