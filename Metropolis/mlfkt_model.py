@@ -19,7 +19,7 @@ class MLFKTModel:
 
     sigma = 0.15
 
-    def __init__(self, X, P, intermediate_states, Dsigma):
+    def __init__(self, X, P, intermediate_states, Dsigma, L1=False):
         """
         :param X: the observation matrix, -1 padded to the right (to make it square)
         :param P: problem indices, -1 padded to the right
@@ -60,10 +60,20 @@ class MLFKTModel:
 
         #setup guess vector in really clunky way
         for c in range(intermediate_states + 1):
-            self.params['G_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, .5)),
+            if L1:
+                self.params['G_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, .5)),
+                                                             (lambda x: self.sample_guess_prob(x)))
+            else:
+                self.params['G_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x: self.uniform(x, -3, 3)),
                                                              (lambda x: self.sample_guess_prob(x)))
 
-        self.params['S'] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, .5)),
+        if L1:
+            print "using L1"
+            self.params['S'] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, .5)),
+                                               (lambda x: self.sample_guess_prob(x)))
+        else:
+            print "using adaptive L2"
+            self.params['S'] = parameter.Parameter(0, -3, 3, (lambda x: self.uniform(x, -3, 3)),
                                                (lambda x: self.sample_guess_prob(x)))
 
         #problem difficulty vector, also in clunky way
@@ -72,8 +82,12 @@ class MLFKTModel:
         for c in range(numprobs):
             self.emission_mask.append(False)
             self.emission_mats.append(np.ones((total_states, 2)))
-            self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: laplace.pdf(x, 0, 0.5) + 0*d_sig),
-                                                             (lambda x: np.random.normal(x, 0.15)))
+            if L1:
+                self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: laplace.pdf(x, 0, 0.5) + 0*d_sig),
+                                                                 (lambda x: np.random.normal(x, 0.15)))
+            else:
+                self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: norm.pdf(x, 0, d_sig)),
+                                                                 (lambda x: np.random.normal(x, 0.15)))
 
         self.params['Dsigma'] = parameter.Parameter(Dsigma, 0, 3, (lambda x: invgamma.pdf(x, 1, 0, 2)),
                                                     (lambda x: np.random.normal(x, 0.15)))

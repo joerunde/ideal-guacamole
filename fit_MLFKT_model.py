@@ -7,7 +7,7 @@ from Metropolis.mlfkt_model import MLFKTModel
 import sys, json, time, random, os, math
 import numpy as np
 
-print "usage: python fit_MLFKT_model.py burnin iterations k(for 1/k test split) bkt(y/n) skills num_intermediate_states iterations"
+print "usage: python fit_MLFKT_model.py burnin iterations k(for 1/k test split) bkt(y/n) skills num_intermediate_states iterations L1/L2"
 
 iterz = int(sys.argv[7])
 
@@ -59,10 +59,15 @@ for it in range(iterz):
     print str(Xtest.shape[0]) + " test sequences"
     print str(X.shape[0]) + " training sequences"
 
-    if 'y' in sys.argv[4]:
-        model = MLFKTModel(X, P, intermediate_states, 0)
+    if '1' in sys.argv[8]:
+        L1 = True
     else:
-        model = MLFKTModel(X, P, intermediate_states, 0.1)
+        L1 = False
+
+    if 'y' in sys.argv[4]:
+        model = MLFKTModel(X, P, intermediate_states, 0, L1)
+    else:
+        model = MLFKTModel(X, P, intermediate_states, 0.1, L1)
 
     mcmc = MCMCSampler(model, 0.15)
 
@@ -137,6 +142,8 @@ for it in range(iterz):
 
     if 'y' in sys.argv[4]:
         fname += '_bkt'
+    if L1:
+        fname += '_L1'
 
     rmsefname = 'dump/RMSE_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
     if os.path.exists(rmsefname):

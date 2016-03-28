@@ -2,149 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ac734dc6-c902-411a-b359-e2bb9801e5fe" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Metropolis/linreg_model.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Metropolis/mlfkt_transition_model.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Metropolis/test2.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/experiment_list7.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/experiment_list8.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/fit_MLFKT_skill_model.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/fit_MLFKT_transition_model.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/PARAMS_center_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/PARAMS_center_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/PARAMS_d_to_h_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/PARAMS_d_to_h_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/PARAMS_h_to_d_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/PARAMS_h_to_d_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/PARAMS_histogram_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/PARAMS_histogram_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/PARAMS_shape_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/PARAMS_shape_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/PARAMS_spread_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/PARAMS_spread_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/PARAMS_spread_bkt_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/PARAMS_spread_bkt_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/PARAMS_uesful_xy_bkt_2states_100iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/PARAMS_uesful_xy_bkt_2states_100iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/PARAMS_uesful_xy_bkt_2states_20iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/PARAMS_uesful_xy_bkt_2states_20iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/PARAMS_uesful_xy_bkt_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/PARAMS_uesful_xy_bkt_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/PARAMS_uesful_xy_bkt_2states_50iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/PARAMS_uesful_xy_bkt_2states_50iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/PARAMS_whole_tutor_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/PARAMS_whole_tutor_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/PARAMS_x_axis_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/PARAMS_x_axis_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/PARAMS_y_axis_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/PARAMS_y_axis_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/RMSE_center_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/RMSE_center_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/RMSE_d_to_h_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/RMSE_d_to_h_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/RMSE_h_to_d_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/RMSE_h_to_d_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/RMSE_histogram_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/RMSE_histogram_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/RMSE_shape_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/RMSE_shape_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/RMSE_spread_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/RMSE_spread_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/RMSE_spread_bkt_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/RMSE_spread_bkt_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/RMSE_useful_xy_bkt_2states_100iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/RMSE_useful_xy_bkt_2states_100iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/RMSE_useful_xy_bkt_2states_20iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/RMSE_useful_xy_bkt_2states_20iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/RMSE_useful_xy_bkt_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/RMSE_useful_xy_bkt_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/RMSE_useful_xy_bkt_2states_50iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/RMSE_useful_xy_bkt_2states_50iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/RMSE_whole_tutor_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/RMSE_whole_tutor_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/RMSE_x_axis_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/RMSE_x_axis_2states_500iter.json" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/dump/RMSE_y_axis_2states_500iter.json" afterPath="$PROJECT_DIR$/march_ish_exps/RMSE_y_axis_2states_500iter.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Metropolis/testout/mu_testplot.png" afterPath="$PROJECT_DIR$/Metropolis/testout/mu_testplot.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Metropolis/testout/sigma_testplot.png" afterPath="$PROJECT_DIR$/Metropolis/testout/sigma_testplot.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/D/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/D/0_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/D/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/D/1_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/D/2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/D/2_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/D/3_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/D/3_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/D/4_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/D/4_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/D/5_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/D/5_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/Dsigma_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/Dsigma_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/Errors_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/Errors_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/G/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/G/0_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/L/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/L/0_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/L/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/L/1_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/Predictions_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/Predictions_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/S_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/S_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/T/0_0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/T/0_0_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/T/0_1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_x_axis/T/0_1_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/D/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/D/0_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/D/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/D/1_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/Dsigma_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/Dsigma_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/Errors_20_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/Errors_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/Errors_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/Errors_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/G/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/G/0_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/L/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/L/0_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/L/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/L/1_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/Predictions_20_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/Predictions_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/Predictions_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/Predictions_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/S_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/S_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/T/0_0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/T/0_0_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/T/0_1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_xy/T/0_1_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/0_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/0_1000_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/0_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/0_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/0_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/1_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/1_1000_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/1_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/1_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/1_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/2_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/2_1000_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/2_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/2_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/2_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/2_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/3_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/3_1000_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/3_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/3_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/3_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/3_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/4_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/4_1000_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/4_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/4_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/4_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/4_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/5_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/5_1000_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/5_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/5_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/D/5_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/D/5_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Dsigma_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Dsigma_1000_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Dsigma_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Dsigma_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Dsigma_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Dsigma_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Errors_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Errors_1000_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Errors_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Errors_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Errors_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Errors_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/G/0_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/G/0_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/G/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/G/0_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/L/0_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/L/0_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/L/0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/L/0_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/L/1_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/L/1_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/L/1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/L/1_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Predictions_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Predictions_1000_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Predictions_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Predictions_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/Predictions_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/Predictions_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/S_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/S_1000_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/S_20_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/S_20_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/S_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/S_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/T/0_0_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/T/0_0_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/T/0_1_500_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/T/0_1_500_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/T_1000_iterations.png" afterPath="$PROJECT_DIR$/plots_y_axis/T_1000_iterations.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Metropolis/gaussian_model.py" afterPath="$PROJECT_DIR$/Metropolis/gaussian_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Metropolis/lfkt_model.py" afterPath="$PROJECT_DIR$/Metropolis/lfkt_model.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/feb20_exps/.~lock.comparison.tsv#" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fit_MLFKT_model.py" afterPath="$PROJECT_DIR$/fit_MLFKT_model.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fit_MLFKT_skill_model.py" afterPath="$PROJECT_DIR$/fit_MLFKT_skill_model.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fit_MLFKT_transition_model.py" afterPath="$PROJECT_DIR$/fit_MLFKT_transition_model.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Metropolis/mlfkt_model.py" afterPath="$PROJECT_DIR$/Metropolis/mlfkt_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Metropolis/mlfkt_usefulness_model.py" afterPath="$PROJECT_DIR$/Metropolis/mlfkt_usefulness_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Metropolis/test.py" afterPath="$PROJECT_DIR$/Metropolis/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bo_simulations_stuff.py" afterPath="$PROJECT_DIR$/bo_simulations_stuff.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/combined_rmse_tests.tsv" afterPath="$PROJECT_DIR$/combined_rmse_tests.tsv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dump/assessment_css.csv" afterPath="$PROJECT_DIR$/dump/assessment_css.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dump/assessment_descrip.csv" afterPath="$PROJECT_DIR$/dump/assessment_descrip.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dump/assessment_xy.csv" afterPath="$PROJECT_DIR$/dump/assessment_xy.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dump/observations_css.csv" afterPath="$PROJECT_DIR$/dump/observations_css.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dump/observations_descrip.csv" afterPath="$PROJECT_DIR$/dump/observations_descrip.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dump/observations_xy.csv" afterPath="$PROJECT_DIR$/dump/observations_xy.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dump/problems_css.csv" afterPath="$PROJECT_DIR$/dump/problems_css.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dump/problems_descrip.csv" afterPath="$PROJECT_DIR$/dump/problems_descrip.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dump/problems_xy.csv" afterPath="$PROJECT_DIR$/dump/problems_xy.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dump/skills_xy.csv" afterPath="$PROJECT_DIR$/dump/skills_xy.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/experiment_list6.py" afterPath="$PROJECT_DIR$/experiment_list6.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fit_LFKT_model.py" afterPath="$PROJECT_DIR$/fit_LFKT_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fit_MLFKT_usefulness_model.py" afterPath="$PROJECT_DIR$/fit_MLFKT_usefulness_model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/geom_data_split.py" afterPath="$PROJECT_DIR$/geom_data_split.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_css/mastery1000_iterations" afterPath="$PROJECT_DIR$/plots_css/mastery1000_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_descrip/mastery1000_iterations" afterPath="$PROJECT_DIR$/plots_descrip/mastery1000_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_whole_tutor/mastery1000_iterations" afterPath="$PROJECT_DIR$/plots_whole_tutor/mastery1000_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/RMSE500_iterations" afterPath="$PROJECT_DIR$/plots_x_axis/RMSE500_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_x_axis/mastery500_iterations" afterPath="$PROJECT_DIR$/plots_x_axis/mastery500_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/RMSE20_iterations" afterPath="$PROJECT_DIR$/plots_xy/RMSE20_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/RMSE500_iterations" afterPath="$PROJECT_DIR$/plots_xy/RMSE500_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/mastery1000_iterations" afterPath="$PROJECT_DIR$/plots_xy/mastery1000_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/mastery20_iterations" afterPath="$PROJECT_DIR$/plots_xy/mastery20_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_xy/mastery500_iterations" afterPath="$PROJECT_DIR$/plots_xy/mastery500_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/RMSE1000_iterations" afterPath="$PROJECT_DIR$/plots_y_axis/RMSE1000_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/RMSE20_iterations" afterPath="$PROJECT_DIR$/plots_y_axis/RMSE20_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/RMSE500_iterations" afterPath="$PROJECT_DIR$/plots_y_axis/RMSE500_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/mastery1000_iterations" afterPath="$PROJECT_DIR$/plots_y_axis/mastery1000_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/mastery20_iterations" afterPath="$PROJECT_DIR$/plots_y_axis/mastery20_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plots_y_axis/mastery500_iterations" afterPath="$PROJECT_DIR$/plots_y_axis/mastery500_iterations" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rmse_whole_tutor_per_skill.py" afterPath="$PROJECT_DIR$/rmse_whole_tutor_per_skill.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Metropolis/mlfkt_transition_model.py" afterPath="$PROJECT_DIR$/Metropolis/mlfkt_transition_model.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ideal-guacamole.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -165,58 +29,52 @@
     <favorites_list name="ideal-guacamole" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="mlfkt_model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Metropolis/mlfkt_model.py">
+    <leaf>
+      <file leaf-file-name="run_LFKT.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run_LFKT.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="65" column="53" selection-start-line="65" selection-start-column="53" selection-end-line="65" selection-end-column="53" />
-              <folding>
-                <element signature="e#90#108#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mlfkt_usefulness_model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Metropolis/mlfkt_usefulness_model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="66.67742">
-              <caret line="79" column="126" selection-start-line="79" selection-start-column="126" selection-end-line="79" selection-end-column="126" />
-              <folding>
-                <element signature="e#90#108#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fit_MLFKT_usefulness_model.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/fit_MLFKT_usefulness_model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.78027344">
-              <caret line="172" column="9" selection-start-line="172" selection-start-column="9" selection-end-line="172" selection-end-column="9" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="75" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mlfkt_transition_model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Metropolis/mlfkt_transition_model.py">
+      <file leaf-file-name="run_LFKT-skills_L1.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run_LFKT-skills_L1.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="130" column="48" selection-start-line="130" selection-start-column="48" selection-end-line="130" selection-end-column="48" />
-              <folding>
-                <element signature="e#90#108#0" expanded="true" />
-              </folding>
+              <caret line="3" column="81" selection-start-line="3" selection-start-column="81" selection-end-line="3" selection-end-column="81" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="comparison.tsv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/feb20_exps/comparison.tsv">
+      <file leaf-file-name="run_LFKT_L1.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run_LFKT_L1.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <caret line="3" column="75" selection-start-line="3" selection-start-column="75" selection-end-line="3" selection-end-column="75" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fit_MLFKT_model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fit_MLFKT_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="143" column="23" selection-start-line="143" selection-start-column="23" selection-end-line="143" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fit_MLFKT_skill_model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fit_MLFKT_skill_model.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -226,31 +84,37 @@
         <entry file="file://$PROJECT_DIR$/fit_MLFKT_transition_model.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="116" column="79" selection-start-line="116" selection-start-column="79" selection-end-line="116" selection-end-column="79" />
-              <folding>
-                <element signature="e#144#191#0" expanded="true" />
-              </folding>
+              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="linreg_model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Metropolis/linreg_model.py">
+      <file leaf-file-name="lfkt_model.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Metropolis/lfkt_model.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-              <folding>
-                <element signature="e#64#82#0" expanded="true" />
-              </folding>
+              <caret line="24" column="79" selection-start-line="24" selection-start-column="79" selection-end-line="24" selection-end-column="79" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="experiment_list8.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/experiment_list8.py">
+      <file leaf-file-name="run_LFKT-trans.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/run_LFKT-trans.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.03533569">
+              <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="run_LFKT-trans_L1.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run_LFKT-trans_L1.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+              <caret line="3" column="84" selection-start-line="3" selection-start-column="84" selection-end-line="3" selection-end-column="84" />
               <folding />
             </state>
           </provider>
@@ -330,11 +194,14 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
   </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1366" />
+    <option name="x" value="57" />
     <option name="y" value="-4" />
-    <option name="width" value="2048" />
-    <option name="height" value="1156" />
+    <option name="width" value="1863" />
+    <option name="height" value="980" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -357,10 +224,9 @@
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
-      <manualOrder />
-      <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -389,20 +255,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dump" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ideal-guacamole" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ideal-guacamole" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="Metropolis" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -410,12 +262,13 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../edx-adapt" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -428,88 +281,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="INTERPRETER_PATH" value="/bin/bash" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="DjangoTestsConfigurationType" factoryName="Django tests">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="ideal-guacamole" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="TARGET" value="" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <module name="" />
-      <working_directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <kind value="FILE" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GoRunFileConfiguration" factoryName="Go Single File">
-      <module name="" />
-      <working_directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <method />
-    </configuration>
-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
-      <module name="" />
-      <working_directory value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <kind value="DIRECTORY" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
-      <method />
-    </configuration>
-    <configuration default="true" type="PyBehaveRunConfigurationType" factoryName="Behave">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="ideal-guacamole" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method />
-    </configuration>
-    <configuration default="true" type="PyLettuceRunConfigurationType" factoryName="Lettuce">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="ideal-guacamole" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
-      <option name="ADDITIONAL_ARGS" value="" />
-      <method />
-    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -526,15 +297,6 @@
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <method />
-    </configuration>
-    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
-      <command value="run-script" />
-      <scripts />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="tests" factoryName="Attests">
@@ -662,28 +424,28 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1366" y="-4" width="2048" height="1156" extended-state="6" />
+    <frame x="57" y="-4" width="1863" height="980" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23925781" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2501342" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -707,213 +469,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../edx-adapt/edx_adapt/data/course_repository.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="190" column="88" selection-start-line="190" selection-start-column="88" selection-end-line="190" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../turk/psiturk-edx/custom.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="140" column="54" selection-start-line="140" selection-start-column="54" selection-end-line="140" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../edx-adapt/edx_adapt/api/resources/course_resources.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="72" column="39" selection-start-line="72" selection-start-column="39" selection-end-line="72" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../course-content/background_process.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="107" column="57" selection-start-line="107" selection-start-column="57" selection-end-line="107" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dump/observations_spread.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dump/problems_idx_circlerad.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="82" selection-start-line="0" selection-start-column="82" selection-end-line="0" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dump/problems_spread.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.99609375">
-          <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dump/problems_x_axis.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.99609375">
-          <caret line="68" column="10" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dump/problems_whole_tutor.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9121094">
-          <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bo_sample_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/bo_sampler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="79" selection-start-line="29" selection-start-column="8" selection-end-line="34" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../moe_tutor/moe/optimal_learning/python/bo_edu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.67742">
-          <caret line="197" column="14" selection-start-line="197" selection-start-column="9" selection-end-line="197" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/feb20_exps/PARAMS_whole_tutor_2states_500iter.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="573" selection-start-line="0" selection-start-column="571" selection-end-line="0" selection-end-column="573" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../edx-adapt/edx_adapt/misc/psiturk_with_bo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="148" column="66" selection-start-line="148" selection-start-column="66" selection-end-line="148" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/march_ish_exps/RMSE_xy_2states_500iter_skillmodel.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/march_ish_exps/PARAMS_xy_2states_500iter_skillmodel.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="55" selection-start-line="0" selection-start-column="55" selection-end-line="0" selection-end-column="55" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/march_ish_exps/PARAMS_xy_2states_1000iter_skillmodel.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="94" selection-start-line="0" selection-start-column="94" selection-end-line="0" selection-end-column="94" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dump/observations_descrip.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dump/skills_descrip.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dump/skills_css.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fit_MLFKT_skill_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="115" column="36" selection-start-line="115" selection-start-column="36" selection-end-line="115" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/march_ish_exps/PARAMS_whole_tutor_2states_500iter.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="69" selection-start-line="0" selection-start-column="69" selection-end-line="0" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/march_ish_exps/PARAMS_whole_tutor_2states_1000iter_skillmodel.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rmse_whole_tutor_per_skill.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="264" column="0" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/mcmc_sampler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="114" column="8" selection-start-line="114" selection-start-column="8" selection-end-line="114" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="11" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#19#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/test2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#19#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Metropolis/gaussian_model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -921,9 +480,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="348" column="0" selection-start-line="348" selection-start-column="0" selection-end-line="348" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#47#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -931,15 +487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="65" selection-start-line="3" selection-start-column="65" selection-end-line="3" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fit_MLFKT_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="34" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -947,15 +494,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/lfkt_model(copy).py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64453125">
-          <caret line="50" column="0" selection-start-line="45" selection-start-column="12" selection-end-line="50" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -963,9 +501,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-          <folding>
-            <element signature="e#144#191#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -973,7 +508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="72" selection-start-line="3" selection-start-column="72" selection-end-line="3" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -981,7 +515,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="80" column="35" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -989,17 +522,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/lfkt_model.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#152#170#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1007,15 +529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dump/PARAMS_x_axis_500iter.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1023,35 +536,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="2853" selection-start-line="0" selection-start-column="2853" selection-end-line="0" selection-end-column="2853" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/linreg_model.py">
+    <entry file="file://$PROJECT_DIR$/Metropolis/mlfkt_usefulness_model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-          <folding>
-            <element signature="e#64#82#0" expanded="true" />
-          </folding>
+          <caret line="79" column="126" selection-start-line="79" selection-start-column="126" selection-end-line="79" selection-end-column="126" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/experiment_list8.py">
+    <entry file="file://$PROJECT_DIR$/fit_MLFKT_usefulness_model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="31" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-          <folding />
+          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fit_MLFKT_transition_model.py">
+    <entry file="file://$PROJECT_DIR$/dump/PARAMS_uesful_whole_tutor_2states_1000iter.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2189781">
+          <caret line="0" column="1743" selection-start-line="0" selection-start-column="1743" selection-end-line="0" selection-end-column="1743" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump/PARAMS_uesful_xy_2states_1000iter.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="116" column="79" selection-start-line="116" selection-start-column="79" selection-end-line="116" selection-end-column="79" />
-          <folding>
-            <element signature="e#144#191#0" expanded="true" />
-          </folding>
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1059,21 +571,135 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/mlfkt_model.py">
+    <entry file="file://$PROJECT_DIR$/dump/RMSE_whole_tutor_trans_2states_1000iter.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="65" column="53" selection-start-line="65" selection-start-column="53" selection-end-line="65" selection-end-column="53" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump/RMSE_xy_trans_2states_1000iter.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump/RMSE_xy_2states_1000iter.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mar_27_exps/PARAMS_center_2states_1000iter.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mar_27_exps/RMSE_center_2states_1000iter.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump/RMSE_useful_xy_2states_1000iter.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="21" selection-start-line="0" selection-start-column="21" selection-end-line="0" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump/RMSE_whole_tutor_2states_1000iter_skillmodel.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump/RMSE_xy_2states_1000iter_skillmodel.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump/RMSE_whole_tutor_2states_1000iter.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="27" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump/RMSE_useful_whole_tutor_2states_1000iter.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump/RMSE_useful_descrip_2states_1000iter.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dump/RMSE_useful_css_2states_1000iter.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/march_ish_exps/RMSE_descrip_2states_1000iter_skillmodel.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/march_ish_exps/RMSE_spread_bkt_2states_500iter.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/march_ish_exps/RMSE_spread_2states_500iter.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/feb20_exps/print_tables.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="40" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="40" />
           <folding>
-            <element signature="e#90#108#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dump/PARAMS_uesful_xy_2states_500iter.json">
+    <entry file="file://$PROJECT_DIR$/comparisons.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="15" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mar_27_exps/RMSE_y_axis_2states_1000iter.json">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1081,30 +707,146 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Metropolis/mlfkt_usefulness_model.py">
+    <entry file="file://$PROJECT_DIR$/Metropolis/mlfkt_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="66.67742">
-          <caret line="79" column="126" selection-start-line="79" selection-start-column="126" selection-end-line="79" selection-end-column="126" />
-          <folding>
-            <element signature="e#90#108#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="70" column="27" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Metropolis/mlfkt_transition_model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="130" column="48" selection-start-line="130" selection-start-column="48" selection-end-line="130" selection-end-column="48" />
-          <folding>
-            <element signature="e#90#108#0" expanded="true" />
-          </folding>
+          <caret line="37" column="32" selection-start-line="37" selection-start-column="32" selection-end-line="37" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fit_MLFKT_usefulness_model.py">
+    <entry file="file://$PROJECT_DIR$/experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.78027344">
-          <caret line="172" column="9" selection-start-line="172" selection-start-column="9" selection-end-line="172" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment_list.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="91" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_BKT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_BKT-4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="75" selection-start-line="3" selection-start-column="75" selection-end-line="3" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_LFKT-4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="75" selection-start-line="3" selection-start-column="75" selection-end-line="3" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_LFKT-skills.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="81" selection-start-line="3" selection-start-column="81" selection-end-line="3" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_LFKT-skills_L1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="81" selection-start-line="3" selection-start-column="81" selection-end-line="3" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_LFKT-trans_L1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="84" selection-start-line="3" selection-start-column="84" selection-end-line="3" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_LFKT.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="3" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_LFKT_L1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="75" selection-start-line="3" selection-start-column="75" selection-end-line="3" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Metropolis/lfkt_model(copy).py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fit_MLFKT_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="143" column="23" selection-start-line="143" selection-start-column="23" selection-end-line="143" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fit_MLFKT_skill_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fit_MLFKT_transition_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Metropolis/lfkt_model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="79" selection-start-line="24" selection-start-column="79" selection-end-line="24" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_LFKT-trans.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.03533569">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
           <folding />
         </state>
       </provider>

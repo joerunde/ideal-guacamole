@@ -19,7 +19,7 @@ class MLFKTTransitionModel:
 
     sigma = 0.15
 
-    def __init__(self, X, P, intermediate_states, Dsigma):
+    def __init__(self, X, P, intermediate_states, Dsigma, L1=False):
         """
         :param X: the observation matrix, -1 padded to the right (to make it square)
         :param P: problem indices, -1 padded to the right
@@ -73,7 +73,13 @@ class MLFKTTransitionModel:
         for c in range(numprobs):
             self.emission_mask.append(False)
             self.emission_mats.append(np.ones((total_states, 2)))
-            self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: laplace.pdf(x, 0, .5) + 0*d_sig),
+            if L1:
+                print "Using L1"
+                self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: laplace.pdf(x, 0, .5) + 0*d_sig),
+                                                             (lambda x: np.random.normal(x, 0.15)))
+            else:
+                print "Using adaptive L2"
+                self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: norm.pdf(x, 0, d_sig)),
                                                              (lambda x: np.random.normal(x, 0.15)))
 
         self.params['Dsigma'] = parameter.Parameter(Dsigma, 0, 3, (lambda x: invgamma.pdf(x, 1, 0, 2)),
