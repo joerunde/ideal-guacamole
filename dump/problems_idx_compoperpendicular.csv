@@ -1,0 +1,1 @@
+["KT11B_(EQN (= Xc_s_BALL_12_0 (* Xc_v_BALL_1_0 t_12)))", "KT11B_(EQN (= Yc_v_BALL_2_0 (+ Yc_v_BALL_1_0 (* Yc_a_BALL_12_0 t_12))))", "KT11B_(EQN (= Yc_s_BALL_12_0 0))", "KT11B_(EQN (= Yc_v_BALL_12_0 0))", "KT9A_(EQN (= Yc_v_BULLET_1_0 0))", "KT9A_(EQN (= Yc_s_BULLET_12_0 (+ 0 (* 0.5 Yc_a_BULLET_12_0 (^ t_12 2)))))"]
