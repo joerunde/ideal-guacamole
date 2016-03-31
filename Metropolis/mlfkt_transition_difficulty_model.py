@@ -63,7 +63,7 @@ class MLFKTTransitionDifficultyModel:
 
         self.params['T'] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, l1_b)), (lambda x: np.random.normal(x, 0.15)) )
 
-        self.params['Tbeta'] = parameter.Parameter(0,-1,1, (lambda x: self.uniform(x, 0, 1)), (lambda x: np.random.normal(x, 0.15)) )
+        self.params['Tbeta'] = parameter.Parameter(0,-1,1, (lambda x: self.uniform(x, -1, 1)), (lambda x: np.random.normal(x, 0.15)) )
 
         #setup guess vector in really clunky way
         for c in range(intermediate_states + 1):
