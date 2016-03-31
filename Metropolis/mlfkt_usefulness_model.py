@@ -77,7 +77,7 @@ class MLFKTSUModel:
             #skill "usefulness" parameter. Same range/sampling as Guess/Slip
             for sk2 in range(numskills):
                 if sk != sk2:
-                    self.params['U-'+str(sk)+'-'+str(sk2)] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, .25)),
+                    self.params['U-'+str(sk)+'-'+str(sk2)] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, .1)),
                                                        (lambda x: self.sample_guess_prob(x)))
 
 
@@ -148,7 +148,7 @@ class MLFKTSUModel:
             u = 0
             for sk in range(self.total_skills):
                 if sk != skill:
-                    u += self.params['U-'+str(skill)+'-'+str(sk)].get() * skills[sk,1] #usefulness * skill mastery
+                    u += self.params['U-'+str(skill)+'-'+str(sk)].get() * (skills[sk,1] / (skills[sk,1] + skills[sk,0]))  #usefulness * skill mastery
             table[row, 1] = expit(self.params['G-'+str(skill)+'-_' + str(row)].get() + u)
             table[row, 0] = 1 - table[row, 1]
         #and slip

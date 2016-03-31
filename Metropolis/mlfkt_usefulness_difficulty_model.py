@@ -48,7 +48,8 @@ class MLFKTSUDModel:
         self.total_states = total_states
         self.params = {}
 
-        l1_b = 0.1
+        l1_b_u = 0.1
+        l1_b_d = 0.5
 
         #We need one set of BKT params for each skill...
         for sk in range(numskills):
@@ -79,13 +80,13 @@ class MLFKTSUDModel:
             #skill "usefulness" parameter. Same range/sampling as Guess/Slip
             for sk2 in range(numskills):
                 if sk != sk2:
-                    self.params['U-'+str(sk)+'-'+str(sk2)] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, l1_b)),
+                    self.params['U-'+str(sk)+'-'+str(sk2)] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, l1_b_u)),
                                                        (lambda x: self.sample_guess_prob(x)))
 
 
         #problem difficulty vector, also in clunky way
         for c in range(numprobs):
-            self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, l1_b)),
+            self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, l1_b_d)),
                                                              (lambda x: np.random.normal(x, 0.15)))
         """for c in range(numprobs):
             self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: norm.pdf(x, 0, d_sig)),
@@ -146,6 +147,8 @@ class MLFKTSUDModel:
         return self.params['T-'+str(skill)+'-'].get()
 
     def make_emissions(self, diff, prob_num, skill, skills):
+        #for sk in range(self.total_skills):
+        #    print "Mastery belief:", (skills[sk,1] / (skills[sk,1] + skills[sk,0]))
         #print str(time.time()) + "\tcalculating new emissions"
         table = np.ones((self.total_states,2))
         #guesses...
@@ -153,7 +156,7 @@ class MLFKTSUDModel:
             u = 0
             for sk in range(self.total_skills):
                 if sk != skill:
-                    u += self.params['U-'+str(skill)+'-'+str(sk)].get() * skills[sk,1] #usefulness * skill mastery
+                    u += self.params['U-'+str(skill)+'-'+str(sk)].get() * (skills[sk,1] / (skills[sk,1] + skills[sk,0])) #usefulness * skill mastery
             table[row, 1] = expit(self.params['G-'+str(skill)+'-_' + str(row)].get() + u - diff)
             table[row, 0] = 1 - table[row, 1]
         #and slip
