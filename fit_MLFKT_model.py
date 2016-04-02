@@ -94,7 +94,11 @@ for it in range(iterz):
     mcmc.plot_samples(folder + "/", str(num_iterations) + '_iterations')
 
     #load up test data and run predictions
-    model.load_test_split(Xtest, Ptest)
+    if len(sys.argv) > 9:
+        model.load_test_split(Xtest, Ptest, True, False)
+    else:
+        model.load_test_split(Xtest, Ptest, True, True)
+
     pred = model.get_predictions()
     num = model.get_num_predictions()
     mast = model.get_mastery()

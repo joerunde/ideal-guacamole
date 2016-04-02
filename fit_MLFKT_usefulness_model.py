@@ -94,7 +94,7 @@ for it in range(iterz):
 
     folder = "plots_" + fname
     #plotting samples will also load the MAP estimates
-    #mcmc.plot_samples(folder + "/", str(num_iterations) + '_iterations')
+    mcmc.plot_samples(folder + "/", str(num_iterations) + '_iterations')
 
     #load up test data and run predictions
     model.load_test_split(Xtest, Ptest, Stest)
@@ -166,11 +166,11 @@ for it in range(iterz):
     p = model.get_parameters()
     pdict = {}
     for id, param in p.iteritems():
-        pdict[id] = param.get()
-        #if "D_" in id:
-        #    pdict[id] = param.get()
-        #if "U" in id:
-        #    pdict[id] = param.get()
+        #pdict[id] = param.get()
+        if "D_" in id:
+            pdict[id] = param.get()
+        if "U" in id:
+            pdict[id] = param.get()
     #pdict['Trans'] = list( [list(x) for x in model.make_transitions()] )
     #pdict['Pi'] = list(model.make_initial())
     #model.emission_mask[0] = False

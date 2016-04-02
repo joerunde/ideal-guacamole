@@ -107,7 +107,11 @@ class MCMCSampler:
         x1,x2,y1,y2 = plt.axis()
         plt.axis((a,b,y1,y2))
 
-        plt.savefig(folder + id.replace('_','/',1) + "_" + title)
+        if '-' in id:
+            name = folder + id + "_" + title
+        else:
+            name = folder + id.replace('_','/',1) + "_" + title
+        plt.savefig(name)
         plt.clf()
 
         return MAP

@@ -249,7 +249,7 @@ class MLFKTModel:
         #return -self.log_posterior('Dsigma')
 
     """evaluate probability of the setting of parameter paramID, given the setting of the other parameters and the data"""
-    def log_posterior(self, paramID):
+    def log_posterior(self, paramID, fake=False):
         X = self.data['X']
         Probs = self.data['P']
         Dsigma = self.params['Dsigma']
@@ -297,6 +297,16 @@ class MLFKTModel:
             loglike += self.log(sum(alpha[last_t-1,:]))
 
         #print "final loglike: " + str(loglike)
+        if fake:
+            log_prior = 0
+            for k,v in self.params.iteritems():
+                if 'D_' in k:
+                    log_prior += self.log(v.prior(Dsigma.get()))
+                else:
+                    log_prior += self.log(v.prior())
+                    #print log_prior
+            return loglike + log_prior
+
         if 'D_' in paramID:
             log_prior = self.log(self.params[paramID].prior(Dsigma.get()))
         else:
@@ -395,15 +405,36 @@ class MLFKTModel:
 
 
     #okay we finna need some inference up in here
-    def load_test_split(self, Xtest, Ptest, predict_now=True):
+    def load_test_split(self, Xtest, Ptest, predict_now=True, use_mean=True):
         self.test['X'] = Xtest
         self.test['P'] = Ptest
         self.test['Predictions'] = np.copy(Xtest) + 0.0
         self.test['Mastery'] = np.copy(Xtest) + 0.0
         if predict_now:
-            self._predict()
+            self._predict(False, use_mean)
 
-    def _predict(self, use_current_params=False):
+
+    #hacky MAP estimation
+    def set_map_params(self):
+        #loop through all samples, return setting with highest likelihood on the data
+        num_samples = len(self.params['T'].get_samples())
+        maxp = -float('inf')
+        maxc = 0
+        print "searching for MAP"
+        for c in range(num_samples):
+            for k,v in self.params.iteritems():
+                v.set(v.get_samples()[c])
+            p = self.log_posterior('loljk', True)
+            if p >= maxp:
+                print p
+                maxp = p
+                maxc = c
+
+        print "maxp:", maxp
+        for k,v in self.params.iteritems():
+                v.set(v.get_samples()[maxc])
+
+    def _predict(self, use_current_params=False, use_mean=True):
         ## prediction rolls through the forward algorithm only
         ## as we predict only based on past data
         X = self.test['X']
@@ -413,10 +444,14 @@ class MLFKTModel:
 
         #set params to mean
         if not use_current_params:
-            for id, p in self.params.iteritems():
-                #print id
-                avg = np.mean(p.get_samples(), 0)
-                p.set(avg)
+            if not use_mean:
+                self.set_map_params()
+            else:
+                print "using mean"
+                for id, p in self.params.iteritems():
+                    #print id
+                    avg = np.mean(p.get_samples(), 0)
+                    p.set(avg)
 
         pi = self.make_initial()
         trans = self.make_transitions()
