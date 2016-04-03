@@ -405,13 +405,13 @@ class MLFKTModel:
 
 
     #okay we finna need some inference up in here
-    def load_test_split(self, Xtest, Ptest, predict_now=True, use_mean=True):
+    def load_test_split(self, Xtest, Ptest, predict_now=True):
         self.test['X'] = Xtest
         self.test['P'] = Ptest
         self.test['Predictions'] = np.copy(Xtest) + 0.0
         self.test['Mastery'] = np.copy(Xtest) + 0.0
         if predict_now:
-            self._predict(False, use_mean)
+            self._predict(False)
 
 
     #hacky MAP estimation
@@ -434,7 +434,7 @@ class MLFKTModel:
         for k,v in self.params.iteritems():
                 v.set(v.get_samples()[maxc])
 
-    def _predict(self, use_current_params=False, use_mean=True):
+    def _predict(self, use_current_params=False):
         ## prediction rolls through the forward algorithm only
         ## as we predict only based on past data
         X = self.test['X']
@@ -444,14 +444,8 @@ class MLFKTModel:
 
         #set params to mean
         if not use_current_params:
-            if not use_mean:
-                self.set_map_params()
-            else:
-                print "using mean"
-                for id, p in self.params.iteritems():
-                    #print id
-                    avg = np.mean(p.get_samples(), 0)
-                    p.set(avg)
+            self.set_map_params()
+
 
         pi = self.make_initial()
         trans = self.make_transitions()

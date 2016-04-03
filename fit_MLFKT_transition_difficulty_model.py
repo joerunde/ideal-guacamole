@@ -7,7 +7,7 @@ from Metropolis.mlfkt_transition_difficulty_model import MLFKTTransitionDifficul
 import sys, json, time, random, os, math
 import numpy as np
 
-print "usage: python fit_MLFKT_transition_difficulty_model.py burnin iterations k(for 1/k test split) bkt(y/n) skills num_intermediate_states iterations L1/L2"
+print "usage: python fit_MLFKT_transition_difficulty_model.py burnin iterations k(for 1/k test split) bkt(y/n) skills num_intermediate_states iterations L1/L2 [transition first?]"
 
 iterz = int(sys.argv[7])
 
@@ -64,10 +64,14 @@ for it in range(iterz):
     else:
         L1 = False
 
+    trans_first = False
+    if len(sys.argv) > 9:
+        trans_first = True
+
     if 'y' in sys.argv[4]:
-        model = MLFKTTransitionDifficultyModel(X, P, intermediate_states, 0, L1)
+        model = MLFKTTransitionDifficultyModel(X, P, intermediate_states, 0, L1, trans_first)
     else:
-        model = MLFKTTransitionDifficultyModel(X, P, intermediate_states, 0.1, L1)
+        model = MLFKTTransitionDifficultyModel(X, P, intermediate_states, 0.1, L1, trans_first)
 
     mcmc = MCMCSampler(model, 0.15)
 
@@ -144,6 +148,11 @@ for it in range(iterz):
         fname += '_bkt'
     if L1:
         fname += '_L1'
+
+    if trans_first:
+        fname += '_first'
+    else:
+        fname += '_second'
 
     rmsefname = 'dump/RMSE_' + fname + "_transdiff_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
     if os.path.exists(rmsefname):

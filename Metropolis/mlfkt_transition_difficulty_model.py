@@ -19,7 +19,7 @@ class MLFKTTransitionDifficultyModel:
 
     sigma = 0.15
 
-    def __init__(self, X, P, intermediate_states, Dsigma, L1=False):
+    def __init__(self, X, P, intermediate_states, Dsigma, L1=False, transition_first = False):
         """
         :param X: the observation matrix, -1 padded to the right (to make it square)
         :param P: problem indices, -1 padded to the right
@@ -27,6 +27,9 @@ class MLFKTTransitionDifficultyModel:
         :param Dsigma: model parameter- initial setting of variance for problem difficulty values. Set to 0 to lock to BKT
         :return: nix
         """
+
+        self.transition_first = transition_first
+        print "Transitioning first?", transition_first
 
         self.data = {}
         self.data['X'] = X
@@ -256,7 +259,7 @@ class MLFKTTransitionDifficultyModel:
         #return -self.log_posterior('Dsigma')
 
     """evaluate probability of the setting of parameter paramID, given the setting of the other parameters and the data"""
-    def log_posterior(self, paramID):
+    def log_posterior(self, paramID, fake=False):
         X = self.data['X']
         Probs = self.data['P']
         Dsigma = self.params['Dsigma']
@@ -282,7 +285,13 @@ class MLFKTTransitionDifficultyModel:
         for n in range(N):
             alpha = np.zeros( (T,states) )
             emit = self.make_emissions(self.params['D_' + str(int(Probs[n,0]))].get(), int(Probs[n,0]))
-            alpha[0] = np.multiply(pi, emit[:,X[n,0]])
+            trans = self.make_transitions(self.params['D_' + str(int(Probs[n,0]))].get(), int(Probs[n,0]))
+
+            if self.transition_first:
+                pi = np.dot(pi, trans)
+            alpha[0,:] = np.multiply(pi, emit[:,X[n,0]])
+            if not self.transition_first:
+                alpha[0,:] = np.dot(alpha[0,:], trans)
 
             last_t = 0
             for t in range(1,T):
@@ -290,19 +299,29 @@ class MLFKTTransitionDifficultyModel:
                 if X[n,t] == -1:
                     break
                 emit = self.make_emissions(self.params['D_' + str(int(Probs[n,t]))].get(), int(Probs[n,t]))
-                #print B
                 trans = self.make_transitions(self.params['D_' + str(int(Probs[n,t]))].get(), int(Probs[n,t]))
-                alpha[t,:] = np.dot( np.multiply( emit[:,X[n,t]], alpha[t-1,:]), trans)
-                #if min(alpha[t,:]) < 1e-70:
-                    #print "low alpha! " + str(min(alpha[t,:]))
-                #if min(alpha[t,:]) < 1e-250:
-                    #print "Oh snappy tappies! " + str(min(alpha[t,:]))
 
-                #print min(alpha[t,:])
-            #print sum(alpha[T-1,:])
-            #print loglike
+                if self.transition_first:
+                    tmp = np.dot(alpha[t-1,:], trans)
+                    alpha[t,:] = np.multiply(emit[:,X[n,t]], tmp)
+                else:
+                    tmp = np.multiply(emit[:,X[n,t]], alpha[t-1,:])
+                    alpha[t,:] = np.dot(tmp, trans)
+
+                #old one before I put in transition_first
+                #alpha[t,:] = np.dot( np.multiply( emit[:,X[n,t]], alpha[t-1,:]), trans)
 
             loglike += self.log(sum(alpha[last_t-1,:]))
+
+        if fake:
+            log_prior = 0
+            for k,v in self.params.iteritems():
+                if 'D_' in k:
+                    log_prior += self.log(v.prior(Dsigma.get()))
+                else:
+                    log_prior += self.log(v.prior())
+                    #print log_prior
+            return loglike + log_prior
 
         #print "final loglike: " + str(loglike)
         if 'D_' in paramID:
@@ -411,6 +430,26 @@ class MLFKTTransitionDifficultyModel:
         if predict_now:
             self._predict()
 
+    #hacky MAP estimation
+    def set_map_params(self):
+        #loop through all samples, return setting with highest likelihood on the data
+        num_samples = len(self.params['T'].get_samples())
+        maxp = -float('inf')
+        maxc = 0
+        print "searching for MAP"
+        for c in range(num_samples):
+            for k,v in self.params.iteritems():
+                v.set(v.get_samples()[c])
+            p = self.log_posterior('loljk', True)
+            if p >= maxp:
+                print p
+                maxp = p
+                maxc = c
+
+        print "maxp:", maxp
+        for k,v in self.params.iteritems():
+                v.set(v.get_samples()[maxc])
+
     def _predict(self, use_current_params=False):
         ## prediction rolls through the forward algorithm only
         ## as we predict only based on past data
@@ -421,10 +460,7 @@ class MLFKTTransitionDifficultyModel:
 
         #set params to mean
         if not use_current_params:
-            for id, p in self.params.iteritems():
-                #print id
-                avg = np.mean(p.get_samples(), 0)
-                p.set(avg)
+            self.set_map_params()
 
         pi = self.make_initial()
 
@@ -438,12 +474,18 @@ class MLFKTTransitionDifficultyModel:
             #print "\t\t\tPrediction for test sequence: " + str(n)
             alpha = np.zeros( (T,states) )
             emit = self.make_emissions(self.params['D_' + str(int(Probs[n,0]))].get(), int(Probs[n,0]))
+            trans = self.make_transitions(self.params['D_' + str(int(Probs[n,0]))].get(), int(Probs[n,0]))
+
+            if self.transition_first:
+                pi = np.dot(pi, trans)
+            alpha[0,:] = np.multiply(pi, emit[:,X[n,0]])
+            if not self.transition_first:
+                alpha[0,:] = np.dot(alpha[0,:], trans)
 
             Mast[n,0] = pi[-1]
             #print P
             #print P[1]
             Preds[n,0] = np.sum(np.multiply(pi, emit[:,1]))
-            alpha[0,:] = np.multiply(pi, emit[:,X[n,0]])
             #print "alpha0: " + str(alpha[0,:])
             num += 1
             for t in range(1,T):
@@ -451,21 +493,35 @@ class MLFKTTransitionDifficultyModel:
                     break
                 emit = self.make_emissions(self.params['D_' + str(int(Probs[n,t]))].get(), int(Probs[n,t]))
                 trans = self.make_transitions(self.params['D_' + str(int(Probs[n,t]))].get(), int(Probs[n,t]))
-                state_probs = np.copy(alpha[t-1,:])
-                #print state_probs
-                state_probs = np.dot(state_probs, trans)
-                #print state_probs
-                state_probs = state_probs / np.sum(state_probs)
-                #print state_probs
-                #print state_probs
-                #print state_probs[1]
-                Mast[n,t] = state_probs[-1]
 
-                Preds[n,t] = np.sum(np.multiply(state_probs, emit[:, 1]))
-                num += 1
-                #print B
-                alpha[t,:] = np.dot( np.multiply( emit[:,X[n,t]], alpha[t-1,:]), trans)
-                #print alpha[t,:]
+                if self.transition_first:
+                    # do the transition
+                    tmp = np.dot(alpha[t-1,:], trans)
+
+                    # set state probs / mastery values from the transitioned state
+                    state_probs = np.copy(tmp)
+                    state_probs = state_probs / np.sum(state_probs)
+                    Mast[n,t] = state_probs[-1]
+
+                    #do prediction now:
+                    Preds[n,t] = np.sum(np.multiply(state_probs, emit[:, 1]))
+                    num += 1
+
+                    #update alpha from observation
+                    alpha[t,:] = np.multiply(emit[:,X[n,t]], tmp)
+                else:
+                    #set state probs / mastery values from the untransitioned state
+                    state_probs = np.copy(alpha[t-1,:])
+                    state_probs = state_probs / np.sum(state_probs)
+                    Mast[n,t] = state_probs[-1]
+
+                    #do prediction now:
+                    Preds[n,t] = np.sum(np.multiply(state_probs, emit[:, 1]))
+                    num += 1
+
+                    # account for the observation first, then do the transition
+                    tmp = np.multiply(emit[:,X[n,t]], alpha[t-1,:])
+                    alpha[t,:] = np.dot(tmp, trans)
 
             #print Preds[n,:]
             #print X[n,:]

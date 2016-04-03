@@ -7,8 +7,8 @@ import numpy as np
 f = open("comparison.tsv", "w")
 #f.write("Setting\tBKT-2\tBKT-3\tBKT-4\tC BKT-2\tC BKT-3\tC BKT-4\tLFKT-2\tLFKT-3\tLFKT-4\tC LFKT-2\tC LFKT-3\tC LFKT-4\n")
 
-skills = ['x_axis','y_axis','xy','center','shape','spread','css','h_to_d','d_to_h','descrip','histogram','whole_tutor']
-settings = ['BKT','BKT-4','LFKT','LFKT-4','LFKT (L1)','LFKT-skills','LFKT-skills (L1)', 'LFKT-transition', 'LFKT-transition (L1)', 'LFKT-skill-interactions (L1)']
+skills = ['x_axis','y_axis','xy','center','shape','spread','css','h_to_d','d_to_h','descrip','histogram','whole_tutor', 'all_translations']
+settings = ['BKT','BKT-4','LFKT','LFKT-4','LFKT (L1)','LFKT-skills','LFKT-skills (L1)', 'LFKT-transition', 'LFKT-transition (L1)', 'LFKT-transition-difficulty (L1)', 'LFKT-knowledge-transfer (L1)', 'LFKT-knowledge-transfer-difficulty (L1)']
 
 table = {}
 for sk in skills:
@@ -55,7 +55,6 @@ for sk in skills:
     try:
         val = np.mean(json.load(open("mar29_exps/RMSE_" + sk + "_2states_500iter_skillmodel.json","r")))
         table[sk]['LFKT-skills'] = val
-        print sk
     except:
         pass
 
@@ -80,10 +79,25 @@ for sk in skills:
     except:
         pass
 
-    #LFKT-skill-interactions (L1)
+    #LFKT-transition-difficulty (L1)
+    try:
+        val = np.mean(json.load(open("mar31_exps/RMSE_" + sk + "_L1_transdiff_2states_500iter.json","r")))
+        table[sk]['LFKT-transition-difficulty (L1)'] = val
+    except:
+        pass
+
+    #LFKT-knowledge-transfer (L1)
     try:
         val = np.mean(json.load(open("mar_27_exps/RMSE_useful_" + sk + "_2states_1000iter.json","r")))
-        table[sk]['LFKT-skill-interactions (L1)'] = val
+        table[sk]['LFKT-knowledge-transfer (L1)'] = val
+    except:
+        pass
+
+    #LFKT-knowledge-transfer-difficulty (L1)
+    try:
+        val = np.mean(json.load(open("mar31_exps/RMSE_usefuldiff_" + sk + "_2states_500iter.json","r")))
+        table[sk]['LFKT-knowledge-transfer-difficulty (L1)'] = val
+        print sk, "has usefuldiff"
     except:
         pass
 

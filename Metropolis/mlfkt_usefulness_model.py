@@ -48,6 +48,8 @@ class MLFKTSUModel:
         self.total_states = total_states
         self.params = {}
 
+        l1_b = 0.15
+
         #We need one set of BKT params for each skill...
         for sk in range(numskills):
             #setup initial probability vectors...
@@ -77,7 +79,7 @@ class MLFKTSUModel:
             #skill "usefulness" parameter. Same range/sampling as Guess/Slip
             for sk2 in range(numskills):
                 if sk != sk2:
-                    self.params['U-'+str(sk)+'-'+str(sk2)] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, .1)),
+                    self.params['U-'+str(sk)+'-'+str(sk2)] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, l1_b)),
                                                        (lambda x: self.sample_guess_prob(x)))
 
 
@@ -147,8 +149,9 @@ class MLFKTSUModel:
         for row in range(self.total_states - 1):
             u = 0
             for sk in range(self.total_skills):
+                #print "Belief:", skills[sk,1]
                 if sk != skill:
-                    u += self.params['U-'+str(skill)+'-'+str(sk)].get() * (skills[sk,1] / (skills[sk,1] + skills[sk,0]))  #usefulness * skill mastery
+                    u += self.params['U-'+str(skill)+'-'+str(sk)].get() * (skills[sk,1])# / (skills[sk,1] + skills[sk,0]))  #usefulness * skill mastery
             table[row, 1] = expit(self.params['G-'+str(skill)+'-_' + str(row)].get() + u)
             table[row, 0] = 1 - table[row, 1]
         #and slip
@@ -170,7 +173,7 @@ class MLFKTSUModel:
         return self.params
 
     """evaluate probability of the setting of parameter paramID, given the setting of the other parameters and the data"""
-    def log_posterior(self, paramID):
+    def log_posterior(self, paramID, fake=False):
         X = self.data['X']
         Probs = self.data['P']
         Skill = self.data['S']
@@ -193,8 +196,12 @@ class MLFKTSUModel:
             #alphas now store rolling joints per skill
             # alpha = [skill x state] matrix
             alpha = np.zeros( (self.total_skills, states) )
+            beliefs = np.zeros( (self.total_skills, states) )
+
             for sk in range(self.total_skills):
                 alpha[sk,:] = self.make_initial(sk)
+                beliefs[sk,:] = alpha[sk,:]
+
             #emit = self.make_emissions(self.params['D_' + str(int(Probs[n,0]))].get(), int(Probs[n,0]), int(Skill[n,0]))
             #alpha[0] = np.multiply(pi, emit[:,X[n,0]])
             last_t = 0
@@ -206,11 +213,13 @@ class MLFKTSUModel:
                 #print skill
                 #print X[n,t]
                 #print
-                emit = self.make_emissions(0,0, skill, alpha)
+                emit = self.make_emissions(0,0, skill, beliefs)
                 trans = self.make_transitions(skill)
                 alpha[skill,:] = np.dot( np.multiply( emit[:,X[n,t]], alpha[skill,:]), trans)
-                if min(alpha[skill,:]) < 1e-150:
-                    print "Oh snappy tappies! " + str(min(alpha[t,:]))
+                beliefs[skill,:] = alpha[skill,:] / np.sum(alpha[skill,:])
+
+                #if min(alpha[skill,:]) < 1e-150:
+                #    print "Oh snappy tappies! " + str(min(alpha[t,:]))
 
                 #print min(alpha[t,:])
             #print sum(alpha[T-1,:])
@@ -218,6 +227,13 @@ class MLFKTSUModel:
 
             for sk in range(self.total_skills):
                 loglike += self.log(sum(alpha[sk,:]))
+
+        if fake:
+            log_prior = 0
+            for k,v in self.params.iteritems():
+                log_prior += self.log(v.prior())
+                    #print log_prior
+            return loglike + log_prior
 
         #print "final loglike: " + str(loglike)
         log_prior = self.log(self.params[paramID].prior())
@@ -234,6 +250,26 @@ class MLFKTSUModel:
         self.test['Mastery'] = np.copy(Xtest)
         self._predict()
 
+    #hacky MAP estimation
+    def set_map_params(self):
+        #loop through all samples, return setting with highest likelihood on the data
+        num_samples = len(self.params['Dsigma'].get_samples())
+        maxp = -float('inf')
+        maxc = 0
+        print "searching for MAP"
+        for c in range(num_samples):
+            for k,v in self.params.iteritems():
+                v.set(v.get_samples()[c])
+            p = self.log_posterior('loljk', True)
+            if p >= maxp:
+                print p
+                maxp = p
+                maxc = c
+
+        print "maxp:", maxp
+        for k,v in self.params.iteritems():
+                v.set(v.get_samples()[maxc])
+
     def _predict(self):
         ## prediction rolls through the forward algorithm only
         ## as we predict only based on past data
@@ -244,9 +280,7 @@ class MLFKTSUModel:
         Skill = self.test['S']
 
         #set params to mean
-        for id, p in self.params.iteritems():
-            avg = np.mean(p.get_samples(), 0)
-            p.set(avg)
+        self.set_map_params()
 
         #pi = self.make_initial()
         #trans = self.make_transitions()
@@ -259,8 +293,10 @@ class MLFKTSUModel:
             ##Similar to forward algo
             #print "\t\t\tPrediction for test sequence: " + str(n)
             alpha = np.zeros( (self.total_skills, states) )
+            beliefs = np.zeros( (self.total_skills, states) )
             for sk in range(self.total_skills):
                 alpha[sk,:] = self.make_initial(sk)
+                beliefs[sk,:] = alpha[sk,:]
 
             """
             Mast[n,0] = pi[-1]
@@ -276,7 +312,7 @@ class MLFKTSUModel:
                 if X[n,t] == -1:
                     break
                 skill = int(Skill[n,t])
-                emit = self.make_emissions(0,0, skill, alpha)
+                emit = self.make_emissions(0,0, skill, beliefs)
                 trans = self.make_transitions(skill)
 
                 #make prediction (normalized current alpha for state probs)
@@ -287,6 +323,7 @@ class MLFKTSUModel:
 
                 #Transition alpha on the observation
                 alpha[skill,:] = np.dot( np.multiply( emit[:,X[n,t]], alpha[skill,:]), trans)
+                beliefs[skill,:] = alpha[skill,:] / np.sum(alpha[skill,:])
 
             #print
         self.test['num'] = num
