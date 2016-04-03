@@ -300,6 +300,8 @@ class MLFKTModel:
         if fake:
             log_prior = 0
             for k,v in self.params.iteritems():
+                if k == 'Dsigma' and v.get() == 0:
+                    continue
                 if 'D_' in k:
                     log_prior += self.log(v.prior(Dsigma.get()))
                 else:
@@ -423,7 +425,8 @@ class MLFKTModel:
         print "searching for MAP"
         for c in range(num_samples):
             for k,v in self.params.iteritems():
-                v.set(v.get_samples()[c])
+                if len(v.get_samples()) > c:
+                    v.set(v.get_samples()[c])
             p = self.log_posterior('loljk', True)
             if p >= maxp:
                 print p
