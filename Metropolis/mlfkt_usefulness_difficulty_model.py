@@ -80,8 +80,8 @@ class MLFKTSUDModel:
             #skill "usefulness" parameter. Same range/sampling as Guess/Slip
             for sk2 in range(numskills):
                 if sk != sk2:
-                    self.params['U-'+str(sk)+'-'+str(sk2)] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, l1_b_u)),
-                                                       (lambda x: self.sample_guess_prob(x)))
+                    self.params['U-'+str(sk)+'-'+str(sk2)] = parameter.Parameter(0, 0, 3, (lambda x: laplace.pdf(x, 0, l1_b_u)),
+                                                       (lambda x: self.sample_KT_param(x)))
 
 
         #problem difficulty vector, also in clunky way
@@ -142,6 +142,9 @@ class MLFKTSUDModel:
 
     def sample_guess_prob(self, x):
         return np.random.normal(x, 0.15)
+
+    def sample_KT_param(self, x):
+        return max(0, np.random.normal(x, 0.15))
 
     def make_transitions(self, skill):
         return self.params['T-'+str(skill)+'-'].get()
