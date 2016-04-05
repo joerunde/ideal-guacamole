@@ -3,11 +3,11 @@
 """
 
 from Metropolis.mcmc_sampler import MCMCSampler
-from Metropolis.mlfkt_model import MLFKTModel
+from Metropolis.mlfkt_adaptive_transition_model import MLFKTAdaptTransitionModel
 import sys, json, time, random, os, math
 import numpy as np
 
-print "usage: python fit_MLFKT_model.py burnin iterations k(for 1/k test split) bkt(y/n) skills num_intermediate_states iterations L1/L2"
+print "usage: python fit_MLFKT_adaptive_transition_model.py burnin iterations k(for 1/k test split) bkt(y/n) skills num_intermediate_states iterations L1/L2"
 
 iterz = int(sys.argv[7])
 
@@ -65,9 +65,9 @@ for it in range(iterz):
         L1 = False
 
     if 'y' in sys.argv[4]:
-        model = MLFKTModel(X, P, intermediate_states, 0, L1)
+        model = MLFKTAdaptTransitionModel(X, P, intermediate_states, 0, L1)
     else:
-        model = MLFKTModel(X, P, intermediate_states, 0.1, L1)
+        model = MLFKTAdaptTransitionModel(X, P, intermediate_states, 0.1, L1)
 
     mcmc = MCMCSampler(model, 0.15)
 
@@ -91,11 +91,10 @@ for it in range(iterz):
 
     folder = "plots_" + fname
     #plotting samples will also load the MAP estimates
-    mcmc.plot_samples(folder + "/", str(num_iterations) + '_iterations')
+    #mcmc.plot_samples(folder + "/", str(num_iterations) + '_iterations')
 
     #load up test data and run predictions
-    model.load_test_split(Xtest, Ptest, True)
-
+    model.load_test_split(Xtest, Ptest)
     pred = model.get_predictions()
     num = model.get_num_predictions()
     mast = model.get_mastery()
@@ -127,7 +126,6 @@ for it in range(iterz):
     plt.clf()
 
     print "RMSE:\t" + str(rmse)
-    print "Total test items for " + skill + ":", num
 
     f = open(folder + "/RMSE" + str(num_iterations) + '_iterations', "w+")
     f.write("RMSE: " + str(rmse) + "\n\n\nErrors: (prediction - observation)\n\n")
@@ -147,7 +145,7 @@ for it in range(iterz):
     if L1:
         fname += '_L1'
 
-    rmsefname = 'dump/RMSE_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
+    rmsefname = 'dump/RMSE_' + fname + "_adapt_trans_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
     if os.path.exists(rmsefname):
         rmsel = json.load(open(rmsefname,"r"))
     else:
@@ -156,7 +154,7 @@ for it in range(iterz):
     rmsel.append(rmse)
     json.dump(rmsel, open(rmsefname,"w"))
 
-    paramfname = 'dump/PARAMS_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
+    paramfname = 'dump/PARAMS_' + fname + "_adapt_trans_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
     if os.path.exists(paramfname):
         paraml = json.load(open(paramfname,"r"))
     else:
@@ -166,7 +164,9 @@ for it in range(iterz):
     for id, param in p.iteritems():
         if "D_" in id:
             pdict[id] = param.get()
-    pdict['Trans'] = list( [list(x) for x in model.make_transitions()] )
+        if "Tf" in id:
+            pdict[id] = param.get()
+    #pdict['Trans'] = list( [list(x) for x in model.make_transitions()] )
     pdict['Pi'] = list(model.make_initial())
     model.emission_mask[0] = False
     pdict['Emit'] = list( [list(x) for x in model.make_emissions(0,0)] )

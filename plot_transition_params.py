@@ -7,14 +7,25 @@ import numpy as np
 
 
 
-def plot_param_vector(params, title, fname, scale=.3):
+def plot_param_vector(params, title, fname, minv=-.3, maxv=.3, labels=()):
     fig, ax = plt.subplots(1)
-    plt.pcolor(params, cmap='RdBu', vmin=-scale, vmax=scale)
+    if minv < 0:
+        plt.pcolor(params, cmap='RdBu', vmin=minv, vmax=maxv)
+    else:
+        plt.pcolor(params, cmap='Blues', vmin=minv, vmax=maxv)
     plt.colorbar()
     ax.set_aspect('equal')
     ax.set_title(title)
-    ax.get_xaxis().set_ticks([])
-    ax.get_yaxis().set_ticks([])
+    if len(labels) == 0:
+        ax.get_xaxis().set_ticks([])
+        ax.get_yaxis().set_ticks([])
+    else:
+        ax.set_xticklabels(labels, rotation=60)
+        ax.set_xticks(np.arange(len(labels)) + .5)
+        ax.set_yticklabels(list(reversed(labels)))
+        ax.set_yticks(np.arange(len(labels)) + .5)
+
+    plt.tight_layout()
     plt.savefig(fname)
 
 
@@ -60,13 +71,14 @@ for sk in ['x_axis', 'y_axis', 'center', 'shape', 'spread', 'h_to_d', 'd_to_h', 
 # KT params?
 for sk in ['xy', 'descrip', 'css', 'whole_tutor']:
     try:
-        rmse = np.mean(json.load(open("apr3_exps/RMSE_useful_" + sk + "_2states_1000iter.json","r")))
+        rmse = np.mean(json.load(open("apr3_exps/RMSE_useful_" + sk + "_2states_500iter.json","r")))
         #baseline = np.mean(json.load(open("apr3_exps/RMSE_" + sk + "_bkt_2states_2000iter.json", "r")))
-        params = json.load(open("apr3_exps/PARAMS_uesful_" + sk + "_2states_1000iter.json","r"))
+        params = json.load(open("apr3_exps/PARAMS_uesful_" + sk + "_2states_500iter.json","r"))
+        params = params[4:]
 
         print sk, rmse#, baseline
     except Exception as e:
-        print e
+        print sk, e
         continue
 
     transition_params = {}
@@ -106,18 +118,24 @@ for sk in ['xy', 'descrip', 'css', 'whole_tutor']:
     print
 
     fname = "trans_plots/KT/" + sk + ".png"
-    title = "Knowledge transfer parameters learned for " + sk #+ "_" + set + ".\nRMSE improvement: " + str(int(1000 * (baseline - rmse))/10.0) + "e-2"
-    plot_param_vector(mat, title, fname)
+    title = "Knowledge transfer parameters\n" #+ "_" + set + ".\nRMSE improvement: " + str(int(1000 * (baseline - rmse))/10.0) + "e-2"
+    if sk == 'xy':
+        plot_param_vector(mat, title, fname, 0, .3, ['x axis','y axis'])
+    if sk == 'css':
+        plot_param_vector(mat, title, fname, 0, .1, ['center','shape','spread'])
+    if sk == 'descrip':
+        plot_param_vector(mat, title, fname, 0, .1, ['h to d','d to h'])
     if sk == 'whole_tutor':
-        plot_param_vector(mat, title, fname, 1)
+        plot_param_vector(mat, title, fname, 0, .4, ['center','shape','spread','x axis','y axis','h to d','d to h','histogram'])
 
 
 # KT+D params
 for sk in ['xy', 'descrip', 'css', 'whole_tutor']:
     try:
-        rmse = np.mean(json.load(open("apr3_exps/RMSE_usefuldiff_" + sk + "_2states_1000iter.json","r")))
+        rmse = np.mean(json.load(open("apr3_exps/RMSE_usefuldiff_" + sk + "_2states_500iter.json","r")))
         #baseline = np.mean(json.load(open("apr3_exps/RMSE_" + sk + "_bkt_2states_2000iter.json", "r")))
-        params = json.load(open("apr3_exps/PARAMS_usefuldiff_" + sk + "_2states_1000iter.json","r"))
+        params = json.load(open("apr3_exps/PARAMS_usefuldiff_" + sk + "_2states_500iter.json","r"))
+        params = params[4:]
 
         print sk, rmse#, baseline
     except Exception as e:
@@ -161,7 +179,12 @@ for sk in ['xy', 'descrip', 'css', 'whole_tutor']:
     print
 
     fname = "trans_plots/KTD/" + sk + ".png"
-    title = "Knowledge transfer + Diff parameters learned for " + sk #+ "_" + set + ".\nRMSE improvement: " + str(int(1000 * (baseline - rmse))/10.0) + "e-2"
-    plot_param_vector(mat, title, fname)
+    title = "Knowledge transfer + Diff parameters\n" #+ "_" + set + ".\nRMSE improvement: " + str(int(1000 * (baseline - rmse))/10.0) + "e-2"
+    if sk == 'xy':
+        plot_param_vector(mat, title, fname, 0, .3, ['x axis','y axis'])
+    if sk == 'css':
+        plot_param_vector(mat, title, fname, 0, .1, ['center','shape','spread'])
+    if sk == 'descrip':
+        plot_param_vector(mat, title, fname, 0, .1, ['h to d','d to h'])
     if sk == 'whole_tutor':
-        plot_param_vector(mat, title, fname, 1)
+        plot_param_vector(mat, title, fname, 0, .4, ['center','shape','spread','x axis','y axis','h to d','d to h','histogram'])
