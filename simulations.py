@@ -93,15 +93,18 @@ for c in range(40):
         else:
             transobs[-1].append(1)
 
-        prob = np.random.randint(0, 15)
+        prob = np.random.randint(0, 10)
 
         transprobs[-1].append(prob)
 
         tp = 0.1
-        if prob < 5:
-            tp += 0.05
-        if prob >= 10:
-            tp -= 0.05
+        #some probs are awful
+        if prob < 3:
+            tp = 0
+
+        #a couple are outstanding
+        if prob >= 8:
+            tp = 0.95
 
         t = np.random.random()
         if t < tp:
