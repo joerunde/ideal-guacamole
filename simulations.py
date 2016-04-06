@@ -139,9 +139,16 @@ for c in range(60):
 
     print z
 
-    for i in range(45):
-        print z
+    for i in range(30):
         sk = np.random.randint(0,4)
+
+        if sk == 1 and z[0] == 0 and np.random.random() < .5:
+            sk = np.random.randint(0, 4)
+
+        while z[sk] and np.random.random() < .5:
+            sk = np.random.randint(0, 4)
+
+        print z, sk
 
         guess = .2
         slip = .2
@@ -164,8 +171,8 @@ for c in range(60):
         skillskills[-1].append(sk)
         skillprobs[-1].append(sk)
 
-        tp = 0.1
-        if sk == 0 or sk == 2 or sk == 3 or (sk == 1 and z[0]):
+        tp = 0.25
+        if sk == 0 or sk == 2 or sk == 3 or (sk == 1 and z[0] == 1):
             t = np.random.random()
             if t < tp:
                 z[sk] = 1
