@@ -131,7 +131,7 @@ for it in range(iterz):
 
     print "RMSE:\t" + str(rmse)
 
-    f = open(folder + "/RMSE" + str(num_iterations) + '_iterations', "w+")
+    """f = open(folder + "/RMSE" + str(num_iterations) + '_iterations', "w+")
     f.write("RMSE: " + str(rmse) + "\n\n\nErrors: (prediction - observation)\n\n")
     for c in range(err.shape[0]):
         f.write(str(err[c,:]) + '\n')
@@ -140,7 +140,7 @@ for it in range(iterz):
     f = open(folder + "/mastery" + str(num_iterations) + '_iterations', "w+")
     for c in range(num):
         f.write(str(mastl[c]) + ',' + str(predl[c]) + ', ' + str(xtestl[c]) + '\n')
-    f.close()
+    f.close()"""
 
     #mcmc.save_model(folder + "/" + str(num_iterations) + '_iterations.model')
 
