@@ -95,7 +95,7 @@ for it in range(iterz):
 
     folder = "plots_" + fname
     #plotting samples will also load the MAP estimates
-    mcmc.plot_samples(folder + "/", str(num_iterations) + '_iterations')
+    #mcmc.plot_samples(folder + "/", str(num_iterations) + '_iterations')
 
     #load up test data and run predictions
     model.load_test_split(Xtest, Ptest)
@@ -122,12 +122,12 @@ for it in range(iterz):
             i += 1
 
     from matplotlib import pyplot as plt
-    plt.hist(np.array([predl]).T, 30)
+    """plt.hist(np.array([predl]).T, 30)
     plt.savefig(folder + "/Predictions_" + str(num_iterations) + '_iterations')
     plt.clf()
     plt.hist(np.array([errl]).T, 30)
     plt.savefig(folder + "/Errors_" + str(num_iterations) + '_iterations')
-    plt.clf()
+    plt.clf()"""
 
     print "RMSE:\t" + str(rmse)
 

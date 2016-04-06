@@ -91,7 +91,7 @@ for it in range(iterz):
 
     folder = "plots_" + fname
     #plotting samples will also load the MAP estimates
-    mcmc.plot_samples(folder + "/", str(num_iterations) + '_iterations')
+    #mcmc.plot_samples(folder + "/", str(num_iterations) + '_iterations')
 
     #load up test data and run predictions
     model.load_test_split(Xtest, Ptest, True)
@@ -119,17 +119,17 @@ for it in range(iterz):
             i += 1
 
     from matplotlib import pyplot as plt
-    plt.hist(np.array([predl]).T, 30)
+    """plt.hist(np.array([predl]).T, 30)
     plt.savefig(folder + "/Predictions_" + str(num_iterations) + '_iterations')
     plt.clf()
     plt.hist(np.array([errl]).T, 30)
     plt.savefig(folder + "/Errors_" + str(num_iterations) + '_iterations')
-    plt.clf()
+    plt.clf()"""
 
     print "RMSE:\t" + str(rmse)
     print "Total test items for " + skill + ":", num
 
-    f = open(folder + "/RMSE" + str(num_iterations) + '_iterations', "w+")
+    """f = open(folder + "/RMSE" + str(num_iterations) + '_iterations', "w+")
     f.write("RMSE: " + str(rmse) + "\n\n\nErrors: (prediction - observation)\n\n")
     for c in range(err.shape[0]):
         f.write(str(err[c,:]) + '\n')
@@ -138,7 +138,7 @@ for it in range(iterz):
     f = open(folder + "/mastery" + str(num_iterations) + '_iterations', "w+")
     for c in range(num):
         f.write(str(mastl[c]) + ',' + str(predl[c]) + ', ' + str(xtestl[c]) + '\n')
-    f.close()
+    f.close()"""
 
     #mcmc.save_model(folder + "/" + str(num_iterations) + '_iterations.model')
 

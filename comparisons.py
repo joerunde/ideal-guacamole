@@ -108,7 +108,7 @@ for sk in skills:
     set_stuff(sk, 'LFKT-transition-first-difficulty-gauss (L1)', "apr3_exps/RMSE_" + sk + "_L1_first_transdiffgauss_2states_500iter.json", table, stdtable)
 
     #LFKT-transition-difficulty-gauss (L1)
-    set_stuff(sk, 'LFKT-transition-second-difficulty-gauss (L1)', "apr3_exps/RMSE_" + sk + "_L1_second_transdiffgauss_2states_500iter.json", table, stdtable)
+    set_stuff(sk, 'LFKT-transition-second-difficulty-gauss (L1)', "apr3_exps/RMSE_" + sk + "_L1_second_transdiffgauss_2states_2000iter.json", table, stdtable)
 
     #adaptive transitions, + diff
     set_stuff(sk, 'LFKT-adaptive-transition (L1)', "apr3_exps/RMSE_" + sk + "_L1_adapt_trans_2states_1000iter.json", table, stdtable)

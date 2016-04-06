@@ -215,7 +215,7 @@ Tsigmas = []
 for sk in ['x_axis', 'y_axis', 'center', 'shape', 'spread', 'h_to_d', 'd_to_h', 'histogram']:
     try:
         paramslin = json.load(open("apr3_exps/PARAMS_" + sk + "_L1_second_transdiff_2states_2000iter.json","r"))
-        paramsgauss = json.load(open("apr3_exps/PARAMS_" + sk + "_L1_second_transdiffgauss_2states_500iter.json","r"))
+        paramsgauss = json.load(open("apr3_exps/PARAMS_" + sk + "_L1_second_transdiffgauss_2states_2000iter.json","r"))
 
         print sk#, baseline
     except Exception as e:
@@ -237,7 +237,7 @@ plot_hist(Tsigmas, "Gaussian variance for transition parameter", "trans_plots/Tb
 
 for sk in ['y_axis','histogram']:
     paramslin = json.load(open("apr3_exps/PARAMS_" + sk + "_L1_second_transdiff_2states_2000iter.json","r"))
-    paramsgauss = json.load(open("apr3_exps/PARAMS_" + sk + "_L1_second_transdiffgauss_2states_500iter.json","r"))
+    paramsgauss = json.load(open("apr3_exps/PARAMS_" + sk + "_L1_second_transdiffgauss_2states_2000iter.json","r"))
 
     f = open('trans_plots/Tbetas/' + sk + '.tsv','w')
     f.write("Linear weight\tGaussian Weight\tGaussian Var\n")
