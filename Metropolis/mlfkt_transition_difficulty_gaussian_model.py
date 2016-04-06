@@ -66,7 +66,7 @@ class MLFKTTransitionDifficultyGaussModel:
 
         self.params['T'] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, l1_b)), (lambda x: np.random.normal(x, 0.15)) )
 
-        self.params['Tbeta'] = parameter.Parameter(0,-1,1, (lambda x: self.uniform(x, -1, 1)), (lambda x: np.random.normal(x, 0.15)) )
+        self.params['Tbeta'] = parameter.Parameter(0,0,1, (lambda x: self.uniform(x, -1, 1)), (lambda x: max(0,np.random.normal(x, 0.15))) )
         self.params['Tsigma'] = parameter.Parameter(0.5, 0, 1, (lambda x: self.uniform(x, 0, 1)), (lambda x: np.random.normal(x, 0.15)) )
 
         #setup guess vector in really clunky way
@@ -145,7 +145,8 @@ class MLFKTTransitionDifficultyGaussModel:
     def make_transitions(self, diff, prob_num, belief):
         b = self.params['Tbeta'].get()
         s = self.params['Tsigma'].get()
-        t = expit(self.params['T'].get() + b * norm.pdf(belief, diff, s))
+        d = (diff + 3.0)/6.0 #normalize diff param to be in [0,1]
+        t = expit(self.params['T'].get() + b * norm.pdf(belief, d, s))
         t_mat = np.array([[1-t,t],[0,1]])
         return t_mat
 

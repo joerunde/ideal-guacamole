@@ -7,6 +7,17 @@ import numpy as np
 
 
 
+def plot_hist(params, title, fname):
+    fig, ax = plt.subplots(1)
+
+    plt.hist(params, bins=20)
+
+    ax.set_title(title)
+    plt.tight_layout()
+    plt.savefig(fname)
+
+    plt.close(fig)
+
 def plot_param_vector(params, title, fname, minv=-.3, maxv=.3, labels=()):
     fig, ax = plt.subplots(1)
     if minv < 0:
@@ -27,6 +38,7 @@ def plot_param_vector(params, title, fname, minv=-.3, maxv=.3, labels=()):
 
     plt.tight_layout()
     plt.savefig(fname)
+    plt.close(fig)
 
 
 # for each skill and transition setting, get the
@@ -35,11 +47,16 @@ def plot_param_vector(params, title, fname, minv=-.3, maxv=.3, labels=()):
 # LFKT (baseline) model RMSE
 
 for sk in ['x_axis', 'y_axis', 'center', 'shape', 'spread', 'h_to_d', 'd_to_h', 'histogram', 'xy', 'descrip', 'css', 'whole_tutor']:
-    for set in ['first', 'second']:
+    for set in ['first', 'second', 'adapt']:
         try:
-            rmse = np.mean(json.load(open("apr3_exps/RMSE_" + sk + "_L1_" + set + "_trans_2states_2000iter.json","r")))
-            baseline = np.mean(json.load(open("apr3_exps/RMSE_" + sk + "_bkt_2states_2000iter.json", "r")))
-            params = json.load(open("apr3_exps/PARAMS_" + sk + "_L1_" + set + "_trans_2states_2000iter.json","r"))
+            if set == 'adapt':
+                rmse = np.mean(json.load(open("apr3_exps/RMSE_" + sk + "_L1_" + set + "_trans_2states_1000iter.json","r")))
+                baseline = np.mean(json.load(open("apr3_exps/RMSE_" + sk + "_bkt_2states_2000iter.json", "r")))
+                params = json.load(open("apr3_exps/PARAMS_" + sk + "_L1_" + set + "_trans_2states_1000iter.json","r"))
+            else:
+                rmse = np.mean(json.load(open("apr3_exps/RMSE_" + sk + "_L1_" + set + "_trans_2states_2000iter.json","r")))
+                baseline = np.mean(json.load(open("apr3_exps/RMSE_" + sk + "_bkt_2states_2000iter.json", "r")))
+                params = json.load(open("apr3_exps/PARAMS_" + sk + "_L1_" + set + "_trans_2states_2000iter.json","r"))
 
             print sk, rmse, baseline
         except Exception as e:
@@ -57,7 +74,7 @@ for sk in ['x_axis', 'y_axis', 'center', 'shape', 'spread', 'h_to_d', 'd_to_h', 
                     transition_params[k].append(v)
         vec = []
         for k,v in transition_params.iteritems():
-            print k
+            #print k
             vec.append(np.mean(v))
         vec = np.array([vec])
         print
@@ -188,3 +205,49 @@ for sk in ['xy', 'descrip', 'css', 'whole_tutor']:
         plot_param_vector(mat, title, fname, 0, .1, ['h to d','d to h'])
     if sk == 'whole_tutor':
         plot_param_vector(mat, title, fname, 0, .4, ['center','shape','spread','x axis','y axis','h to d','d to h','histogram'])
+
+
+
+# Tbeta, Tsigma params
+Tbetas = []
+Tgbetas = []
+Tsigmas = []
+for sk in ['x_axis', 'y_axis', 'center', 'shape', 'spread', 'h_to_d', 'd_to_h', 'histogram']:
+    try:
+        paramslin = json.load(open("apr3_exps/PARAMS_" + sk + "_L1_second_transdiff_2states_2000iter.json","r"))
+        paramsgauss = json.load(open("apr3_exps/PARAMS_" + sk + "_L1_second_transdiffgauss_2states_500iter.json","r"))
+
+        print sk#, baseline
+    except Exception as e:
+        print sk, e
+        continue
+
+    for p in paramslin:
+        Tbetas.append(p['Tbeta'])
+    for p in paramsgauss:
+        Tsigmas.append(p['Tsigma'])
+        Tgbetas.append(p['Tbeta'])
+print Tbetas
+print Tsigmas
+print Tgbetas
+plot_hist(Tbetas, "Linear difficulty weights for transition parameter", "trans_plots/Tbetas/lineweights.png")
+plot_hist(Tgbetas, "Gaussian difficulty weights for transition parameter", "trans_plots/Tbetas/gaussweight.png")
+plot_hist(Tsigmas, "Gaussian variance for transition parameter", "trans_plots/Tbetas/gaussvar.png")
+
+
+for sk in ['y_axis','histogram']:
+    paramslin = json.load(open("apr3_exps/PARAMS_" + sk + "_L1_second_transdiff_2states_2000iter.json","r"))
+    paramsgauss = json.load(open("apr3_exps/PARAMS_" + sk + "_L1_second_transdiffgauss_2states_500iter.json","r"))
+
+    f = open('trans_plots/Tbetas/' + sk + '.tsv','w')
+    f.write("Linear weight\tGaussian Weight\tGaussian Var\n")
+
+    for c in range(3):
+        f.write(str(paramslin[c]['Tbeta']) + "\t" + str(paramsgauss[c]['Tbeta']) + "\t" + str(paramsgauss[c]['Tsigma']) + "\n")
+    f.close()
+
+
+
+
+
+

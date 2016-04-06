@@ -143,7 +143,8 @@ class MLFKTTransitionDifficultyModel:
 
     def make_transitions(self, diff, prob_num):
         b = self.params['Tbeta'].get()
-        t = expit(self.params['T'].get() + b * diff)
+        d = (diff + 3.0) / 6.0 #normalize difficulty to be in [0,1]
+        t = expit(self.params['T'].get() + b * d)
         t_mat = np.array([[1-t,t],[0,1]])
         return t_mat
 
