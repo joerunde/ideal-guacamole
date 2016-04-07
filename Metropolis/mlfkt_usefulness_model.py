@@ -19,7 +19,7 @@ class MLFKTSUModel:
 
     sigma = 0.15
 
-    def __init__(self, X, P, S, intermediate_states, Dsigma):
+    def __init__(self, X, P, S, intermediate_states, Dsigma, justBKTs = False):
         """
         :param X: the observation matrix, -1 padded to the right (to make it square)
         :param P: problem indices, -1 padded to the right
@@ -27,7 +27,7 @@ class MLFKTSUModel:
         :param Dsigma: model parameter- initial setting of variance for problem difficulty values. Set to 0 to lock to BKT
         :return: nix
         """
-
+        self.justBKTs = justBKTs
         self.data = {}
         self.data['X'] = X
         self.data['P'] = P
@@ -140,6 +140,8 @@ class MLFKTSUModel:
         return np.random.normal(x, 0.15)
 
     def sample_KT_param(self, x):
+        if self.justBKTs:
+            return 0
         return max(0, np.random.normal(x, 0.15))
 
     def make_transitions(self, skill):
@@ -183,6 +185,9 @@ class MLFKTSUModel:
         Dsigma = self.params['Dsigma']
         N = self.N
         T = self.T
+
+        if self.justBKTs and 'U-' in paramID:
+            return 0
 
         if paramID == 'Dsigma':
             ##get p(Dsigma | D) propto p(D | Dsigma) p(Dsigma)
@@ -334,7 +339,7 @@ class MLFKTSUModel:
         for sk in range(self.total_skills):
             for sk2 in range(self.total_skills):
                 if sk != sk2:
-                    print self.params['U-'+str(sk)+'-'+str(sk2)].get()
+                    print sk, sk2, self.params['U-'+str(sk)+'-'+str(sk2)].get()
         print
 
     #get a single prediction for test sequence n, time t
