@@ -155,8 +155,8 @@ for c in range(120):
 
         print z, sk
 
-        guess = .2
-        slip = .2
+        guess = .25
+        slip = .25
 
         st = z[sk]
 
@@ -190,6 +190,7 @@ print_probs(skillprobs, 'KT')
 print
 print
 
+
 # shared knowledge time
 skillobs = []
 skillskills = []
@@ -200,9 +201,9 @@ for c in range(120):
     skillskills.append([])
     skillprobs.append([])
 
-    z = [0,0,0]
+    z = [0,0]
 
-    for j in [0,1,2]:
+    for j in [0,1]:
         a = np.random.random()
         if a < 0.1:
             z[j] = 1
@@ -211,19 +212,19 @@ for c in range(120):
 
     print z
 
-    for i in range(18):
+    for i in range(15):
         sk = np.random.randint(0,len(z))
 
         """if sk == 1 and z[0] == 0 and np.random.random() < .5:
             sk = np.random.randint(0, 4)"""
 
-        while z[sk] and np.random.random() < .15:
-            sk = np.random.randint(0, len(z))
+        """while z[sk] and np.random.random() < .15:
+            sk = np.random.randint(0, len(z))"""
 
         print z, sk
 
-        guess = .2
-        slip = .2
+        guess = .15
+        slip = .15
 
         st = z[sk]
 
@@ -243,7 +244,7 @@ for c in range(120):
         skillskills[-1].append(sk)
         skillprobs[-1].append(sk)
 
-        tp = 0.25
+        tp = 0.2
 
         t = np.random.random()
         if t < tp:
@@ -256,6 +257,71 @@ print_skills(skillskills, 'KT2')
 print_probs(skillprobs, 'KT2')
 
 
+
+# UNSHARED knowledge time
+skillobs = []
+skillskills = []
+skillprobs = []
+
+for c in range(120):
+    skillobs.append([])
+    skillskills.append([])
+    skillprobs.append([])
+
+    z = [0,0]
+
+    for j in [0,1]:
+        a = np.random.random()
+        if a < 0.1:
+            z[j] = 1
+        else:
+            z[j] = 0
+
+    print z
+
+    for i in range(15):
+        sk = np.random.randint(0,len(z))
+
+        """if sk == 1 and z[0] == 0 and np.random.random() < .5:
+            sk = np.random.randint(0, 4)"""
+
+        """while z[sk] and np.random.random() < .15:
+            sk = np.random.randint(0, len(z))"""
+
+        print z, sk
+
+        guess = .15
+        slip = .15
+
+        st = z[sk]
+
+        """if sk == 0 and z[2]:
+            guess = 0.4
+            slip = 0.05
+        if sk == 2 and z[0]:
+            guess = 0.4
+            slip = 0.05"""
+
+        a = np.random.random()
+        if (st == 1 and a < slip) or (st == 0 and a > guess):
+            skillobs[-1].append(0)
+        else:
+            skillobs[-1].append(1)
+
+        skillskills[-1].append(sk)
+        skillprobs[-1].append(sk)
+
+        tp = 0.2
+
+        t = np.random.random()
+        if t < tp:
+            z[sk] = 1
+
+    print skillobs[-1]
+
+print_obs(skillobs, 'KT3')
+print_skills(skillskills, 'KT3')
+print_probs(skillprobs, 'KT3')
 
 
 
