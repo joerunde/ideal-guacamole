@@ -228,10 +228,10 @@ for c in range(120):
 
         st = z[sk]
 
-        if sk == 0 and z[2]:
+        if sk == 0 and z[1]:
             guess = 0.4
             slip = 0.05
-        if sk == 2 and z[0]:
+        if sk == 1 and z[0]:
             guess = 0.4
             slip = 0.05
 
@@ -311,7 +311,7 @@ for c in range(120):
         skillskills[-1].append(sk)
         skillprobs[-1].append(sk)
 
-        tp = 0.2
+        tp = 0.25
 
         t = np.random.random()
         if t < tp:
