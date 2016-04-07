@@ -1,5 +1,6 @@
 #simulate different student situations
 import numpy as np
+import random
 
 def print_obs(obs, skill):
     f = open('dump/observations_simulated_' + skill + '.csv', 'w')
@@ -322,6 +323,75 @@ print_probs(skillprobs, 'KT3')
 
 
 
+#multiple shared knowledge skills
+# shared knowledge time
+skillobs = []
+skillskills = []
+skillprobs = []
+
+for c in range(150):
+    skillobs.append([])
+    skillskills.append([])
+    skillprobs.append([])
+
+    z = [0,0,0,0]
+
+    """for j in [0,1]:
+        a = np.random.random()
+        if a < 0.1:
+            z[j] = 1
+        else:
+            z[j] = 0"""
+
+    print z
+
+    skills = [1,2,3,0] * 9
+    random.shuffle(skills)
+
+    for sk in skills:
+        #sk = np.random.randint(0,len(z))
+
+        """if sk == 1 and z[0] == 0 and np.random.random() < .5:
+            sk = np.random.randint(0, 4)"""
+
+        """while z[sk] and np.random.random() < .15:
+            sk = np.random.randint(0, len(z))"""
+
+        print z, sk
+
+        guess = .05
+        slip = .33
+
+        st = z[sk]
+
+        if sk == 0 and z[1] or sk == 1 and z[0]:
+            guess = 0.33
+            slip = 0.05
+
+        if sk == 2 and z[3] or sk == 3 and z[2]:
+            guess = 0.33
+            slip = 0.05
+
+        a = np.random.random()
+        if (st == 1 and a < slip) or (st == 0 and a > guess):
+            skillobs[-1].append(0)
+        else:
+            skillobs[-1].append(1)
+
+        skillskills[-1].append(sk)
+        skillprobs[-1].append(sk)
+
+        tp = 0.1
+
+        t = np.random.random()
+        if t < tp:
+            z[sk] = 1
+
+    print skillobs[-1]
+
+print_obs(skillobs, 'KT4')
+print_skills(skillskills, 'KT4')
+print_probs(skillprobs, 'KT4')
 
 
 
