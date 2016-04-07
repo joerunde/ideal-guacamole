@@ -146,7 +146,7 @@ for it in range(iterz):
     if 'y' in sys.argv[4]:
         fname += '_bkt'
 
-    rmsefname = 'dump/RMSE_useful_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
+    rmsefname = 'dump/RMSE_pen_useful_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
     if os.path.exists(rmsefname):
         rmsel = json.load(open(rmsefname,"r"))
     else:
@@ -155,7 +155,7 @@ for it in range(iterz):
     rmsel.append(rmse)
     json.dump(rmsel, open(rmsefname,"w"))
 
-    paramfname = 'dump/PARAMS_uesful_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
+    paramfname = 'dump/PARAMS_pen_useful_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
     if os.path.exists(paramfname):
         try:
             paraml = json.load(open(paramfname,"r"))
