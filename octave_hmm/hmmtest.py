@@ -3,13 +3,13 @@ from hmmlearn import hmm
 
 np.random.seed()
 
-model = hmm.MultinomialHMM(n_components=3)
+model = hmm.MultinomialHMM(n_components=5)
 
-model.startprob_ = np.array([0.50, 0.10, 0.10, 0.10, 0.10])
-model.transmat_ = np.array([[0.75, 0.25, 0.00, 0.00, 0.00],
-                            [0.00, 0.75, 0.25, 0.00, 0.00],
-                            [0.00, 0.00, 0.75, 0.25, 0.00],
-                            [0.00, 0.00, 0.00, 0.75, 0.25],
+model.startprob_ = np.array([0.80, 0.05, 0.05, 0.05, 0.05])
+model.transmat_ = np.array([[0.80, 0.20, 0.00, 0.00, 0.00],
+                            [0.00, 0.80, 0.20, 0.00, 0.00],
+                            [0.00, 0.00, 0.80, 0.20, 0.00],
+                            [0.00, 0.00, 0.00, 0.80, 0.20],
                             [0.00, 0.00, 0.00, 0.00, 1.00]])
 
 model.emissionprob_ = np.array([[0.9, 0.1],
@@ -25,12 +25,17 @@ States = []
 f = open('observations_5state.csv', 'wt')
 g = open('problems_5state.csv', 'wt')
 
-for c in range(100):
-    length = 16
-    x, states = model.sample(n_samples=length)
+a,b = model.sample()
+print a,b
+c,d = model.sample(5)
+print c,d
+
+for c in range(200):
+    length = 25
+    x, states = model.sample(length)
 
     for o in x:
-        f.write(str(o[0]) + ',')
+        f.write(str(o) + ',')
         g.write('0,')
     f.write('-1\n')
     g.write('-1\n')
@@ -45,7 +50,7 @@ print X
 f.close()
 g.close()
 
-
+"""
 model2 = hmm.MultinomialHMM(n_components=5, verbose=True, n_iter=500)
 model2.fit(X, lens)
 
@@ -53,4 +58,4 @@ np.set_printoptions(5)
 
 print np.round(model2.startprob_,2)
 print np.round(model2.transmat_,2)
-print np.round(model2.emissionprob_,2)
+print np.round(model2.emissionprob_,2)"""

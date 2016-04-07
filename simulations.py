@@ -78,7 +78,7 @@ print_probs(contprobs, 'cont')
 #do modified transition stuff
 transobs = []
 transprobs = []
-for c in range(40):
+for c in range(200):
     transobs.append([])
     transprobs.append([])
     a = np.random.random()
@@ -87,25 +87,25 @@ for c in range(40):
     else:
         z = 0
 
-    for i in range(10):
+    probs = [0,1,2,3,4,5,6,7,8,9]
+    random.shuffle(probs)
+    for prob in probs:
         a = np.random.random()
         if (z and a < .2 ) or (z == 0 and a > .2):
             transobs[-1].append(0)
         else:
             transobs[-1].append(1)
 
-        prob = np.random.randint(0, 10)
-
         transprobs[-1].append(prob)
 
-        tp = 0.1
+        tp = 0.15
         #some probs are awful
         if prob < 3:
-            tp = 0
+            tp = 0.05
 
         #a couple are outstanding
         if prob >= 8:
-            tp = 0.95
+            tp = 0.78
 
         t = np.random.random()
         if t < tp:
@@ -197,7 +197,7 @@ skillobs = []
 skillskills = []
 skillprobs = []
 
-for c in range(80):
+for c in range(160):
     skillobs.append([])
     skillskills.append([])
     skillprobs.append([])
@@ -212,16 +212,10 @@ for c in range(80):
             z[j] = 0"""
 
     print z
+    skills = [0,1] * 15
+    random.shuffle(skills)
 
-    for i in range(30):
-        sk = np.random.randint(0,len(z))
-
-        """if sk == 1 and z[0] == 0 and np.random.random() < .5:
-            sk = np.random.randint(0, 4)"""
-
-        """while z[sk] and np.random.random() < .15:
-            sk = np.random.randint(0, len(z))"""
-
+    for sk in skills:
         print z, sk
 
         guess = .05

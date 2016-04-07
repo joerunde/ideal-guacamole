@@ -1,6 +1,6 @@
 """ This model implements multi-state LFKT (still with no student ability parameter)
 """
-
+import itertools
 import numpy as np
 from scipy.stats import norm
 from scipy.stats import laplace
@@ -147,15 +147,47 @@ class MLFKTSUPModel:
     def make_emissions(self, diff, prob_num, skill, skills):
         #print str(time.time()) + "\tcalculating new emissions"
         table = np.ones((self.total_states,2))
+
+        uvec = []
+        for sk in range(self.total_skills):
+            if sk == skill:
+                uvec.append(0)
+                continue
+            uvec.append(self.params['U-'+str(skill)+'-'+str(sk)].get())
+
         #guesses...
         for row in range(self.total_states - 1):
-            u = 0
+            guess = self.params['G-'+str(skill)+'-_' + str(row)].get()
+            # integrate over the other skills effects
+            sks = [x for x in itertools.product([0,1], repeat=self.total_skills)]
+            prob = 0
+            sump = 0
+            for gg in sks: #for each setting of all masteries
+                u = 0
+                p = 1
+                if gg[skill] == 0: # remove half of settings
+                    continue
+
+                for c in range(len(gg)):
+                    if c == skill:
+                        continue
+                    #multiply in the probability of this skill being mastered or not
+                    p = p * skills[c, gg[c]]
+                    #add in or subtract the KT bonus
+                    if gg[c]:
+                        u += uvec[c]
+                    else:
+                        u -= uvec[c]
+                prob += p * expit(guess + u)
+                sump += p
+            #print "sum p should be 1:", sump
+            """u = 0
             for sk in range(self.total_skills):
                 #print "Belief:", skills[sk,1]
                 if sk != skill:
                     # penalize here if sk has not been mastered
-                    u += self.params['U-'+str(skill)+'-'+str(sk)].get() * (skills[sk,1] - 0.5)
-            table[row, 1] = expit(self.params['G-'+str(skill)+'-_' + str(row)].get() + u)
+                    u += self.params['U-'+str(skill)+'-'+str(sk)].get() * (skills[sk,1] - 0.5)"""
+            table[row, 1] = prob
             table[row, 0] = 1 - table[row, 1]
         #and slip
         u = 0
