@@ -197,10 +197,20 @@ skillobs = []
 skillskills = []
 skillprobs = []
 
+sepobs = {}
+sepprobs = {}
+for j in range(2):
+    sepobs[j] = []
+    sepprobs[j] = []
+
+
 for c in range(1000):
     skillobs.append([])
     skillskills.append([])
     skillprobs.append([])
+    for j in range(2):
+        sepobs[j].append([])
+        sepprobs[j].append([])
 
     z = [0,0]
 
@@ -230,11 +240,14 @@ for c in range(1000):
         a = np.random.random()
         if (st == 1 and a < slip) or (st == 0 and a > guess):
             skillobs[-1].append(0)
+            sepobs[sk][-1].append(0)
         else:
             skillobs[-1].append(1)
+            sepobs[sk][-1].append(1)
 
         skillskills[-1].append(sk)
         skillprobs[-1].append(sk)
+        sepprobs[sk][-1].append(0)
 
         tp = 0.1
 
@@ -247,6 +260,10 @@ for c in range(1000):
 print_obs(skillobs, 'KT2')
 print_skills(skillskills, 'KT2')
 print_probs(skillprobs, 'KT2')
+
+for j in range(2):
+    print_obs(sepobs[j], 'sep'+str(j)+'_KT2')
+    print_probs(sepprobs[j], 'sep'+str(j)+'_KT2')
 
 
 
