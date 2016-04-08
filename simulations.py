@@ -55,7 +55,7 @@ for c in range(40):
 contobs = []
 contprobs = []
 
-for c in range(40):
+for c in range(1000):
     contobs.append([])
     contprobs.append([])
     z = 0
@@ -78,7 +78,7 @@ print_probs(contprobs, 'cont')
 #do modified transition stuff
 transobs = []
 transprobs = []
-for c in range(200):
+for c in range(1000):
     transobs.append([])
     transprobs.append([])
     a = np.random.random()
@@ -91,7 +91,7 @@ for c in range(200):
     random.shuffle(probs)
     for prob in probs:
         a = np.random.random()
-        if (z and a < .2 ) or (z == 0 and a > .2):
+        if (z and a < .1 ) or (z == 0 and a > .1):
             transobs[-1].append(0)
         else:
             transobs[-1].append(1)
@@ -197,7 +197,7 @@ skillobs = []
 skillskills = []
 skillprobs = []
 
-for c in range(160):
+for c in range(1000):
     skillobs.append([])
     skillskills.append([])
     skillprobs.append([])
