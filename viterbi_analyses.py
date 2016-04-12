@@ -231,10 +231,6 @@ for students in [10]:#,25,50,75,100,500]:
 
 
 
-
-
-
-
     #### Now do all of that again for the KT model
     X = np.loadtxt(open("dump/observations_simulated_KT2_"+str(students)+".csv","rb"),delimiter=",")
     P = np.loadtxt(open("dump/problems_simulated_KT2_"+str(students)+".csv","rb"),delimiter=",")
@@ -248,12 +244,19 @@ for students in [10]:#,25,50,75,100,500]:
 
     pdictl = json.load(open("dump/PARAMS_pen_useful_simulated_KT2_"+str(students)+"_2states_1000iter.json","r"))
     params = model.get_parameters()
-    #Set the learned model parameters for transition model
+    #Set the learned model parameters for KT model
     for k, v in params.iteritems():
         if k in pdictl[-1]:
-            v.set(pdictl[-1][k])
+            if "T" in k:
+                t = pdictl[-1][k]
+                tmat = np.array([[1-t, t], [0, 1]])
+                print "SETTING TMAT", k, tmat
+                v.set(tmat)
+            else:
+                print "SETTING", k, pdictl[-1][k]
+                v.set(pdictl[-1][k])
         else:
-            print "Uh oh,", k, "not in learned params for transition model"
+            print "Uh oh,", k, "not in learned params for Knowledge Transfer model"
 
     """params = model.get_parameters()
     #Set the learned model parameters for KT model

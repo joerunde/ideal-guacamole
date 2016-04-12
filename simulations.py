@@ -141,9 +141,11 @@ for students in [10, 25, 50, 75, 100, 500]:
                 skillobs[-1].append(1)
                 sepobs[sk][-1].append(1)
 
+            prob = np.random.randint(15)
+
             skillskills[-1].append(sk)
-            skillprobs[-1].append(sk)
-            sepprobs[sk][-1].append(0)
+            skillprobs[-1].append(prob)
+            sepprobs[sk][-1].append(prob)
             sepstates[sk][-1].append(st)
 
             tp = 0.1

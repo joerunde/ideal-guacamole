@@ -190,9 +190,13 @@ for it in range(iterz):
     pdict = {}
     for id, param in p.iteritems():
         #pdict[id] = param.get()
-        if "D_" in id:
-            pdict[id] = param.get()
-        if "U" in id:
+        if "T" in id:
+            tval = param.get()[0,1]
+            pdict[id] = tval
+        elif "L" in id:
+            l = [ param.get()[0], param.get()[1] ]
+            pdict[id] = l
+        else:
             pdict[id] = param.get()
     #pdict['Trans'] = list( [list(x) for x in model.make_transitions()] )
     #pdict['Pi'] = list(model.make_initial())
