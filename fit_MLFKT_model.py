@@ -164,7 +164,11 @@ for it in range(iterz):
     p = model.get_parameters()
     pdict = {}
     for id, param in p.iteritems():
-        if "D_" in id:
+        if id == 'T':
+            pdict[id] = param.get()[0,1]
+        elif id == 'L':
+            pdict[id] = [param.get()[0], param.get()[1]]
+        else:
             pdict[id] = param.get()
     pdict['Trans'] = list( [list(x) for x in model.make_transitions()] )
     pdict['Pi'] = list(model.make_initial())

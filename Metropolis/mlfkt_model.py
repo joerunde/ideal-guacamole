@@ -42,7 +42,6 @@ class MLFKTModel:
         self.params = {}
 
         #setup initial probability vector...
-        #!!!!!!!!!!!!!!!!!!!!!! here L[0] is p(unlearned)
         val = np.ones(total_states)/(total_states + 0.0)
         self.params['L'] = parameter.Parameter(val, 0, 1, (lambda x: 1), (lambda x: self.sample_dir(DIRICHLET_SCALE * x)))
         #print "pi starting as:"
@@ -320,9 +319,9 @@ class MLFKTModel:
 
     #get dat viterbi on
     def viterbi(self):
-        for id, p in self.params.iteritems():
-            avg = np.mean(p.get_samples(), 0)
-            p.set(avg)
+        #for id, p in self.params.iteritems():
+        #    avg = np.mean(p.get_samples(), 0)
+        #    p.set(avg)
 
         X = self.data['X']
         Probs = self.data['P']
@@ -398,22 +397,21 @@ class MLFKTModel:
             momentseqs.append(momentseq)
 
             #print np.array(mast_seq)
-            print str(stateseq) + '\t' + str(firstneg+1) + '\t' + str(firstpoint1+1)
+            #print str(stateseq) + '\t' + str(firstneg+1) + '\t' + str(firstpoint1+1)
             tmp = [int(x) for x in X[n,0:last_t]]
             tmp.insert(0,0)
-            print tmp
+            #print tmp
             #print momentseq
         return stateseqs, mastseqs, momentseqs
 
 
     #okay we finna need some inference up in here
-    def load_test_split(self, Xtest, Ptest, predict_now=True):
+    def load_test_split(self, Xtest, Ptest, getMap=True):
         self.test['X'] = Xtest
         self.test['P'] = Ptest
         self.test['Predictions'] = np.copy(Xtest) + 0.0
         self.test['Mastery'] = np.copy(Xtest) + 0.0
-        if predict_now:
-            self._predict(False)
+        self._predict(getMap)
 
 
     #hacky MAP estimation
@@ -437,7 +435,7 @@ class MLFKTModel:
         for k,v in self.params.iteritems():
                 v.set(v.get_samples()[maxc])
 
-    def _predict(self, use_current_params=False):
+    def _predict(self, getMap=True):
         ## prediction rolls through the forward algorithm only
         ## as we predict only based on past data
         X = self.test['X']
@@ -446,7 +444,7 @@ class MLFKTModel:
         T = X.shape[1]
 
         #set params to mean
-        if not use_current_params:
+        if getMap:
             self.set_map_params()
 
 

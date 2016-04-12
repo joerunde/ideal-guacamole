@@ -7,7 +7,7 @@ from Metropolis.mlfkt_usefulness_model import MLFKTSUModel
 import sys, json, time, random, os, math
 import numpy as np
 
-print "usage: python fit_MLFKT_model.py burnin iterations k(for 1/k test split) bkt(y/n) skills num_intermediate_states iterations"
+print "usage: python fit_MLFKT_usefulness_model.py burnin iterations k(for 1/k test split) bkt(y/n) skills num_intermediate_states iterations"
 
 iterz = int(sys.argv[7])
 

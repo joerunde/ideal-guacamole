@@ -19,7 +19,7 @@ class MLFKTSUPModel:
 
     sigma = 0.15
 
-    def __init__(self, X, P, S, intermediate_states, Dsigma):
+    def __init__(self, X, P, S, intermediate_states, Dsigma, l1_b=0.15):
         """
         :param X: the observation matrix, -1 padded to the right (to make it square)
         :param P: problem indices, -1 padded to the right
@@ -47,7 +47,7 @@ class MLFKTSUPModel:
         self.total_states = total_states
         self.params = {}
 
-        l1_b = 0.15
+        print "L1 b:", l1_b
 
         #We need one set of BKT params for each skill...
         for sk in range(numskills):
@@ -189,14 +189,37 @@ class MLFKTSUPModel:
                     u += self.params['U-'+str(skill)+'-'+str(sk)].get() * (skills[sk,1] - 0.5)"""
             table[row, 1] = prob
             table[row, 0] = 1 - table[row, 1]
+
+
         #and slip
-        u = 0
-        #try not adding in usefulness to slip
-        #for sk in range(self.total_skills):
-        #    if sk != skill:
-        #        u += self.params['U-'+str(skill)+'-'].get() * skills[sk,1]
-        table[row + 1, 0] = expit(self.params['S-'+str(skill)+'-'].get() - u)
-        table[row + 1, 1] = 1 - table[row + 1, 0]
+
+        slip = self.params['S-'+str(skill)+'-'].get()
+        # integrate over the other skills effects
+        sks = [x for x in itertools.product([0,1], repeat=self.total_skills)]
+        prob = 0
+        sump = 0
+        for gg in sks: #for each setting of all masteries
+            u = 0
+            p = 1
+            if gg[skill] == 0: # remove half of settings
+                continue
+
+            for c in range(len(gg)):
+                if c == skill:
+                    continue
+                #multiply in the probability of this skill being mastered or not
+                p = p * skills[c, gg[c]]
+                #add in or subtract the KT bonus
+                if gg[c]:
+                    u += uvec[c]
+                else:
+                    u -= uvec[c]
+            prob += p * expit(slip - u)
+            sump += p
+        #print "sum p should be 1:", sump
+
+        table[row + 1, 0] = prob
+        table[row + 1, 1] = 1 - prob
 
         return table
 
@@ -276,14 +299,205 @@ class MLFKTSUPModel:
         log_post = loglike + log_prior
         return log_post
 
+
+    #get dat viterbi on
+    def viterbi(self, skill):
+
+        X = self.data['X']
+        Probs = self.data['P']
+        Skill = self.data['S']
+        Dsigma = self.params['Dsigma']
+        N = self.N
+        T = self.T
+
+        #trans = self.make_transitions()
+        pi = self.make_initial(skill)
+        states = self.total_states
+
+        stateseqs = []
+        mastseqs = []
+
+        times = []
+        times2 = []
+
+        n7_0probs = []
+        n7_15probs = []
+        n7_7probs = []
+        n7obs = []
+        n7_other_beliefs = []
+
+
+        for n in range(N):
+
+            #okay so the ptrs. etc code is just gonna sit here but...
+            #we're gonna brute force this thing cause it's not working
+            #assume the 15-problem sequences from simulation
+            #then just 15 possible transitions (16 if it never happens)
+            #which is most likely?
+
+            sequence_probs = [1] * 16
+            these_obs = []
+            dot2 = True
+
+            ptrs = np.zeros( (T + 1, states) )
+            alpha = np.ones( (T+1, states))
+            alpha[0,:] = pi
+            beliefs = np.zeros( (self.total_skills, states) )
+            for sk in range(self.total_skills):
+                beliefs[sk,:] = np.copy(pi)
+
+            last_t = 0
+            t = -1
+            # actual_t is the actual step number for the data matrices X, P and S
+            # t is the step number for this skill
+            #print "hi"
+            for actual_t in range(0,T):
+                last_t = t
+                if X[n,actual_t] == -1:
+                    break
+
+                sk = int(Skill[n, actual_t])
+                #print sk
+
+                emit = self.make_emissions(0,0, sk, beliefs)
+                trans = self.make_transitions(sk)
+
+                #if sk == 0:
+                    #print "Other skill belief: ", beliefs[1,1]
+                    #print "Guess:", emit[0,1]
+                    #print "Slip:", emit[1,0]
+
+                #update beliefs w/ regular forward stuff
+                beliefs[sk,:] = np.dot( np.multiply( emit[:,X[n, actual_t]], beliefs[sk,:]), trans)
+                beliefs[sk,:] /= np.sum(beliefs[sk,:])
+                #print "beliefs for sk:", sk, beliefs[sk,:]
+
+                if sk != skill:
+                    continue
+                t += 1
+
+                if beliefs[skill,1] > 0.5 and dot2:
+                    dot2 = False
+                    times2.append(t)
+
+                for c in range(states):
+                    # max operator for transitioning
+                    gg = [alpha[t, old] * trans[old,c] for old in range(states)]
+                    alpha[t+1, c] = max(gg)
+                    # point backwards
+                    ptrs[t+1, c] = int(gg.index(max(gg)))
+                    alpha[t, c] *= emit[c, X[n, actual_t]]
+
+                if n == 7:
+                    n7obs.append(int(X[n,actual_t]))
+                    n7_other_beliefs.append(beliefs[1,1])
+                #update sequence probabilities
+                for seq in range(16):
+                    if t < seq: #we're guessing
+                        sequence_probs[seq] *= emit[0,int(X[n, actual_t])]
+                        if n == 7 and seq == 0:
+                            n7_0probs.append(emit[0,int(X[n, actual_t])])
+                        if n == 7 and seq == 7:
+                            print "guess"
+                            n7_7probs.append(emit[0,int(X[n, actual_t])])
+                        if n == 7 and seq == 15:
+                            n7_15probs.append(emit[0,int(X[n, actual_t])])
+                        #    print "Guess:", int(X[n, actual_t]), emit[0,int(X[n, actual_t])]
+
+                    else:   #we're slipping
+                        sequence_probs[seq] *= emit[1,int(X[n, actual_t])]
+                        if n == 7 and seq == 0:
+                            n7_0probs.append(emit[1,int(X[n, actual_t])])
+                        if n == 7 and seq == 7:
+                            print "slip"
+                            n7_7probs.append(emit[1,int(X[n, actual_t])])
+
+                        if n == 7 and seq == 15:
+                            n7_15probs.append(emit[1,int(X[n, actual_t])])
+                        #if seq == 8:
+                        #    print "Slip:", int(X[n, actual_t]), emit[1,int(X[n, actual_t])]
+
+                these_obs.append(int(X[n,actual_t]))
+
+            for seq in range(16):
+                #if seq < 15:
+                sequence_probs[seq] *= 0.1
+                sequence_probs[seq] *= (0.9 ** seq)
+
+            times.append(sequence_probs.index(max(sequence_probs)))
+            #print these_obs, times[-1]
+            #if n % 50 == 0:
+            #    print sequence_probs.index(max(sequence_probs))
+
+            #print alpha
+            #print ptrs
+            #print last_t
+
+            #np.set_printoptions(precision=3)
+            mast_seq = []
+            stateseq = []
+
+            # probably off by one...
+            last_t += 1
+
+            stateseq.append(alpha[last_t].argmax())
+            mast_seq.append(alpha[last_t,1] / sum(alpha[last_t,:]))
+            for t in range(last_t)[::-1]:
+                stateseq.append(int(ptrs[t,stateseq[-1]]))
+                mast_seq.append(alpha[t,1] / sum(alpha[t,:]))
+
+            stateseq = list(reversed(stateseq))
+            mast_seq = list(reversed(mast_seq))
+
+            stateseqs.append(stateseq)
+            mastseqs.append(mast_seq)
+
+            #print np.array(mast_seq)
+            #print str(stateseq)
+            tmp = [int(x) for x in X[n,0:last_t]]
+            tmp.insert(0,0)
+            #print tmp
+            #print momentseq
+        print times
+        #print
+        #print times2
+
+        print n7obs
+        print n7_other_beliefs
+        print
+        print n7_0probs
+        gg = 1
+        for x in n7_0probs:
+            gg *= x
+        print gg
+
+        print n7_7probs
+        gg = 1
+        for x in n7_7probs:
+            gg *= x
+        print gg
+
+
+        print n7_15probs
+        gg = 1
+        for x in n7_15probs:
+            gg *= x
+        print gg
+
+        print times[7]
+
+
+        return stateseqs, mastseqs, times
+
+
     #okay we finna need some inference up in here
-    def load_test_split(self, Xtest, Ptest, Skilltest):
+    def load_test_split(self, Xtest, Ptest, Skilltest, getMAP = True):
         self.test['X'] = Xtest
         self.test['P'] = Ptest
         self.test['S'] = Skilltest
         self.test['Predictions'] = np.copy(Xtest)
         self.test['Mastery'] = np.copy(Xtest)
-        self._predict()
+        self._predict(getMAP)
 
     #hacky MAP estimation
     def set_map_params(self):
@@ -305,7 +519,7 @@ class MLFKTSUPModel:
         for k,v in self.params.iteritems():
                 v.set(v.get_samples()[maxc])
 
-    def _predict(self):
+    def _predict(self, getMAP = True):
         ## prediction rolls through the forward algorithm only
         ## as we predict only based on past data
         X = self.test['X']
@@ -315,7 +529,8 @@ class MLFKTSUPModel:
         Skill = self.test['S']
 
         #set params to mean
-        self.set_map_params()
+        if getMAP:
+            self.set_map_params()
 
         #pi = self.make_initial()
         #trans = self.make_transitions()

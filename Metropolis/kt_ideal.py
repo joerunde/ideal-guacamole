@@ -1,4 +1,4 @@
-""" This model implements multi-state LFKT (still with no student ability parameter)
+""" KT-IDEAL: One separate transition parameter per problem
 """
 
 import numpy as np
@@ -15,7 +15,7 @@ import parameter
 DIRICHLET_SCALE = 300
 DIR_LOW_BOUND = 0.01
 
-class MLFKTTransitionModel:
+class KTIDEAL:
 
     sigma = 0.15
 
@@ -60,7 +60,7 @@ class MLFKTTransitionModel:
         #print "T starting as:"
         #print t_mat
 
-        self.params['T'] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, .5)), (lambda x: np.random.normal(x, 0.15)) )
+        #self.params['T'] = parameter.Parameter(0, -3, 3, (lambda x: laplace.pdf(x, 0, .5)), (lambda x: np.random.normal(x, 0.15)) )
 
         #setup guess vector in really clunky way
         for c in range(intermediate_states + 1):
@@ -69,23 +69,14 @@ class MLFKTTransitionModel:
         self.params['S'] = parameter.Parameter(0.5, 0, 1, (lambda x: self.uniform(x, 0, 1)),
                                                (lambda x: self.sample_guess_prob(x)))
 
-        #problem difficulty vector, also in clunky way
-        self.emission_mask = []
-        self.emission_mats = []
-        for c in range(numprobs):
-            self.emission_mask.append(False)
-            self.emission_mats.append(np.ones((total_states, 2)))
-            if L1:
-                print "Using L1"
-                self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: laplace.pdf(x, 0, .5) + 0*d_sig),
-                                                             (lambda x: np.random.normal(x, 0.15)))
-            else:
-                print "Using adaptive L2"
-                self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: norm.pdf(x, 0, d_sig)),
-                                                             (lambda x: np.random.normal(x, 0.15)))
 
-        self.params['Dsigma'] = parameter.Parameter(Dsigma, 0, 3, (lambda x: invgamma.pdf(x, 1, 0, 2)),
-                                                    (lambda x: np.random.normal(x, 0.15)))
+        #self.emission_mask = []
+        #self.emission_mats = []
+
+        #These are the problem transition parameters
+        for c in range(numprobs):
+            self.params['D_' + str(c)] = parameter.Parameter(0.5, 0, 1, (lambda x: self.uniform(x, 0, 1)),
+                                                         (lambda x: self.sample_guess_prob(x)))
 
         #leave room later for test split
         self.test = {}
@@ -132,12 +123,10 @@ class MLFKTTransitionModel:
         return x
 
     def sample_guess_prob(self, x):
-        self.emission_mask = [False] * self.data['num_problems']
         return max(0, min(1,np.random.normal(x, 0.15)))
 
     def make_transitions(self, diff, prob_num):
-        t = expit(self.params['T'].get() + diff)
-        t_mat = np.array([[1-t,t],[0,1]])
+        t_mat = np.array([ [1-diff, diff], [0, 1] ])
         return t_mat
 
     def make_emissions(self, diff, prob_num):
@@ -255,20 +244,8 @@ class MLFKTTransitionModel:
     def log_posterior(self, paramID, fake=False):
         X = self.data['X']
         Probs = self.data['P']
-        Dsigma = self.params['Dsigma']
         N = self.N
         T = self.T
-
-        if paramID == 'Dsigma':
-            ##get p(Dsigma | D) propto p(D | Dsigma) p(Dsigma)
-            dprob = 0
-            for d in range(self.numprobs):
-                dprob += self.log( self.params['D_' + str(d)].prior(Dsigma.get()))
-            return self.log(Dsigma.prior()) + dprob
-
-        if 'D_' in paramID:
-            self.emission_mask[int(paramID[2:])] = False
-
 
         pi = self.make_initial()
         states = self.total_states
@@ -309,18 +286,12 @@ class MLFKTTransitionModel:
         if fake:
             log_prior = 0
             for k,v in self.params.iteritems():
-                if 'D_' in k:
-                    log_prior += self.log(v.prior(Dsigma.get()))
-                else:
-                    log_prior += self.log(v.prior())
+                log_prior += self.log(v.prior())
                     #print log_prior
             return loglike + log_prior
 
         #print "final loglike: " + str(loglike)
-        if 'D_' in paramID:
-            log_prior = self.log(self.params[paramID].prior(Dsigma.get()))
-        else:
-            log_prior = self.log(self.params[paramID].prior())
+        log_prior = self.log(self.params[paramID].prior())
         #print "log_prior:     " + str(log_prior)
         log_post = loglike + log_prior
         return log_post
@@ -332,7 +303,7 @@ class MLFKTTransitionModel:
 
         X = self.data['X']
         Probs = self.data['P']
-        Dsigma = self.params['Dsigma']
+        #Dsigma = self.params['Dsigma']
         N = self.N
         T = self.T
 
@@ -411,7 +382,7 @@ class MLFKTTransitionModel:
     #hacky MAP estimation
     def set_map_params(self):
         #loop through all samples, return setting with highest likelihood on the data
-        num_samples = len(self.params['T'].get_samples())
+        num_samples = len(self.params['S'].get_samples())
         maxp = -float('inf')
         maxc = 0
         print "searching for MAP"

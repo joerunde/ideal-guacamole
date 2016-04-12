@@ -3,11 +3,11 @@
 """
 
 from Metropolis.mcmc_sampler import MCMCSampler
-from Metropolis.mlfkt_usefulness_penalty_model import MLFKTSUPModel
+from Metropolis.kt_ideal import KTIDEAL
 import sys, json, time, random, os, math
 import numpy as np
 
-print "usage: python fit_MLFKT_usefulness_model.py burnin iterations k(for 1/k test split) bkt(y/n) skills num_intermediate_states iterations l1_b"
+print "usage: python fit_KT_IDEAL.py burnin iterations k(for 1/k test split) bkt(y/n) skills num_intermediate_states iterations [unused] [transition first?]"
 
 iterz = int(sys.argv[7])
 
@@ -31,7 +31,6 @@ for it in range(iterz):
     X = np.loadtxt(open("dump/observations_" + fname + ".csv","rb"),delimiter=",")
     #load problem IDs for these observations
     P = np.loadtxt(open("dump/problems_" + fname + ".csv","rb"),delimiter=",")
-    S = np.loadtxt(open("dump/skills_" + fname + ".csv", "rb"), delimiter=",")
 
     start = time.time()
 
@@ -40,37 +39,39 @@ for it in range(iterz):
     N = X.shape[0]
     Xtest = []
     Ptest = []
-    Stest = []
     Xnew = []
     Pnew = []
-    Snew = []
     for c in range(N):
         if c % k == 0:#random.random() < 1 / (k+0.0):
             Xtest.append(X[c,:])
             Ptest.append(P[c,:])
-            Stest.append(S[c,:])
         else:
             Xnew.append(X[c,:])
             Pnew.append(P[c,:])
-            Snew.append(S[c,:])
     X = Xnew
     P = Pnew
-    S = Snew
 
     Xtest = np.array(Xtest)
     Ptest = np.array(Ptest)
-    Stest = np.array(Stest)
     X = np.array(X)
     P = np.array(P)
-    S = np.array(S)
 
     print str(Xtest.shape[0]) + " test sequences"
     print str(X.shape[0]) + " training sequences"
 
-    if len(sys.argv) > 8:
-        model = MLFKTSUPModel(X,P,S, intermediate_states, 0.1, float(sys.argv[8]))
+    #if '1' in sys.argv[8]:
+    #    L1 = True
+    #else:
+    L1 = False
+
+    trans_first = False
+    if len(sys.argv) > 9:
+        trans_first = True
+
+    if 'y' in sys.argv[4]:
+        model = KTIDEAL(X, P, intermediate_states, 0, L1, trans_first)
     else:
-        model = MLFKTSUPModel(X, P, S, intermediate_states, 0.1)
+        model = KTIDEAL(X, P, intermediate_states, 0.1, L1, trans_first)
 
     mcmc = MCMCSampler(model, 0.15)
 
@@ -97,7 +98,7 @@ for it in range(iterz):
     #mcmc.plot_samples(folder + "/", str(num_iterations) + '_iterations')
 
     #load up test data and run predictions
-    model.load_test_split(Xtest, Ptest, Stest)
+    model.load_test_split(Xtest, Ptest)
     pred = model.get_predictions()
     num = model.get_num_predictions()
     mast = model.get_mastery()
@@ -143,10 +144,17 @@ for it in range(iterz):
 
     #mcmc.save_model(folder + "/" + str(num_iterations) + '_iterations.model')
 
-    #if 'y' in sys.argv[4]:
-    #    fname += '_bkt'
+    if 'y' in sys.argv[4]:
+        fname += '_bkt'
+    #if L1:
+    #    fname += '_L1'
 
-    rmsefname = 'dump/RMSE_pen_useful_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
+    if trans_first:
+        fname += '_first'
+    else:
+        fname += '_second'
+
+    rmsefname = 'dump/RMSE_' + fname + "_ktideal_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
     if os.path.exists(rmsefname):
         rmsel = json.load(open(rmsefname,"r"))
     else:
@@ -155,26 +163,22 @@ for it in range(iterz):
     rmsel.append(rmse)
     json.dump(rmsel, open(rmsefname,"w"))
 
-    paramfname = 'dump/PARAMS_pen_useful_' + fname + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
+    paramfname = 'dump/PARAMS_' + fname + "_ktideal_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
     if os.path.exists(paramfname):
-        try:
-            paraml = json.load(open(paramfname,"r"))
-        except:
-            paraml = []
+        paraml = json.load(open(paramfname,"r"))
     else:
         paraml = []
     p = model.get_parameters()
     pdict = {}
     for id, param in p.iteritems():
-        #pdict[id] = param.get()
-        if "D_" in id:
-            pdict[id] = param.get()
-        if "U" in id:
+        if id == 'L':
+            pdict[id] = [param.get()[0], param.get()[1]]
+        else:
             pdict[id] = param.get()
     #pdict['Trans'] = list( [list(x) for x in model.make_transitions()] )
-    #pdict['Pi'] = list(model.make_initial())
+    pdict['Pi'] = list(model.make_initial())
     #model.emission_mask[0] = False
-    #pdict['Emit'] = list( [list(x) for x in model.make_emissions(0,0)] )
+    pdict['Emit'] = list( [list(x) for x in model.make_emissions(0,0)] )
 
     paraml.append(pdict)
     json.dump(paraml, open(paramfname,"w"))
