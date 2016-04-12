@@ -73,7 +73,7 @@ for it in range(iterz):
         model = MLFKTSUPModel(X, P, S, intermediate_states, 0.1)
 
     mcmc = MCMCSampler(model, 0.15)
-
+    #mcmc.MH(1)
     burn = int(sys.argv[1])
     for c in range(20):
         mcmc.burnin(int(math.ceil((burn+0.0) / 20)))
@@ -110,13 +110,13 @@ for it in range(iterz):
             names = ['center', 'shape', 'spread', 'x_axis', 'y_axis', 'h_to_d', 'd_to_h', 'histogram']
             name = names[sk]
 
-            sumsq = 0
-            for row in range(S.shape[0]):
-                for col in range(S.shape[1]):
+            sqerr = []
+            for row in range(pred.shape[0]):
+                for col in range(pred.shape[1]):
                     if int(S[row,col]) == sk:
-                        sumsq += (pred[row,col] - Xtest[row,col]) ** 2
-            mean = np.mean(sumsq)
-            rmse = np.sqrt(mean)
+                        sqerr.append((pred[row,col] - Xtest[row,col]) ** 2)
+            mean = np.mean(sqerr)
+            rmsez = np.sqrt(mean)
 
             rmsefname = 'dump/RMSE_fake_pen_useful_' + name + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
             if os.path.exists(rmsefname):
@@ -124,7 +124,7 @@ for it in range(iterz):
             else:
                 rmsel = []
 
-            rmsel.append(rmse)
+            rmsel.append(rmsez)
             json.dump(rmsel, open(rmsefname,"w"))
 
 
