@@ -105,6 +105,29 @@ for it in range(iterz):
     err = pred - Xtest
     rmse = np.sqrt(np.sum(err**2)/num)
 
+    if np.max(S) > 6:
+        for sk in range(7):
+            names = ['center', 'shape', 'spread', 'x_axis', 'y_axis', 'h_to_d', 'd_to_h', 'histogram']
+            name = names[sk]
+
+            sumsq = 0
+            for row in range(S.shape[0]):
+                for col in range(S.shape[1]):
+                    if int(S[row,col]) == sk:
+                        sumsq += (pred[row,col] - Xtest[row,col]) ** 2
+            mean = np.mean(sumsq)
+            rmse = np.sqrt(mean)
+
+            rmsefname = 'dump/RMSE_pen_useful_' + name + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
+            if os.path.exists(rmsefname):
+                rmsel = json.load(open(rmsefname,"r"))
+            else:
+                rmsel = []
+
+            rmsel.append(rmse)
+            json.dump(rmsel, open(rmsefname,"w"))
+
+
     errl = np.zeros(num)
     predl = np.zeros(num)
     mastl = np.zeros(num)
