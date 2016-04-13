@@ -73,10 +73,10 @@ for it in range(iterz):
         model = MLFKTSUPModel(X, P, S, intermediate_states, 0.1)
 
     mcmc = MCMCSampler(model, 0.15)
-    mcmc.MH(1)
+    #mcmc.MH(1)
     burn = int(sys.argv[1])
     for c in range(20):
-        #mcmc.burnin(int(math.ceil((burn+0.0) / 20)))
+        mcmc.burnin(int(math.ceil((burn+0.0) / 20)))
         print("finished burn-in #: " + str((c+1)*burn/20))
 
     num_iterations = int(sys.argv[2])
@@ -84,7 +84,7 @@ for it in range(iterz):
     per_loop = int(math.ceil((num_iterations+0.0) / loop))
     for c in range(loop):
         a = time.time()
-        #mcmc.MH(per_loop)
+        mcmc.MH(per_loop)
         b = time.time()
         print("finished iteration: " + str((c+1)*per_loop) + " in " + str(int(b-a)) + " seconds")
 
