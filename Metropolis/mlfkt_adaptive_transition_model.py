@@ -82,7 +82,7 @@ class MLFKTAdaptTransitionModel:
                                                              (lambda x: np.random.normal(x, 0.15)))
             else:
                 print "Using adaptive L2"
-                self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: norm.pdf(x, 0, d_sig)),
+                self.params['D_' + str(c)] = parameter.Parameter(0, -3, 3, (lambda x, d_sig: norm.pdf(x, 0, 2) + 0*d_sig),
                                                              (lambda x: np.random.normal(x, 0.15)))
 
         self.params['Dsigma'] = parameter.Parameter(Dsigma, 0, 3, (lambda x: invgamma.pdf(x, 1, 0, 2)),

@@ -73,10 +73,10 @@ for it in range(iterz):
         model = MLFKTSUPModel(X, P, S, intermediate_states, 0.1)
 
     mcmc = MCMCSampler(model, 0.15)
-    #mcmc.MH(1)
+    mcmc.MH(1)
     burn = int(sys.argv[1])
     for c in range(20):
-        mcmc.burnin(int(math.ceil((burn+0.0) / 20)))
+        #mcmc.burnin(int(math.ceil((burn+0.0) / 20)))
         print("finished burn-in #: " + str((c+1)*burn/20))
 
     num_iterations = int(sys.argv[2])
@@ -84,7 +84,7 @@ for it in range(iterz):
     per_loop = int(math.ceil((num_iterations+0.0) / loop))
     for c in range(loop):
         a = time.time()
-        mcmc.MH(per_loop)
+        #mcmc.MH(per_loop)
         b = time.time()
         print("finished iteration: " + str((c+1)*per_loop) + " in " + str(int(b-a)) + " seconds")
 
@@ -106,17 +106,19 @@ for it in range(iterz):
     rmse = np.sqrt(np.sum(err**2)/num)
 
     if np.max(S) > 6:
-        for sk in range(7):
-            names = ['center', 'shape', 'spread', 'x_axis', 'y_axis', 'h_to_d', 'd_to_h', 'histogram']
+        for sk in range(8):
+            names = ['center', 'shape', 'spread', 'x_axis', 'y_axis', 'histogram', 'h_to_d', 'd_to_h']
             name = names[sk]
 
             sqerr = []
             for row in range(pred.shape[0]):
                 for col in range(pred.shape[1]):
-                    if int(S[row,col]) == sk:
+                    if int(Stest[row,col]) == sk:
                         sqerr.append((pred[row,col] - Xtest[row,col]) ** 2)
             mean = np.mean(sqerr)
             rmsez = np.sqrt(mean)
+
+            print name, "has ", len(sqerr), "test set items"
 
             rmsefname = 'dump/RMSE_fake_pen_useful_' + name + "_" + str(total_states) + "states_" + str(num_iterations) +"iter" + '.json'
             if os.path.exists(rmsefname):

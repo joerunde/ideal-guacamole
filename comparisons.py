@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 #settings = ['css','center','shape','spread','xy','x_axis','y_axis','descrip','d_to_h','h_to_d','histogram','whole_tutor',
 #            'circleall','composition','parallel','pentagon','triangle','trap','all_geom']
 
-def plot_bars(bars, errs, labels, colors, total_bars, fname):
+def plot_bars(bars, errs, labels, colors, total_bars, fname, title=''):
     fig, ax = plt.subplots()
 
     plt.bar(np.arange(len(bars)), bars, yerr=errs, color=colors, ecolor='black')
@@ -14,6 +14,8 @@ def plot_bars(bars, errs, labels, colors, total_bars, fname):
     #ax.set_xlim([0,total_bars])
     ax.set_xticklabels(labels, rotation=60)
     ax.set_xticks(np.arange(len(bars))+.3)
+
+    ax.set_title(title)
 
     #ax.get_xaxis().set_ticks([])
     plt.tight_layout()
@@ -26,14 +28,14 @@ f = open("comparison.tsv", "w")
 #f.write("Setting\tBKT-2\tBKT-3\tBKT-4\tC BKT-2\tC BKT-3\tC BKT-4\tLFKT-2\tLFKT-3\tLFKT-4\tC LFKT-2\tC LFKT-3\tC LFKT-4\n")
 
 skills = ['x_axis','y_axis','xy','center','shape','spread','css','h_to_d','d_to_h','descrip','histogram','whole_tutor']
-settings = ['BKT','BKT-4','LFKT','LFKT-4','LFKT (L1)', 'LFKT-transition-first (L1)', 'LFKT-transition-second (L1)', 'LFKT-transition-first-difficulty (L1)', 'LFKT-transition-second-difficulty (L1)', 'LFKT-skills (L1)', 'LFKT-knowledge-transfer (L1)', 'LFKT-knowledge-transfer-difficulty (L1)', 'LFKT-transition-first-difficulty-gauss (L1)', 'LFKT-transition-second-difficulty-gauss (L1)', 'LFKT-adaptive-transition (L1)', 'LFKT-adaptive-transition-difficulty (L1)']
+settings = ['BKT','BKT-4','LFKT','LFKT-4','LFKT (L1)', 'LFKT-transition-first (L1)', 'LFKT-transition-second (L1)', 'LFKT-transition-first-difficulty (L1)', 'LFKT-transition-second-difficulty (L1)', 'LFKT-skills (L1)', 'LFKT-knowledge-transfer (L1)', 'LFKT-knowledge-transfer-difficulty (L1)', 'LFKT-transition-first-difficulty-gauss (L1)', 'LFKT-transition-second-difficulty-gauss (L1)', 'LFKT-adaptive-transition (L1)', 'LFKT-adaptive-transition-difficulty (L1)', 'KT-IDEAL', 'LFKT-KT']
 
 
-labels = ['BKT','BKT-4','LFKT','LFKT-4','LFKT (L1)', 'Trans-Before', 'Trans-After', 'Trans-Before + Linear Diff', 'Trans-After + Linear Diff', 'Skill-difficulty', 'K-Transfer', 'K-Transfer + D', 'Trans-Before + Gauss Diff', 'Trans-After + Gauss Diff', 'Adaptive Transition (L1)', 'Adaptive Transition + D (L1)']
+labels = ['BKT','BKT-4','LFKT','LFKT-4','LFKT-Difficulty', 'LFKT-Transition (Before)', 'LFKT-Transition (After)', 'Trans-Before + Linear Diff', 'Trans-After + Linear Diff', 'Skill-difficulty', 'K-Transfer', 'K-Transfer + D', 'Trans-Before + Gauss Diff', 'Trans-After + Gauss Diff', 'LFKT-Transition', 'Adaptive Transition + D (L1)', 'KT-IDEAL', 'LFKT-KT']
 
 labeltable = {}
 
-colors = ['r','orangered','b','royalblue','navy','darkorange','yellow','limegreen','darkgreen','lightgray','darkorchid','mediumvioletred', 'pink', 'crimson', 'green', 'purple']
+colors = ['r','orangered','b','royalblue','navy','darkorange','yellow','limegreen','darkgreen','lightgray','darkorchid','mediumvioletred', 'pink', 'crimson', 'green', 'purple', 'green', 'purple']
 colortable = {}
 for c in range(len(settings)):
     colortable[settings[c]] = colors[c]
@@ -120,6 +122,10 @@ for sk in skills:
     #LFKT-knowledge-transfer-difficulty (L1)
     set_stuff(sk, 'LFKT-knowledge-transfer-difficulty (L1)', "apr3_exps/RMSE_usefuldiff_" + sk + "_2states_500iter.json", table, stdtable)
 
+    set_stuff(sk, 'LFKT-KT', "dump/RMSE_fake_pen_useful_" + sk + "_2states_500iter.json", table, stdtable)
+    set_stuff(sk, 'KT-IDEAL', "dump/RMSE_" + sk + "_second_ktideal_2states_1000iter.json", table, stdtable)
+
+
 
 
 table['average'] = {}
@@ -173,7 +179,7 @@ for sk in skills:
     colors = []
     labels = []
 
-    for setting in ['BKT','LFKT','LFKT (L1)']:
+    for setting in ['BKT','LFKT (L1)']:
         try:
             val = table[sk][setting]
             bars.append(val)
@@ -183,6 +189,68 @@ for sk in skills:
         except:
             continue
     plot_bars(bars, errs, labels, colors, 5, "resultplots/baselines/" + sk + ".png")
+
+
+#plot base + lfkt-trans (before)
+for sk in skills:
+    bars = []
+    errs = []
+    colors = []
+    labels = []
+
+    for setting in ['BKT','LFKT (L1)', 'LFKT-transition-first (L1)']:
+        try:
+            val = table[sk][setting]
+            bars.append(val)
+            errs.append(stdtable[sk][setting])
+            colors.append(colortable[setting])
+            labels.append(labeltable[setting])
+        except:
+            continue
+    plot_bars(bars, errs, labels, colors, 5, "resultplots/trans_fail/" + sk + ".png")
+
+
+#plot base + lfkt-transition + KT-IDEAL
+for sk in skills:
+    bars = []
+    errs = []
+    colors = []
+    labels = []
+
+    for setting in ['BKT','LFKT (L1)', 'LFKT-adaptive-transition (L1)', 'KT-IDEAL']:
+        try:
+            val = table[sk][setting]
+            bars.append(val)
+            errs.append(stdtable[sk][setting])
+            colors.append(colortable[setting])
+            labels.append(labeltable[setting])
+        except:
+            continue
+    plot_bars(bars, errs, labels, colors, 5, "resultplots/trans_good/" + sk + ".png")
+
+
+#plot base + lfkt-transition + LFKT-KT
+for sk in skills:
+    bars = []
+    errs = []
+    colors = []
+    labels = []
+
+    for setting in ['BKT','LFKT (L1)', 'LFKT-adaptive-transition (L1)', 'LFKT-KT']:
+        try:
+            val = table[sk][setting]
+            bars.append(val)
+            errs.append(stdtable[sk][setting])
+            colors.append(colortable[setting])
+            labels.append(labeltable[setting])
+        except:
+            continue
+    plot_bars(bars, errs, labels, colors, 5, "resultplots/knowledge_trace/" + sk + ".png")
+
+
+
+
+
 
 #plot multi-state
 for sk in skills:

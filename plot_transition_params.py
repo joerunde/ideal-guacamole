@@ -88,13 +88,14 @@ for sk in ['x_axis', 'y_axis', 'center', 'shape', 'spread', 'h_to_d', 'd_to_h', 
 # KT params?
 for sk in ['xy', 'descrip', 'css', 'whole_tutor']:
     try:
-        rmse = np.mean(json.load(open("apr3_exps/RMSE_useful_" + sk + "_2states_500iter.json","r")))
+        #rmse = np.mean(json.load(open("dump/RMSE_useful_" + sk + "_2states_500iter.json","r")))
         #baseline = np.mean(json.load(open("apr3_exps/RMSE_" + sk + "_bkt_2states_2000iter.json", "r")))
-        params = json.load(open("apr3_exps/PARAMS_uesful_" + sk + "_2states_500iter.json","r"))
-        params = params[4:]
+        params = json.load(open("dump/PARAMS_fake_pen_useful_" + sk + "_2states_500iter.json","r"))
+        #params = params[4:]
 
-        print sk, rmse#, baseline
+        print sk#, rmse#, baseline
     except Exception as e:
+        print "crud diddly"
         print sk, e
         continue
 
@@ -125,7 +126,9 @@ for sk in ['xy', 'descrip', 'css', 'whole_tutor']:
         y = int(k[4])
 
         if x == 4 and y == 3:
-            print val
+            print "XY!", val
+        if x == 0 and y == 6:
+            print "DTOH CENTER", val
 
         if x == 2 and y == 6:
             print val
@@ -143,7 +146,7 @@ for sk in ['xy', 'descrip', 'css', 'whole_tutor']:
     if sk == 'descrip':
         plot_param_vector(mat, title, fname, 0, .1, ['h to d','d to h'])
     if sk == 'whole_tutor':
-        plot_param_vector(mat, title, fname, 0, .4, ['center','shape','spread','x axis','y axis','h to d','d to h','histogram'])
+        plot_param_vector(mat, title, fname, 0, .5, ['center','shape','spread','x axis','y axis','h to d','d to h','histogram'])
 
 
 # KT+D params
